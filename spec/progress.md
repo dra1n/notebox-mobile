@@ -118,6 +118,8 @@ Notes
 - Tests found and fixed two design issues: a rollback in a separate event left a moment where
   app-db looked settled with the failed change; and callbacks from a halted system leaked into
   the next one (now dropped via each effect component's `alive` flag).
+- Review change (user): components come first. `notebox.fx.*` are now plain handler functions,
+  and one `:notebox.shell/effects` component registers them (roadmap §5.3).
 - New native module: AsyncStorage v3 (`pod install` + `npm run ios` after pulling).
 - Totals: 56 JVM tests / 631 assertions, 92 Node tests / 843. `check:release` 390 KB; e2e smoke
   passes.

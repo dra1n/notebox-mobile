@@ -1,0 +1,10 @@
+{
+  "ops": [
+    {
+      "op": "book/rename",
+      "book": "n0b00kxxxx",
+      "title": "Nope"
+    }
+  ],
+  "warnings": []
+}

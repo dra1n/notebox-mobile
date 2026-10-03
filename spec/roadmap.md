@@ -119,6 +119,16 @@ Mobile must resolve paths the same way, whichever key it uses ([§11](#11-open-q
 - `notesInfo[].count` and `tagsInfo` are *denormalized* copies computed by the client.
 - The desktop app (`../notebox-desktop/src/luggage/collections.clj`) reads and writes the same
   layout.
+- **Serialization (implemented in Phase 1, `notebox.domain.json`):** the web writes
+  `JSON.stringify` output: compact, raw UTF-8, `/` unescaped, control characters as `\u00xx`
+  (lowercase hex), lone surrogates as `\udxxx`. Key order varies per note, because the web merges
+  edits with `Object.assign` (existing keys stay put, new ones such as `updated-at` are
+  appended). Mobile keeps every object's key order: objects decode to array maps, and
+  `notebox.domain.ordered` appends new keys instead of letting a >8-key map turn into a hash
+  map. So unchanged data is written back byte-for-byte. Two documented exceptions:
+  - integer-like keys (`"42"`) are ordered first, as every JS client does;
+  - the desktop (Cheshire/Jackson) writes control characters with uppercase hex (`\u001B`).
+    Mobile reads it fine and writes it back lowercase.
 
 ### 3.2 How Luggage (`@luggage/core` 2.2.2) writes
 
@@ -369,7 +379,7 @@ to the freshly downloaded remote file:
 
 ```clojure
 {:op :note/add    :book b :note n}       ; no-op if the slug already exists
-{:op :note/update :book b :note n}       ; replace by slug; missing → re-add (edit wins) + :warning
+{:op :note/update :book b :note n}       ; merge by slug, as the web's Object.assign; missing → re-add (edit wins) + :warning
 {:op :note/remove :book b :slug s}       ; no-op if missing (never splice -1)
 {:op :book/create :book b :title t}      ; file [] (mode add) + meta entry + collectionsList
 {:op :book/rename :book b :title t}      ; meta only
@@ -625,10 +635,15 @@ is ticked from memory. Re-run the gate on the final commit of the phase.
   slug generation; tag index (all tags → note count across books).
 - **Golden tests** against a real exported `/notes` folder (anonymised), so that
   parse → apply op → serialize round-trips byte-compatible JSON (key names, order of `notesInfo`).
-- **Cross-client oracle:** a JVM test alias pulls `../notebox-desktop` (`:local/root`) and checks
-  that the desktop's own `luggage/collections.clj` reads every file the mobile domain writes. If
-  the desktop code can't be loaded cleanly, record that in `progress.md` and rely on the golden
-  files.
+- **Cross-client oracle:** the desktop's `luggage/collections.clj` reads with
+  `(cheshire/parse-string s true)` and writes with `generate-string`. Its code needs JavaFX and the
+  Dropbox SDK, so the test runs exactly those calls with the same library version
+  (Cheshire 5.10.2) in both directions. *(Revised in Phase 1; `:local/root` would pull in the
+  whole desktop app.)* The web side is covered by comparing `encode` with the real
+  `JSON.stringify` in Node.
+- **Fixtures:** hand-written in `test/resources/fixtures/generate.mjs` (the real library is too big
+  to commit). `JSON.stringify` writes the bytes, and an independent JS implementation of the op
+  semantics writes each scenario's expected files.
 - **Gate (automated):**
   - `npm run test:clj` passes, and Cloverage on `notebox.domain.*` reports **≥ 95 % forms**,
     enforced with `--fail-threshold`.

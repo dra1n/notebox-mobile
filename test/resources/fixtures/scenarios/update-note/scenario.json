@@ -1,0 +1,18 @@
+{
+  "ops": [
+    {
+      "op": "note/update",
+      "book": "k3J9aZ0qLx",
+      "note": {
+        "slug": "Vh2xQ1cccc",
+        "title": "Вопрос",
+        "tags": [
+          "классика",
+          "цитаты"
+        ],
+        "updated-at": "2026-10-03T12:30:00.000Z"
+      }
+    }
+  ],
+  "warnings": []
+}

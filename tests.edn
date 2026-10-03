@@ -4,8 +4,9 @@
             :source-paths ["src" "scripts"]
             :ns-patterns  ["-test$"]}]
  :plugins [:kaocha.plugin/cloverage]
- ;; Phase gates add per-namespace thresholds (spec/roadmap.md §9).
- :cloverage/opts {:ns-regex          ["notebox\\..*"]
+ ;; Per-namespace minimums from the phase gates live in scripts/coverage_gate.clj.
+ :cloverage/opts {:custom-report     coverage-gate/report
+                  :ns-regex          ["notebox\\..*"]
                   :ns-exclude-regex  []
                   :src-ns-path       ["src"]
                   :output            "target/coverage"

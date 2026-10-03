@@ -1,0 +1,19 @@
+{
+  "ops": [
+    {
+      "op": "note/add",
+      "book": "myNoteB00k",
+      "note": {
+        "slug": "N3wN0te001",
+        "title": "Купить билеты",
+        "text": "Поезд в 9:15",
+        "tags": [
+          "todo",
+          "travel"
+        ],
+        "created-at": "2026-10-03T12:00:00.000Z"
+      }
+    }
+  ],
+  "warnings": []
+}

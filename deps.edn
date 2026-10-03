@@ -14,7 +14,9 @@
 
   ;; JVM tests: cljc code (domain, sync core, config) + project checks
   :test      {:extra-paths ["test" "test/resources" "scripts"]
-              :extra-deps  {day8.re-frame/test           {:mvn/version "0.1.7"}
+              :extra-deps  {;; the desktop client's JSON library and version (desktop-oracle-test)
+                            cheshire/cheshire            {:mvn/version "5.10.2"}
+                            day8.re-frame/test           {:mvn/version "0.1.7"}
                             lambdaisland/kaocha          {:mvn/version "1.91.1392"}
                             lambdaisland/kaocha-cloverage {:mvn/version "1.1.89"}
                             org.clojure/test.check       {:mvn/version "1.1.3"}

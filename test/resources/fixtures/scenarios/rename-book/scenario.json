@@ -1,0 +1,10 @@
+{
+  "ops": [
+    {
+      "op": "book/rename",
+      "book": "Cm1c5_bk-0",
+      "title": "Comics & graphic novels"
+    }
+  ],
+  "warnings": []
+}

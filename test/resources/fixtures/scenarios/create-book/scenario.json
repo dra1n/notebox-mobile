@@ -1,0 +1,10 @@
+{
+  "ops": [
+    {
+      "op": "book/create",
+      "book": "N3wB00kSlg",
+      "title": "Новая книга"
+    }
+  ],
+  "warnings": []
+}

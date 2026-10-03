@@ -1,0 +1,21 @@
+{
+  "ops": [
+    {
+      "op": "note/add",
+      "book": "Id3a5_box9",
+      "note": {
+        "slug": "inb0x00001",
+        "title": "Call Anna",
+        "text": "",
+        "tags": [],
+        "created-at": "2024-01-01T00:00:00.000Z"
+      }
+    },
+    {
+      "op": "note/remove",
+      "book": "inBox_0001",
+      "slug": "inb0x00001"
+    }
+  ],
+  "warnings": []
+}

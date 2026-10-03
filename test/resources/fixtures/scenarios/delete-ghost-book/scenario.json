@@ -1,0 +1,9 @@
+{
+  "ops": [
+    {
+      "op": "book/delete",
+      "book": "Gh0st-g0ne"
+    }
+  ],
+  "warnings": []
+}

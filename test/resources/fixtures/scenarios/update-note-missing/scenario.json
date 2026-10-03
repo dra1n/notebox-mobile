@@ -1,0 +1,23 @@
+{
+  "ops": [
+    {
+      "op": "note/update",
+      "book": "inBox_0001",
+      "note": {
+        "slug": "g0n3n0t3xx",
+        "title": "Edited here, deleted elsewhere",
+        "text": "edit wins",
+        "tags": [],
+        "created-at": "2026-01-01T00:00:00.000Z",
+        "updated-at": "2026-10-03T12:31:00.000Z"
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "type": "note/re-added",
+      "book": "inBox_0001",
+      "slug": "g0n3n0t3xx"
+    }
+  ]
+}

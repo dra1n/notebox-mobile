@@ -13,7 +13,7 @@ This file tracks the phase gates defined in [`roadmap.md` §9](roadmap.md#9-phas
 
 | Phase | Status |
 |---|---|
-| 0 Foundations | in progress: automated gate passed; manual item pending |
+| 0 Foundations | done (2026-10-03, 094bc4d) |
 | 1 Domain | not started |
 | 2 Dropbox infra | not started |
 | 3 Repository, cache, sync | not started |
@@ -33,7 +33,7 @@ Automated
 - [x] `npm run test:e2e`: the Maestro smoke flow sees text from a re-frame sub on the iOS simulator: 2026-10-03, 9ee203f. `smoke` passed in 3 s on the iPhone 16 Pro (iOS 18.3) simulator, asserting "Status: ready (e2e)".
 
 Manual
-- [ ] A view edit + `(dev/reset)` in the Krell REPL shows up on the simulator without restarting the app
+- [x] Without restarting the app: a view edit hot-reloads on save, and a change to the initial state (`:ready` → `:restarted`) appears only after `(dev/reset)`: 2026-10-03, 094bc4d. Done by the user on the iPhone 16 Pro simulator with `npm run cljs:repl`. Revised from "view edit + `(dev/reset)`", which proved nothing once views hot-reload on their own.
 
 Notes
 - The layer/cycle rules moved from clj-kondo to `scripts/check_deps.clj` (see roadmap §5.2).

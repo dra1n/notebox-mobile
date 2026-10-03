@@ -612,8 +612,12 @@ is ticked from memory. Re-run the gate on the final commit of the phase.
   - `npm run check:release`: the `:advanced` build compiles, and `hermesc` accepts the output.
   - `npm run test:e2e`: the Maestro smoke flow launches the app on the iOS simulator and sees
     text rendered from a re-frame sub.
-- **Gate (manual):** in the Krell REPL, change a view, run `(dev/reset)`, and the simulator shows
-  the change without restarting the app.
+- **Gate (manual):** with the Krell REPL running, both reload paths work without restarting the app:
+  - **hot reload:** edit a view's text and save → the simulator shows it immediately;
+  - **`(dev/reset)`:** change the initial state (`:app/status :ready` → `:restarted` in
+    `notebox.shell.events`) and save. The screen still says "ready", because hot reload doesn't
+    re-run component startup or reset app-db. After `(dev/reset)` it says "Status: restarted
+    (dev)". Revert both edits afterwards.
 
 ### Phase 1: Domain (L0)
 - Note, book and meta schemas; ops ([§6.2](#62-domain-operations-l0-pure-and-idempotent)); meta

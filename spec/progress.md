@@ -16,7 +16,7 @@ This file tracks the phase gates defined in [`roadmap.md` §9](roadmap.md#9-phas
 | 0 Foundations | done (2026-10-03, 094bc4d) |
 | 1 Domain | done (2026-10-03, f988768) |
 | 2 Dropbox infra | done (2026-10-03, dd76ee1) |
-| 3 Storage through Luggage | in progress: automated gate passed; manual items pending |
+| 3 Storage through Luggage | done (2026-10-03, 644cba4) |
 | 4 re-frame features | not started |
 | 5 UI | not started |
 | 6 Hardening and release | not started |
@@ -91,8 +91,8 @@ Automated
 - [x] Interop rule: `check-deps` fails on a JS require outside the interop namespaces: 2026-10-03, ed5edf5. Fixture `lint-violations/notebox/storage/cache.cljs`; the real source passes.
 
 Manual (simulator, real account, REPL)
-- [ ] `(dev/load-meta)` / `(dev/load-book slug)` show real data through Luggage
-- [ ] A test book created, given a note, renamed and deleted via `(dev/apply-op! …)`; each step visible in the web app, which still reads the files
+- [x] `(dev/load-meta)` / `(dev/load-book slug)` show real data through Luggage: 2026-10-03, 644cba4. Done by the user on the simulator against the real account.
+- [x] A test book created, given a note, renamed and deleted via `(dev/apply-op! …)`; each step visible in the web app, which still reads the files: 2026-10-03, 644cba4. Done by the user; the rest of the library was untouched.
 
 Notes
 - Replanned 2026-10-03: Luggage (the user's choice) instead of the rev-based sync engine; online

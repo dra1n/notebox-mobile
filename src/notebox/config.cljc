@@ -14,11 +14,6 @@
 
 (def profiles #{:dev :test :e2e :prod})
 
-;; Every effect component is a :notebox/fx, so :notebox/app can depend on them all.
-(doseq [k [:notebox.fx/storage :notebox.fx/auth :notebox.fx/settings :notebox.fx/cofx
-           :notebox.fx/navigation]]
-  (derive k :notebox/fx))
-
 (def dropbox-app
   "The web client's Dropbox app: web and mobile are the same app (roadmap §7)."
   {:app-key      "2t7xyn3a902rv0z"
@@ -41,18 +36,18 @@
    :notebox.infra.js/luggage   {:client (ig/ref :notebox.dropbox/client)}
    :notebox.storage/repository {:luggage (ig/ref :notebox.infra.js/luggage)}
    :notebox.infra/kv-store     {:impl (real-or-fake :async-storage :memory) :name "notebox"}
+   :notebox.infra/navigator    {}
 
-   ;; L2: re-frame effects over the components above (all derive :notebox/fx)
-   :notebox.fx/storage    {:repository (ig/ref :notebox.storage/repository)
+   ;; re-frame's effects and coeffects (notebox.fx.*), built over the components
+   :notebox.shell/effects {:repository      (ig/ref :notebox.storage/repository)
+                           :auth            (ig/ref :notebox.dropbox/auth)
+                           :client          (ig/ref :notebox.dropbox/client)
+                           :kv-store        (ig/ref :notebox.infra/kv-store)
+                           :navigator       (ig/ref :notebox.infra/navigator)
                            :on-unauthorized [:app/session-expired]}
-   :notebox.fx/auth       {:auth (ig/ref :notebox.dropbox/auth)
-                           :client (ig/ref :notebox.dropbox/client)}
-   :notebox.fx/settings   {:kv-store (ig/ref :notebox.infra/kv-store)}
-   :notebox.fx/cofx       {}
-   :notebox.fx/navigation {}
 
    :notebox/app {:profile (ig/profile :dev :dev :test :test :e2e :e2e :prod :prod)
-                 :fx (ig/refset :notebox/fx)}
+                 :effects (ig/ref :notebox.shell/effects)}
    :notebox/ui  {:app (ig/ref :notebox/app)}})
 
 (defn config

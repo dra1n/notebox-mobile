@@ -7,16 +7,11 @@
   [e]
   (or (ex-data e) {:type :other :summary (or (ex-message e) (str e))}))
 
-(defn alive
-  "A flag for an effect component: true until it's halted. Results that arrive
-  after a halt (dev/reset, a test's next system) are dropped, so they can't
-  leak into the new system."
-  []
-  (atom true))
-
 (defn dispatch-result
   "When Promise `p` settles, dispatch `on-ok` + value or `on-fail` + error map,
-  unless the component's `alive` flag is off by then.
+  unless the `alive` flag (an atom, owned by notebox.shell.effects) is off by
+  then: results that arrive after a halt (dev/reset, a test's next system)
+  are dropped, so they can't leak into the new system.
   If `on-unauthorized` is given (configuration data, so features never refer
   to the shell), an :unauthorized failure dispatches it instead of `on-fail`:
   the session is over, and the shell resets everything."
@@ -31,5 +26,3 @@
                   (and on-unauthorized (= :unauthorized (:type err))) (dispatch on-unauthorized)
                   on-fail (dispatch (conj on-fail err)))))))))
 
-(defn clear-fx! [ids]
-  (doseq [id ids] (rf/clear-fx id)))

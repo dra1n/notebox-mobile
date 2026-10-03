@@ -1,7 +1,7 @@
 (ns notebox.shell.app
   "The :notebox/app component: registers all events and subs (by requiring
-  their namespaces) and initializes app-db. It depends on every effect
-  component (:notebox/fx), so effects exist before the first event."
+  their namespaces) and initializes app-db. It depends on
+  :notebox.shell/effects, so effects exist before the first event."
   (:require [integrant.core :as ig]
             [re-frame.core :as rf]
             [notebox.feature.auth.events]

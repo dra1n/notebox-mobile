@@ -7,18 +7,15 @@
             [re-frame.db :refer [app-db]]
             [notebox.config :as config]
             [notebox.dropbox.auth :as auth]
-            [notebox.fx.auth]
-            [notebox.fx.cofx]
-            [notebox.fx.navigation]
-            [notebox.fx.settings]
-            [notebox.fx.storage]
             [notebox.infra.browser]
             [notebox.infra.http]
             [notebox.infra.js.luggage]
             [notebox.infra.kv-store]
+            [notebox.infra.navigator :as navigator]
             [notebox.infra.secure-store]
             [notebox.dropbox.client]
             [notebox.shell.app]
+            [notebox.shell.effects]
             [notebox.storage.repository]
             [notebox.storage.repository-test :refer [export-files]]))
 
@@ -49,16 +46,16 @@
                    (assoc-in [:notebox.infra/secure-store :initial]
                              (if signed-in? {auth/refresh-token-key "refresh-test"} {}))
                    (assoc-in [:notebox.infra/kv-store :initial] (or settings {}))
-                   (assoc-in [:notebox.fx/cofx :now-fn] (constantly now-ms))
-                   (assoc-in [:notebox.fx/cofx :slug-fn] #(str "newSlug" (swap! slugs inc) "xx"))
+                   (assoc-in [:notebox.shell/effects :now-fn] (constantly now-ms))
+                   (assoc-in [:notebox.shell/effects :slug-fn] #(str "newSlug" (swap! slugs inc) "xx"))
                    (cond->
                      http-fetch      (assoc-in [:notebox.infra/http :fetch-fn] http-fetch)
                      browser-respond (assoc-in [:notebox.infra/browser :respond] browser-respond)))
          nav   (atom [])
          sys   (ig/init cfg)]
      ;; :app/initialize (dispatched while :notebox/app starts) doesn't navigate.
-     (reset! (get-in sys [:notebox.fx/navigation :navigator])
-             (fn [action route params] (swap! nav conj [action route params])))
+     (navigator/set-navigator! (:notebox.infra/navigator sys)
+                               (fn [action route params] (swap! nav conj [action route params])))
      (reset! current {:system sys})
      {:system       sys
       :dbx          (:notebox.dropbox/client sys)

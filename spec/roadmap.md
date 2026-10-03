@@ -290,53 +290,38 @@ graph BT
   client[:notebox.dropbox/client] --> http & auth
   luggage[:notebox.infra.js/luggage] --> client
   repo[:notebox.storage/repository] --> luggage
-  fxauth[:notebox.fx/auth] --> auth & client
-  fxstore[:notebox.fx/storage] --> repo
-  fxset[:notebox.fx/settings] --> kv
-  fxcofx[:notebox.fx/cofx]
-  fxnav[:notebox.fx/navigation]
-  app[:notebox/app] --> fxauth & fxstore & fxset & fxcofx & fxnav
+  nav[:notebox.infra/navigator]
+  effects[:notebox.shell/effects] --> repo & auth & client & kv & nav
+  app[:notebox/app] --> effects
   ui[:notebox/ui] --> app
 ```
 
-Sketch of the config (CLJS data or EDN read with `ig/read-string`; both verified):
+The config is `notebox.config/base` (`src/notebox/config.cljc`), as of Phase 4:
 
 ```clojure
-{:notebox/config               {:dropbox {:app-key "…" :redirect-uri "notebox://oauth"}
-                                :collections "notes"}
- :notebox.infra/http           {:timeout-ms 20000}
- :notebox.infra/secure-store   {:service "notebox"}               ; Keychain/Keystore
- :notebox.infra/kv-store       {:prefix "notebox/"}               ; AsyncStorage
- :notebox.infra/platform       {}                                  ; NetInfo, AppState, Alert
- :notebox.dropbox/auth         {:config #ig/ref :notebox/config
-                                :http #ig/ref :notebox.infra/http
-                                :secure-store #ig/ref :notebox.infra/secure-store}
- :notebox.dropbox/client       {:http #ig/ref :notebox.infra/http
-                                :auth #ig/ref :notebox.dropbox/auth}
- :notebox.storage/repository   {:client #ig/ref :notebox.dropbox/client :root "notes"}
- :notebox.storage/cache        {:kv #ig/ref :notebox.infra/kv-store}
- :notebox.storage/sync-engine  {:repository #ig/ref :notebox.storage/repository
-                                :cache #ig/ref :notebox.storage/cache
-                                :kv #ig/ref :notebox.infra/kv-store
-                                :platform #ig/ref :notebox.infra/platform}
- :notebox.ui/nav-ref           {}
- :notebox.fx/auth              {:auth #ig/ref :notebox.dropbox/auth}
- :notebox.fx/storage           {:sync #ig/ref :notebox.storage/sync-engine
-                                :cache #ig/ref :notebox.storage/cache
-                                :on-unauthorized [:auth/session-expired]}
- :notebox.fx/navigation        {:nav-ref #ig/ref :notebox.ui/nav-ref}
- :notebox.fx/platform          {:platform #ig/ref :notebox.infra/platform
-                                :on-connectivity [:sync/connectivity-changed]
-                                :on-foreground   [:sync/app-foregrounded]}
- :notebox/app                  {:fx (ig/refset :notebox/fx)}       ; all :notebox.fx/* derive :notebox/fx
- :notebox/ui                   {:app #ig/ref :notebox/app :nav-ref #ig/ref :notebox.ui/nav-ref}}
+{:notebox.infra/http         {:timeout-ms 20000}
+ :notebox.infra/secure-store {:impl (real-or-fake :keychain :memory) :service "notebox"}
+ :notebox.infra/browser      {:impl (real-or-fake :linking :fake)}
+ :notebox.dropbox/auth       {:app-key "2t7xyn3a902rv0z" :redirect-uri "notebox://oauth"
+                              :http #ig/ref … :secure-store #ig/ref … :browser #ig/ref …}
+ :notebox.dropbox/client     {:impl (real-or-fake :http :fake) :http #ig/ref … :auth #ig/ref …}
+ :notebox.infra.js/luggage   {:client #ig/ref :notebox.dropbox/client}
+ :notebox.storage/repository {:luggage #ig/ref :notebox.infra.js/luggage}
+ :notebox.infra/kv-store     {:impl (real-or-fake :async-storage :memory)}
+ :notebox.infra/navigator    {}
+ ;; re-frame's effects and coeffects (notebox.fx.*), built over the components above
+ :notebox.shell/effects      {:repository #ig/ref … :auth #ig/ref … :client #ig/ref …
+                              :kv-store #ig/ref … :navigator #ig/ref …
+                              :on-unauthorized [:app/session-expired]}
+ :notebox/app                {:profile … :effects #ig/ref :notebox.shell/effects}
+ :notebox/ui                 {:app #ig/ref :notebox/app}}
 ```
 
-- **Implemented (Phases 0–3):** `notebox.config` holds the real config. Profiles pick real or fake
-  implementations: the `:test` and `:e2e` profiles get the in-memory Dropbox, the memory
-  secure store and the fake browser. *The graph above is current; the config sketch below is
-  the original plan (the kv-store, cache, sync engine and platform components were dropped in
-  Phase 3).*
+- **Components first.** Every Integrant key is a component: infrastructure (`notebox.infra.*`,
+  `notebox.dropbox.*`, `notebox.storage.*`) or the shell. Effect handlers (`notebox.fx.*`) are
+  plain functions from components to `{fx-id handler}`. The one `:notebox.shell/effects`
+  component registers them on init and unregisters them on halt. *(Changed in Phase 4 review:
+  the fx namespaces were Integrant components themselves.)*
 - **Test and dev profiles.** `#ig/profile` / `ig/expand` swap `:notebox.dropbox/client` for an
   in-memory fake Dropbox, the same fake used in the experiment. This gives offline development
   and tests without touching a real account.
@@ -358,9 +343,10 @@ src/notebox/
   infra/js/  luggage.cljs                          ; JS libraries (JS interop): Luggage + our backend
   dropbox/ api.cljs auth.cljs client.cljs fake.cljs fake_store.cljc http.cljc errors.cljc pkce.cljc
   storage/ repository.cljs                         ; ops → Luggage reads/writes, per-file queue
-  fx/      storage.cljs auth.cljs settings.cljs cofx.cljs navigation.cljs util.cljs
+  infra/   navigator.cljc                        ; the slot the UI's navigation container fills
+  fx/      storage.cljs auth.cljs settings.cljs cofx.cljs navigation.cljs util.cljs   ; plain handler fns
   feature/<f>/ events.cljc subs.cljc queries.cljc        ; f ∈ messaging, sync, settings, auth, library, editor, books, tags, search
-  shell/   app.cljc events.cljc                 ; registers the features; start-up and session flows
+  shell/   app.cljc events.cljc effects.cljs    ; features, start-up/session flows, the effects component
   ui/      theme.cljs components/… screens/… navigation.cljs root.cljs
   ui/views/…                     ; presentational components: pure (props → hiccup), no subscribe
 dev/notebox/dev.cljs             ; reset, fake data seeding, (dev/check-dropbox)
@@ -460,11 +446,11 @@ client and the user's other React Native apps use, and do the simplest thing.*
   the meta are reloaded from Dropbox, and an error toast is shown (hazard 6). An `:unauthorized`
   error goes only to the configured `[:app/session-expired]`, which resets the session.
 - `saving?` comes from a pending-saves counter in `app-db` (`notebox.feature.sync`).
-- **Effects (L2)** are Integrant components (`notebox.fx.*`, all deriving `:notebox/fx`):
-  `storage`, `auth`, `settings` (kv-store), `cofx` (`:notebox/now`, `:notebox/new-slugs`,
-  `:notebox/uuid`, so handlers stay pure) and `navigation` (a navigator slot the UI fills).
-  Results that arrive after a component is halted are dropped, so nothing leaks across
-  `(dev/reset)`.
+- **Effects (L2)** are plain functions in `notebox.fx.*`, from components to handlers: `storage`,
+  `auth`, `settings` (kv-store), `navigation` (over the `:notebox.infra/navigator` component, a
+  slot the UI fills) and `cofx` (`:notebox/now`, `:notebox/new-slugs`, `:notebox/uuid`, so
+  handlers stay pure). The `:notebox.shell/effects` component registers them all. When it's
+  halted, results still in flight are dropped, so nothing leaks across `(dev/reset)`.
 - **Features (L3)** are `cljc`. Rank 0: `messaging`, `sync`, `settings`; rank 1: `auth`;
   rank 2: `library` (the meta, loaded books, the save flow); rank 3: `editor`, `books`, `tags`,
   `search`. The **shell** orchestrates cross-feature flows (start-up, sign-in, sign-out, session

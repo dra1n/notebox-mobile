@@ -7,17 +7,14 @@
             [re-frame.core :as rf]
             [weavejester.dependency :as dep]
             [notebox.config :as config]
+            [notebox.infra.navigator]
             #?@(:cljs [[notebox.dropbox.auth]
                        [notebox.dropbox.client]
                        [notebox.infra.browser]
                        [notebox.infra.http]
-                       [notebox.fx.auth]
-                       [notebox.fx.cofx]
-                       [notebox.fx.navigation]
-                       [notebox.fx.settings]
-                       [notebox.fx.storage]
                        [notebox.infra.js.luggage]
                        [notebox.infra.kv-store]
+                       [notebox.shell.effects]
                        [notebox.infra.secure-store]
                        [notebox.storage.repository]])
             [notebox.shell.app]))
@@ -27,15 +24,21 @@
      :clj  #{:notebox/ui :notebox.infra/http :notebox.infra/secure-store :notebox.infra/browser
              :notebox.dropbox/auth :notebox.dropbox/client
              :notebox.infra.js/luggage :notebox.storage/repository :notebox.infra/kv-store
-             :notebox.fx/storage :notebox.fx/auth :notebox.fx/settings :notebox.fx/cofx
-             :notebox.fx/navigation}))
+             :notebox.shell/effects}))
 
-;; On the JVM the effect components (cljs) aren't there: stub the effects that
-;; :app/initialize uses.
-#?(:clj (doseq [id [:settings/load :auth/check-session]] (rf/reg-fx id (fn [_]))))
+;; On the JVM the cljs components aren't there: the effects component becomes a
+;; stub that registers no-ops for the effects :app/initialize uses.
+#?(:clj
+   (defmethod ig/init-key ::stub-effects [_ _]
+     (doseq [id [:settings/load :auth/check-session]] (rf/reg-fx id (fn [_])))
+     {}))
 
 (defn- test-config []
-  (apply dissoc (config/config :test) excluded-keys))
+  (let [cfg (apply dissoc (config/config :test) excluded-keys)]
+    #?(:cljs cfg
+       :clj  (-> cfg
+                 (assoc ::stub-effects {})
+                 (assoc-in [:notebox/app :effects] (ig/ref ::stub-effects))))))
 
 (deftest every-profile-resolves
   (doseq [p config/profiles]

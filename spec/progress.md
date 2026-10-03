@@ -16,7 +16,7 @@ This file tracks the phase gates defined in [`roadmap.md` §9](roadmap.md#9-phas
 | 0 Foundations | done (2026-10-03, 094bc4d) |
 | 1 Domain | done (2026-10-03, f988768) |
 | 2 Dropbox infra | done (2026-10-03, dd76ee1) |
-| 3 Storage through Luggage | not started |
+| 3 Storage through Luggage | in progress: automated gate passed; manual items pending |
 | 4 re-frame features | not started |
 | 5 UI | not started |
 | 6 Hardening and release | not started |
@@ -85,10 +85,10 @@ Notes
 ## Phase 3: Storage through Luggage (L1)
 
 Automated
-- [ ] Golden scenarios through Luggage: all 12 Phase 1 scenarios via `repository/apply-op!` on the seeded fake give byte-identical files
-- [ ] Luggage edge cases: missing files as `[]`/`{}`; `create`/`delete` keep `collectionsList`; unknown meta keys survive; failed writes reject with the client's error type
-- [ ] Serial queue: concurrent ops apply one at a time in order; a failure doesn't block later ops
-- [ ] Interop rule: `check-deps` fails on a JS require outside the interop namespaces
+- [x] Golden scenarios through Luggage: all 12 Phase 1 scenarios via `repository/apply-op!` on the seeded fake give byte-identical files: 2026-10-03, ed5edf5. `repository-test/golden-scenarios-through-luggage`: every file and the set of files match the JS reference, warnings included.
+- [x] Luggage edge cases: missing files as `[]`/`{}`; `create`/`delete` keep `collectionsList`; unknown meta keys survive; failed writes reject with the client's error type: 2026-10-03, ed5edf5. Also: a repeated create never wipes a book or resets its meta (a bug the test found, now fixed); a failed write leaves the book unchanged, and the same op succeeds once back online.
+- [x] Serial queue: concurrent ops apply one at a time in order; a failure doesn't block later ops: 2026-10-03, ed5edf5. Six concurrent adds are all kept, in order, with count 6; an op after a failing one still applies.
+- [x] Interop rule: `check-deps` fails on a JS require outside the interop namespaces: 2026-10-03, ed5edf5. Fixture `lint-violations/notebox/storage/cache.cljs`; the real source passes.
 
 Manual (simulator, real account, REPL)
 - [ ] `(dev/load-meta)` / `(dev/load-book slug)` show real data through Luggage
@@ -97,6 +97,9 @@ Manual (simulator, real account, REPL)
 Notes
 - Replanned 2026-10-03: Luggage (the user's choice) instead of the rev-based sync engine; online
   only, with no cache or outbox (moved to Phase 7). See roadmap §6.3.
+- Spike: Luggage's core builds through Metro and passes `hermesc` (92 KB, no Dropbox SDK). The
+  e2e smoke run starts the app with Luggage under Hermes.
+- Totals: 50 JVM tests / 599 assertions, 62 Node tests / 709. `check:release` 314 KB.
 
 ## Phase 4: re-frame features (L2 + L3)
 

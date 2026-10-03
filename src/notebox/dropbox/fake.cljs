@@ -27,8 +27,9 @@
           (fail error))
         (js/Promise.resolve {:data (json/decode (:text ok)) :rev (:rev ok)}))))
 
-  (upload [_ path data {:keys [rev]}]
-    (let [{:keys [ok error]} (apply-store! store store/upload path (json/encode data) rev)]
+  (upload [_ path data {:keys [rev mode]}]
+    (let [{:keys [ok error]} (apply-store! store store/upload path (json/encode data)
+                                           (or rev (if (= :overwrite mode) :overwrite :add)))]
       (if error (fail error) (js/Promise.resolve {:rev (:rev ok)}))))
 
   (delete [_ path]
@@ -46,7 +47,7 @@
 (defn seeded-store
   "A store holding `files` {path data}, written as JSON."
   [files]
-  (reduce (fn [st [path data]] (first (store/upload st path (json/encode data) nil)))
+  (reduce (fn [st [path data]] (first (store/upload st path (json/encode data) :add)))
           store/empty-store
           files))
 

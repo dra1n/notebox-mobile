@@ -147,12 +147,27 @@
        :cljs (.createAsIfByAssoc PersistentArrayMap arr))))
 
 #?(:cljs
-   (defn- from-js [x]
+   (defn from-js
+     "Plain JS data (as JSON.parse returns it) → the same data as `decode` gives:
+     key-ordered maps with keyword keys, vectors. For JS interop edges."
+     [x]
      (cond
        (array? x) (mapv from-js x)
        (and (some? x) (identical? (type x) js/Object))
        (obj (mapcat (fn [k] [(keyword k) (from-js (unchecked-get x k))])
                     (js-keys x)))
+       :else x)))
+
+#?(:cljs
+   (defn to-js
+     "The inverse of `from-js`: plain JS objects and arrays whose keys are in map
+     order, so JSON.stringify of the result equals `encode`."
+     [x]
+     (cond
+       (map? x)        (let [o (js-obj)]
+                         (doseq [[k v] x] (unchecked-set o (key-string k) (to-js v)))
+                         o)
+       (sequential? x) (into-array (map to-js x))
        :else x)))
 
 #?(:clj

@@ -18,6 +18,7 @@
             [notebox.dropbox.http-test]
             [notebox.dropbox.pkce-test]
             [notebox.shell.events-test]
+            [notebox.storage.repository-test]
             [notebox.system-test]))
 
 (def test-namespaces
@@ -35,6 +36,7 @@
     notebox.dropbox.http-test
     notebox.dropbox.pkce-test
     notebox.shell.events-test
+    notebox.storage.repository-test
     notebox.system-test])
 
 ;; Subscribing outside a reactive context is what tests do; don't drown the output.
@@ -62,6 +64,7 @@
                'notebox.dropbox.http-test
                'notebox.dropbox.pkce-test
                'notebox.shell.events-test
+               'notebox.storage.repository-test
                'notebox.system-test))
 
 (set! *main-cli-fn* -main)

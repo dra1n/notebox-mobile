@@ -5,7 +5,8 @@
   - each layer may require only what its row in `allowed` lists;
   - a feature may require another feature only through its `queries`/`subs`
     namespaces, and only if that feature is lower in `feature-rank`;
-    `events` of another feature are never allowed.
+    `events` of another feature are never allowed;
+  - JS modules (string requires) only in the interop namespaces (§5.2 item 7).
 
   Run: clojure -M:check-deps [dir ...]   (default: src dev)"
   (:require [clojure.java.io :as io]
@@ -55,6 +56,13 @@
    :shell   #{:domain :infra :fx :feature :ui :shell :clojure :re-frame :reagent
               :integrant :js :lib}})
 
+(defn js-interop-ns?
+  "May `ns-sym` require JS modules? (roadmap §5.2 item 7)"
+  [ns-sym]
+  (let [s (str ns-sym)]
+    (or (= "notebox.core" s)
+        (starts? s "notebox.infra.js." "notebox.infra.rn." "notebox.ui."))))
+
 (defn- feature-parts
   "\"notebox.feature.library.subs\" → [\"library\" \"subs\"]"
   [ns-sym]
@@ -77,6 +85,10 @@
 
       (not (contains? (allowed lf) lt))
       (str from " (" (name lf) ") may not require " to " (" (name lt) ")")
+
+      (and (= lt :js) (not (js-interop-ns? from)))
+      (str from " may not require the JS module " to
+           ": only notebox.infra.js.*, notebox.infra.rn.*, notebox.ui.* and notebox.core may")
 
       (and (= lt :feature) (#{:feature :ui} lf))
       (let [[ff] (when (= lf :feature) (feature-parts from))

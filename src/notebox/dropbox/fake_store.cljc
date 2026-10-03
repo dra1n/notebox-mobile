@@ -39,14 +39,18 @@
      {:ok {:rev rev}}]))
 
 (defn upload
-  "Upload `text` to `path`. `rev` nil means mode add (never overwrite);
-  otherwise mode update (only over that rev). Identical content is never a
-  conflict (strict_conflict is off)."
-  [store path text rev]
-  (let [existing (get-in store [:files (lower path)])]
+  "Upload `text` to `path`. `mode`: :overwrite, :add (never overwrite), or a rev
+  string (update only over that rev). Identical content is never a conflict
+  (strict_conflict is off)."
+  [store path text mode]
+  (let [existing (get-in store [:files (lower path)])
+        rev      (when (string? mode) mode)]
     (cond
       (and existing (= text (:text existing)))
       [store {:ok {:rev (:rev existing)}}]
+
+      (= :overwrite mode)
+      (write store path text)
 
       (nil? rev)
       (if existing [store {:error "path/conflict/file/."}] (write store path text))

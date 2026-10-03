@@ -8,10 +8,12 @@
             [notebox.dropbox.client]
             [notebox.infra.browser]
             [notebox.infra.http]
+            [notebox.infra.js.luggage]
             [notebox.infra.rn.keychain]
             [notebox.infra.rn.linking]
             [notebox.infra.secure-store]
             [notebox.shell.app]
+            [notebox.storage.repository]
             [notebox.ui.root]))
 
 ;; A ratom, so that replacing the system (dev/reset) re-renders the app.

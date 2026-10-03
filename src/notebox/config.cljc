@@ -33,6 +33,8 @@
    :notebox.dropbox/client     {:impl (real-or-fake :http :fake)
                                 :http (ig/ref :notebox.infra/http)
                                 :auth (ig/ref :notebox.dropbox/auth)}
+   :notebox.infra.js/luggage   {:client (ig/ref :notebox.dropbox/client)}
+   :notebox.storage/repository {:luggage (ig/ref :notebox.infra.js/luggage)}
    :notebox/app {:profile (ig/profile :dev :dev :test :test :e2e :e2e :prod :prod)}
    :notebox/ui  {:app (ig/ref :notebox/app)}})
 

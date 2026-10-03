@@ -17,9 +17,11 @@
             :headers {"Content-Type" "application/octet-stream"
                       "Dropbox-API-Arg" "{\"path\":\"/notes/b.json\",\"mode\":{\".tag\":\"add\"},\"autorename\":false,\"mute\":true}"}
             :body "[]"}
-           (h/upload-request "/notes/b.json" "[]" nil)))
+           (h/upload-request "/notes/b.json" "[]" {})))
     (is (= "{\"path\":\"/notes/b.json\",\"mode\":{\".tag\":\"update\",\"update\":\"a1c10ce0dd78\"},\"autorename\":false,\"mute\":true}"
-           (get-in (h/upload-request "/notes/b.json" "[]" "a1c10ce0dd78") [:headers "Dropbox-API-Arg"]))))
+           (get-in (h/upload-request "/notes/b.json" "[]" {:rev "a1c10ce0dd78"}) [:headers "Dropbox-API-Arg"])))
+    (is (= "{\"path\":\"/notes/b.json\",\"mode\":{\".tag\":\"overwrite\"},\"autorename\":false,\"mute\":true}"
+           (get-in (h/upload-request "/notes/b.json" "[]" {:mode :overwrite}) [:headers "Dropbox-API-Arg"]))))
   (is (= {:method "POST" :url "https://api.dropboxapi.com/2/files/delete_v2"
           :headers {"Content-Type" "application/json"} :body "{\"path\":\"/notes/b.json\"}"}
          (h/delete-request "/notes/b.json")))

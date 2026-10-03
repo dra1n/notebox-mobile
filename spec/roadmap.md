@@ -166,6 +166,9 @@ re-frame events, and finally rewrites `notesInfo` and then `tagsInfo`. Those two
 
 ### 3.4 Hazards found (to fix in mobile, not to copy)
 
+*Since Phase 3 (Luggage, [§6.3](#63-storage-through-luggage-l1)), mobile fixes 2–10 and
+**accepts 1**, as the web and desktop clients do.*
+
 1. **Lost updates across devices.** Overwrites without a `rev` are last-writer-wins. Two clients
    adding notes to the same book at the same time silently drop one note.
 2. **Meta clobbering.** `notesInfo` and `tagsInfo` are uploaded from a client snapshot, so a stale
@@ -205,6 +208,7 @@ I ran these in an isolated copy of this project; nothing was left behind. Stack:
 | Integrant cycle detection | ✅ `ig/init` throws `Circular dependency between :exp/b and :exp/a` |
 | Optimistic concurrency with `rev` (fake Dropbox) | ✅ a stale rev is rejected as `path/conflict` and the other device's data survives |
 | JSON round trip keeps the `created-at` key | ✅ |
+| `@luggage/core` 2.2.2 core (`build/Luggage`) with a custom backend (Phase 3 spike) | ✅ runs in Node; a Metro bundle importing only `build/Luggage` passes `hermesc` (92 KB, no Dropbox SDK) |
 | Hermes ES6 classes / `!$` issue (from the 2024 article) | ✅ not present with CLJS 1.12.145, so no `sed` workaround (it would corrupt a regex in `goog/html/safeurl.js`) |
 
 Notes:
@@ -264,6 +268,15 @@ nothing about Dropbox, HTTP or React Native; it only emits effect maps.
    *(Changed in Phase 0: the plan was clj-kondo's `:discouraged-namespace`, but it can't express
    "only the subs of a lower feature", and tools.namespace gives the cycle check for free.
    clj-kondo still runs for general linting.)* `notebox.lint-rules-test` proves the rules bite.
+7. **JavaScript stays at the edges.** Only these namespaces may require a JS module (a string
+   require such as `["react-native" …]` or `["@luggage/core/…" …]`):
+   - `notebox.infra.js.*`: JS libraries (Luggage);
+   - `notebox.infra.rn.*`: React Native native modules (Keychain, Linking);
+   - `notebox.ui.*`: React Native components;
+   - `notebox.core`: the startup polyfill.
+   Each interop namespace converts to and from ClojureScript data at its boundary, so everything
+   else is plain CLJS. JS globals (`js/fetch`, `js/Promise`) are allowed. Enforced by
+   `check_deps.clj`, with a violation fixture.
 
 ### 5.3 Integrant system
 
@@ -276,12 +289,11 @@ graph BT
   net[:notebox.infra/platform]
   auth[:notebox.dropbox/auth] --> config & http & secure
   client[:notebox.dropbox/client] --> http & auth
-  repo[:notebox.storage/repository] --> client & config
-  cache[:notebox.storage/cache] --> kv
-  sync[:notebox.storage/sync-engine] --> repo & cache & kv & net
+  luggage[:notebox.infra.js/luggage] --> client
+  repo[:notebox.storage/repository] --> luggage
   navref[:notebox.ui/nav-ref]
   fxauth[:notebox.fx/auth] --> auth
-  fxstore[:notebox.fx/storage] --> sync & cache
+  fxstore[:notebox.fx/storage] --> repo
   fxnav[:notebox.fx/navigation] --> navref
   fxplat[:notebox.fx/platform] --> net
   app[:notebox/app] --> fxauth & fxstore & fxnav & fxplat
@@ -321,6 +333,11 @@ Sketch of the config (CLJS data or EDN read with `ig/read-string`; both verified
  :notebox/ui                   {:app #ig/ref :notebox/app :nav-ref #ig/ref :notebox.ui/nav-ref}}
 ```
 
+- **Implemented (Phases 0–3):** `notebox.config` holds the real config. Profiles pick real or fake
+  implementations: the `:test` and `:e2e` profiles get the in-memory Dropbox, the memory
+  secure store and the fake browser. *The graph above is current; the config sketch below is
+  the original plan (the kv-store, cache, sync engine and platform components were dropped in
+  Phase 3).*
 - **Test and dev profiles.** `#ig/profile` / `ig/expand` swap `:notebox.dropbox/client` for an
   in-memory fake Dropbox, the same fake used in the experiment. This gives offline development
   and tests without touching a real account.
@@ -336,9 +353,11 @@ src/notebox/
   core.cljs                      ; Krell -main, system lifecycle
   config.cljs                    ; Integrant config
   domain/  note.cljc book.cljc meta.cljc ops.cljc search.cljc schema.cljc
-  infra/   http.cljs secure_store.cljs kv_store.cljs platform.cljs
-  dropbox/ auth.cljs client.cljs fake.cljs
-  storage/ repository.cljs cache.cljs sync_core.cljc sync_engine.cljs   ; core = pure state machine
+  infra/   http.cljs secure_store.cljs browser.cljs
+  infra/rn/  keychain.cljs linking.cljs            ; React Native native modules (JS interop)
+  infra/js/  luggage.cljs                          ; JS libraries (JS interop): Luggage + our backend
+  dropbox/ api.cljs auth.cljs client.cljs fake.cljs fake_store.cljc http.cljc errors.cljc pkce.cljc
+  storage/ repository.cljs                         ; ops → Luggage reads/writes, per-file queue
   fx/      auth.cljs storage.cljs navigation.cljs platform.cljs
   feature/<f>/ events.cljs subs.cljs queries.cljs        ; f ∈ auth, library, editor, books, tags, search, messaging, sync
   ui/      theme.cljs components/… screens/… navigation.cljs root.cljs
@@ -361,7 +380,7 @@ endpoints are enough and are trivial over RN `fetch`:
 | Function | Endpoint | Notes |
 |---|---|---|
 | `download path` | `content.dropboxapi.com/2/files/download` | Returns `{:data parsed-json :rev}`. `rev` comes from the `Dropbox-API-Result` response header. `path/not_found` → `{:data nil :rev nil}`. |
-| `upload path data {:rev r}` | `content.dropboxapi.com/2/files/upload` | `mode` is `{".tag":"update","update":r}` when a rev is known, otherwise `{".tag":"add"}` (create without clobbering); `autorename false`. Returns the new rev. |
+| `upload path data {:rev r}` / `{:mode :overwrite}` | `content.dropboxapi.com/2/files/upload` | `mode` is `{".tag":"update","update":r}` with a rev, `{".tag":"overwrite"}` with `:mode :overwrite` (what Luggage does), otherwise `{".tag":"add"}` (create without clobbering); `autorename false`. Returns the new rev. |
 | `delete path` | `api.dropboxapi.com/2/files/delete_v2` | |
 | `list-folder "/notes"` | `api.dropboxapi.com/2/files/list_folder` (+ `/continue`) | Revs of every book in one call, for cheap change detection. |
 | `current-account` | `api.dropboxapi.com/2/users/get_current_account` | |
@@ -391,46 +410,59 @@ to the freshly downloaded remote file:
 book write, and touches only that book's entries. It never rewrites the whole snapshot, and it
 keeps unknown keys. This removes hazards 2, 4, 5 and 8.
 
-### 6.3 Sync engine (L1)
+### 6.3 Storage through Luggage (L1)
 
-- **Pure core, thin driver (for testability).** The engine's decision logic is a pure `cljc`
-  state machine, `(step state event) → [state' commands]`: events are things like op submitted,
-  download ok, upload conflict, network error, timer fired or app started; commands are things
-  like download path, upload path+rev, persist outbox, schedule retry or report. A thin `cljs`
-  driver executes the commands against the Dropbox client and kv-store and feeds the results back
-  as events. This lets the whole engine (queueing, conflicts, retries, crash recovery) run as a
-  deterministic simulation on the JVM with `test.check` ([§10](#10-testing-strategy)).
-- **Per-path serial queue.** Writes to the same file never overlap, which removes self-races.
-- **Optimistic concurrency.** Download with rev → apply op → upload with `mode: update rev`. On
-  `conflict`: re-download, re-apply the op, retry (bounded, for example 5 attempts with jitter).
-  This removes hazards 1 and 3.
-- **Persisted outbox** in the kv-store. Ops survive app kill and offline periods and are replayed
-  on start, on connectivity regained (NetInfo) and on foreground (AppState). Each op has an id,
-  attempts and last error.
-- **Local cache** (kv-store) of meta and downloaded books with their revs, for instant start and
-  offline reading.
-  - **Revalidation:** `list_folder` on foreground and pull-to-refresh; only books whose rev
-    changed are re-downloaded.
-  - **"Loaded" state** is explicit: `{:status :unloaded|:loading|:ready|:error :rev …}`, which
-    removes hazard 7.
-- **Reporting.** The engine reports progress through callbacks supplied by `:notebox.fx/storage`,
-  which turns them into events (`[:sync/op-succeeded id]`, `[:sync/op-failed id err]`). The engine
-  never sees re-frame.
+*Decided in Phase 3, replacing the planned sync engine: use Luggage, the abstraction the web
+client and the user's other React Native apps use, and do the simplest thing.*
+
+- **Luggage's core, our backend.** `notebox.infra.js.luggage` is the only namespace that touches
+  Luggage. It imports `@luggage/core/build/Luggage` (not the package index, so the Dropbox SDK
+  and its `Blob`/`FileReader` shims stay out of the app). It implements Luggage's backend
+  contract in ClojureScript on top of our Dropbox client:
+  - `collection(name)` → `read` / `write` / `delete` of `/<name>.json`;
+  - `collections(name)` → `readMetaInfo` / `writeMetaInfo` of `/<name>/.meta.json`;
+  - a missing file reads as `[]` or `{}`, as in Luggage.
+  Writes upload in **overwrite** mode, exactly what Luggage's own backend does. Login, token
+  refresh, retries and error types come from Phase 2. The namespace's API takes and returns
+  ClojureScript data (ordered maps, see `notebox.domain.json`), never JS objects.
+- **Which Luggage calls we use.** Book files: `collections.getInstance(slug).read()` / `.write(v)`.
+  Meta: `readMetaProperty` / `writeMetaProperty`, one property at a time, as the web does, so
+  unknown keys and properties we didn't change survive. Books: `collections.create(slug)` and
+  `collections.delete(slug)`, which also keep `collectionsList` right (hazard 4). **Not**
+  `find(...).update/delete`: they have the index −1 bug (hazard 3). Changes are computed by the
+  Phase 1 ops and written as whole files.
+- **Repository (`notebox.storage.repository`, plain CLJS).** `(apply-op! repo op)` → Promise of
+  the new `{:meta :notes}`:
+  1. read the book (if the op writes it) and the meta properties;
+  2. `notebox.domain.ops/apply-op`;
+  3. write the book file (`:write`), or `create` / `delete` it (`:create` / `:delete`);
+  4. write the meta properties that changed.
+
+  Every op writes the meta, so ops run **one at a time, in submission order** (one promise
+  chain), and mobile never races itself. A failed op doesn't stop the ones after it. A
+  `:book/create` also reads the book: Luggage's `create` writes `[]`, so it's only called for a
+  book that isn't in `collectionsList` yet. Reads: `(load-meta repo)` and
+  `(load-book repo slug)`.
+- **Online only.** No outbox, no local cache, no offline mode. The meta is loaded at start and
+  books when opened, as on the web, and they're kept in `app-db` for the session. A failed
+  save rejects; the feature layer rolls back and shows an error.
 
 ### 6.4 Re-frame side (L3)
 
-- An event applies the op to `app-db` optimistically, marks it `:pending`, and emits
-  `{:sync/submit {:op … :on-ok [...] :on-fail [...]}}`.
-- `:sync/op-failed` with a non-retryable error **rolls back** by reloading that book from
-  cache/remote. Retryable errors stay queued and are shown as "unsynced", which removes hazard 6.
-- `syncing?` is derived from the outbox (pending count), not from ad-hoc flags.
+- An event applies the op to `app-db` optimistically (the same `ops/apply-op`) and emits
+  `{:storage/apply-op {:op … :on-ok [...] :on-fail [...]}}`.
+- On failure the feature **rolls back** by reloading that book and the meta from Dropbox, and
+  shows a toast (hazard 6). `:unauthorized` goes to `[:auth/session-expired]`.
+- `syncing?` is derived from the in-flight saves the repository reports, not ad-hoc flags.
 
-### 6.5 Cross-client caveat
+### 6.5 Concurrency (accepted)
 
-The web and desktop apps still overwrite without a rev. Mobile can't prevent them from
-clobbering, but because mobile re-derives meta from content, it self-heals counts and tags on the
-next write. Optional follow-up: patch Luggage and the desktop port to use `mode: update` with a
-rev.
+Every client, mobile included, writes whole files in overwrite mode. If two devices save the same
+book at the same moment, the earlier save is lost (hazard 1). Mobile narrows the window
+(read → change → write immediately, one op at a time) and repairs derived data: counts and tags
+are recomputed from content on every write. Editing a note that was deleted elsewhere re-adds it
+("edit wins", with a warning). If this ever bites, the client already supports rev-based uploads
+(`{:rev r}`), and the backend could use them without changing anything above it.
 
 ---
 
@@ -690,36 +722,33 @@ is ticked from memory. Re-run the gate on the final commit of the phase.
     `.meta.json` of the real account.
   - `(dev/expire-token!)`, then `(dev/check-dropbox)` again: it succeeds after a logged refresh.
 
-### Phase 3: Repository, cache, sync engine (L1)
-- A Luggage-compatible repository on top of the client, plus the per-path queue, conflict retry,
-  persisted outbox, cache and `list_folder` revalidation.
-- **Check against the real API first:** the fake assumes that `upload` in mode `update` on a
-  file deleted elsewhere is a **conflict** (`notebox.dropbox.fake-store`). Confirm this with
-  Dropbox before the engine relies on it for "edit vs. remote delete".
-- **Gate (automated)**, all on the JVM against the pure core ([§6.3](#63-sync-engine-l1)):
-  - **Simulation property test** (≥ 500 generated scenarios): random op sequences from two
-    clients (the mobile engine, plus a "legacy" client that overwrites without a rev, as web and
-    desktop do), with random faults (conflict, `429`, network error, a crash between any two
-    steps followed by a restart from the persisted outbox). Invariants:
-    - the outbox always drains once faults stop;
-    - with no legacy writer, every acknowledged op is reflected remotely;
-    - meta always equals the meta derived from content after the engine's last write;
-    - no duplicate notes except the documented move-failure case.
-  - Named scenario tests: crash mid-upload → replay; airplane mode → reconnect; two-client
-    conflict with mobile writing last; and "edit vs. remote delete" (edit wins plus a warning).
-  - Cloverage on `notebox.storage.sync-core` ≥ 95 %.
-  - Driver tests (cljs node): the driver executes every command type against `dropbox/fake` and
-    an in-memory kv-store.
-- **Gate (manual):** on the simulator against the real account:
-  - kill the app (swipe away) right after saving → relaunch → the note is in Dropbox;
-  - edit the same book in the web app and on mobile, saving mobile last → both notes survive;
-  - with the network off, create a note, then turn the network on → it syncs.
+### Phase 3: Storage through Luggage (L1)
+- `@luggage/core` 2.2.2; `notebox.infra.js.luggage` (the Luggage backend over the Dropbox client,
+  with CLJS data at its edge); `notebox.storage.repository` (ops → Luggage calls, a serial
+  queue per file); the client's overwrite mode; and the JS-interop dependency rule
+  ([§5.2](#52-dependency-rules-no-cycles) item 7).
+- **Gate (automated)**, in Node against `dropbox/fake`:
+  - **Golden scenarios through Luggage:** the Phase 1 fixture folder is seeded into the fake
+    Dropbox, and all 12 scenarios run through `repository/apply-op!`. The resulting files are
+    byte-identical to `scenarios/*/expected`. This proves Luggage + our backend write exactly
+    what the domain computes.
+  - **Luggage edge cases:** missing files read as `[]` / `{}`; `create` and `delete` keep
+    `collectionsList` right; unknown meta keys survive; a failed write rejects with the client's
+    error type.
+  - **Serial queue:** concurrent `apply-op!` calls apply one at a time in submission order (no
+    lost update within mobile), and a failed op doesn't block the ones after it.
+  - **Interop rule:** `check-deps` fails on a fixture that requires a JS module outside the
+    interop namespaces.
+- **Gate (manual):** on the simulator against the real account, from the REPL:
+  - `(dev/load-meta)` and `(dev/load-book slug)` show real data through Luggage;
+  - a test book: `(dev/apply-op! …)` creates it, adds a note, renames it, then deletes it; each
+    step is visible in the web app, and the web app still reads the files afterwards.
 
 ### Phase 4: re-frame features (L2 + L3)
 - fx adapters and features: `auth`, `library`, `editor` (add/update/move/delete), `books`
   (add/rename/delete, default book kept in the kv-store), `tags` (list with counts), `search` (lazy
   book loading, streaming results; scoped to all, one book, or book titles), `messaging`
-  (toasts), `sync` (status, rollback).
+  (toasts), `sync` (in-flight saves, rollback).
 - Tag counts across *all* books need every book downloaded. The Tags screen shows counts from
   `tagsInfo` immediately (as tag names only) and fills in counts as books load, the same way
   search does.
@@ -778,6 +807,8 @@ is ticked from memory. Re-run the gate on the final commit of the phase.
   - The privacy-policy link opens; the stock-photo licence is confirmed and recorded.
 
 ### Phase 7 (post-parity, optional)
+- Offline: a local cache (instant start, reading offline) and an outbox for offline saves;
+  rev-based uploads to remove hazard 1. These were planned for Phase 3 and cut to keep it simple.
 - Tag management (rename across books, create, delete; see the decisions in
   [§11](#11-open-questions)), tablet layouts (Figma has 804-wide variants of every screen, in
   the older style), dark mode,
@@ -791,14 +822,15 @@ is ticked from memory. Re-run the gate on the final commit of the phase.
 
 The web app has almost no tests; mobile is built test-first where it's cheap (domain, sync) and
 test-alongside elsewhere. Correctness lives in pure code (L0 and the sync core), so most tests run
-on the JVM in milliseconds, without React Native.
+on the JVM in milliseconds, without React Native. The storage layer (Luggage is JS) is tested in
+Node.
 
 ### 10.1 Levels
 
 | Level | Runs on | Tooling | What | Location |
 |---|---|---|---|---|
 | Domain (cljc) | JVM | Kaocha, `clojure.test`, `test.check`, Cloverage | ops (property tests), meta derivation, search parity, schemas, golden JSON round-trip, desktop-reader oracle | `test/notebox/domain/` |
-| Sync core (cljc) | JVM | `test.check` simulation | queue, conflicts, retries, crash/replay, invariants under faults ([§6.3](#63-sync-engine-l1)) | `test/notebox/storage/` |
+| Storage (cljs) | node | `cljs.test` + `dropbox/fake` | Luggage backend, repository, golden scenarios through Luggage, serial queue ([§6.3](#63-storage-through-luggage-l1)) | `test/notebox/storage/`, `test/notebox/infra/` |
 | Infra (cljs) | node | `cljs.test` + fakes (fetch, kv, clock) | Dropbox client contract (shared with `dropbox/fake`), auth/PKCE, error mapping, sync driver | `test/notebox/dropbox/`, `test/notebox/infra/` |
 | System | node | `ig/init` of the test profile | the graph is acyclic and starts and halts in order | `test/notebox/system_test.cljs` |
 | Events and subs | node | `day8.re-frame/test` + test system | every flow, rollback, auth expiry; the event/sub coverage meta-test | `test/notebox/feature/` |
@@ -843,13 +875,13 @@ Maestro.
 
 ## 11. Open questions
 
-1. **Conflict policy for edit vs. remote delete:** the plan uses "edit wins" (re-add) plus a
-   warning. Alternatively, keep both copies.
-2. **Offline-first scope for v1:** full outbox (as planned), or online-only writes with a
-   read-only cache?
-3. **Back-porting rev-based writes** to the web and desktop clients: in scope or not?
+None at the moment.
 
 **Decided (2026-10-03):**
+- **Storage: Luggage**, with our backend over the Dropbox client. Overwrite semantics like the
+  other clients; online only, with no cache or outbox in v1 ([§6.3](#63-storage-through-luggage-l1)).
+  This also settles three earlier questions: offline scope (online only), back-porting revs to
+  web/desktop (not needed), and edit vs. remote delete (edit wins + warning).
 - **App key: reuse the web's** (`2t7xyn3a902rv0z`): it's the same Dropbox app. See [§7](#7-auth-design).
 - **Redirect URI: `notebox://oauth`** (custom schemes work with PKCE). `db-<app-key>://` would also
   be accepted, and switching is a config change.

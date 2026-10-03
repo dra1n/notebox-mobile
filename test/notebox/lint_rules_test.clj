@@ -14,7 +14,8 @@
            "notebox.infra.kv-store (infra) may not require re-frame.core (re-frame)"
            "notebox.ui.screen (ui) may not require notebox.infra.kv-store (infra)"
            "notebox.feature.books.events may not require notebox.feature.library.events: across features only queries/subs namespaces are allowed"
-           "notebox.feature.auth.events may not require notebox.feature.library.subs: feature 'library' is not lower than 'auth' in the feature order"}
+           "notebox.feature.auth.events may not require notebox.feature.library.subs: feature 'library' is not lower than 'auth' in the feature order"
+           "notebox.storage.cache may not require the JS module @react-native-async-storage/async-storage: only notebox.infra.js.*, notebox.infra.rn.*, notebox.ui.* and notebox.core may"}
          (set (check-deps/problems [violations-dir])))))
 
 (deftest allowed-requires-are-not-reported
@@ -30,7 +31,14 @@
     (is (some? (check-deps/violation 'notebox.ui.screens.home
                                      'notebox.feature.library.events))))
   (testing "the shell may require anything"
-    (is (nil? (check-deps/violation 'notebox.core 'notebox.infra.http)))))
+    (is (nil? (check-deps/violation 'notebox.core 'notebox.infra.http))))
+  (testing "JS modules only in the interop namespaces"
+    (is (nil? (check-deps/violation 'notebox.infra.js.luggage "@luggage/core/build/Luggage")))
+    (is (nil? (check-deps/violation 'notebox.infra.rn.keychain "react-native-keychain")))
+    (is (nil? (check-deps/violation 'notebox.ui.root "react-native")))
+    (is (nil? (check-deps/violation 'notebox.core "react-native-get-random-values")))
+    (is (some? (check-deps/violation 'notebox.dropbox.client "react-native")))
+    (is (some? (check-deps/violation 'notebox.infra.http "whatwg-fetch")))))
 
 (deftest project-source-follows-the-rules
   (is (= [] (check-deps/problems ["src" "dev"]))))

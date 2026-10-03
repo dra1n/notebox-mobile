@@ -126,18 +126,22 @@
    :headers {"Dropbox-API-Arg" (header-safe-json (array-map :path path))}})
 
 (defn upload-mode
-  "Update only the revision we read; without one, add without overwriting."
-  [rev]
-  (if rev
-    (array-map tag "update" :update rev)
-    (array-map tag "add")))
+  "{:rev r}: update only that revision. {:mode :overwrite}: replace whatever is
+  there (what Luggage does). Otherwise: add, never overwriting."
+  [{:keys [rev mode]}]
+  (cond
+    rev                 (array-map tag "update" :update rev)
+    (= :overwrite mode) (array-map tag "overwrite")
+    :else               (array-map tag "add")))
 
-(defn upload-request [path text rev]
+(defn upload-request
+  "`opts` as in `upload-mode`."
+  [path text opts]
   {:method  "POST"
    :url     (str content-host "/2/files/upload")
    :headers {"Content-Type"    "application/octet-stream"
              "Dropbox-API-Arg" (header-safe-json (array-map :path path
-                                                            :mode (upload-mode rev)
+                                                            :mode (upload-mode opts)
                                                             :autorename false
                                                             :mute true))}
    :body    text})

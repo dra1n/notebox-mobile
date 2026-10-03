@@ -127,8 +127,11 @@
           (resp 200 {"dropbox-api-result" (h/header-safe-json (metadata path (:rev ok)))} (:text ok))))
 
       (str h/content-host "/2/files/upload")
-      (let [rev (get-in arg [:mode :update])
-            {:keys [ok error]} (run-store! srv fs/upload path body rev)]
+      (let [mode (case (get-in arg [:mode (keyword ".tag")])
+                   "update" (get-in arg [:mode :update])
+                   "overwrite" :overwrite
+                   :add)
+            {:keys [ok error]} (run-store! srv fs/upload path body mode)]
         (if error (error-409 error) (json-resp 200 (metadata path (:rev ok)))))
 
       (str h/api-host "/2/files/delete_v2")

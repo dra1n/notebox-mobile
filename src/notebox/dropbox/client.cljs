@@ -54,8 +54,8 @@
                     :rev  rev})))
         (.catch (fn [e] (if (not-found? e) {:data nil :rev nil} (throw e))))))
 
-  (upload [this path data {:keys [rev]}]
-    (.then (send! this (dhttp/upload-request path (json/encode data) rev))
+  (upload [this path data opts]
+    (.then (send! this (dhttp/upload-request path (json/encode data) opts))
            dhttp/upload-result))
 
   (delete [this path]

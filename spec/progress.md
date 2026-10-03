@@ -16,7 +16,7 @@ This file tracks the phase gates defined in [`roadmap.md` §9](roadmap.md#9-phas
 | 0 Foundations | done (2026-10-03, 094bc4d) |
 | 1 Domain | done (2026-10-03, f988768) |
 | 2 Dropbox infra | done (2026-10-03, dd76ee1) |
-| 3 Repository, cache, sync | not started |
+| 3 Storage through Luggage | not started |
 | 4 re-frame features | not started |
 | 5 UI | not started |
 | 6 Hardening and release | not started |
@@ -58,7 +58,7 @@ Notes
 - Node found that `JSON.parse` orders integer-like keys first, unlike the first JVM parser. The
   JVM decoder now does the same, so both platforms agree.
 - The encoder copies unescaped runs of a string in one go. On a 4.4 MB book (2,000 notes) in
-  Node, `encode` takes 22 ms (it was 105 ms) and `decode` 17 ms. Re-measure on Hermes in Phase 3.
+  Node, `encode` takes 22 ms (it was 105 ms) and `decode` 17 ms. Re-measure on Hermes when the UI loads real books (Phase 5).
 - `:note/update` merges like the web's `Object.assign` (roadmap §6.2).
 
 ## Phase 2: Dropbox infra (L1)
@@ -82,21 +82,21 @@ Notes
   `2t7xyn3a902rv0z`. Use a REPL started after this phase's `deps.edn` changes, and rebuild the
   app (`pod install` + `npm run ios`), because `react-native-keychain` is a new native module.
 
-## Phase 3: Repository, cache, sync engine (L1)
+## Phase 3: Storage through Luggage (L1)
 
 Automated
-- [ ] The simulation property test (≥ 500 scenarios, two clients incl. legacy, fault injection) holds all invariants
-- [ ] Named scenarios: crash mid-upload, airplane → reconnect, two-client conflict, edit vs. remote delete
-- [ ] Cloverage `notebox.storage.sync-core` ≥ 95 %
-- [ ] Driver tests: every command type against `dropbox/fake` + the in-memory kv-store
+- [ ] Golden scenarios through Luggage: all 12 Phase 1 scenarios via `repository/apply-op!` on the seeded fake give byte-identical files
+- [ ] Luggage edge cases: missing files as `[]`/`{}`; `create`/`delete` keep `collectionsList`; unknown meta keys survive; failed writes reject with the client's error type
+- [ ] Serial queue: concurrent ops apply one at a time in order; a failure doesn't block later ops
+- [ ] Interop rule: `check-deps` fails on a JS require outside the interop namespaces
 
-Manual (simulator, real account)
-- [ ] Kill the app right after saving → relaunch → the note is in Dropbox
-- [ ] Web and mobile edit the same book, mobile saving last → both notes survive
-- [ ] With the network off, create a note, then turn the network on → it syncs
+Manual (simulator, real account, REPL)
+- [ ] `(dev/load-meta)` / `(dev/load-book slug)` show real data through Luggage
+- [ ] A test book created, given a note, renamed and deleted via `(dev/apply-op! …)`; each step visible in the web app, which still reads the files
 
 Notes
--
+- Replanned 2026-10-03: Luggage (the user's choice) instead of the rev-based sync engine; online
+  only, with no cache or outbox (moved to Phase 7). See roadmap §6.3.
 
 ## Phase 4: re-frame features (L2 + L3)
 

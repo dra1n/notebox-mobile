@@ -8,9 +8,10 @@
   (download [this path]
     "{:data parsed-json :rev r}; {:data nil :rev nil} if there's no such file.")
   (upload [this path data opts]
-    "Writes `data` as JSON. opts {:rev r}: only over that revision; without a
-    rev, only if the file doesn't exist (identical content is never a
-    conflict). Resolves {:rev new-rev}; a lost race rejects with :conflict.")
+    "Writes `data` as JSON. opts {:mode :overwrite}: replace whatever is there.
+    {:rev r}: only over that revision. Neither: only if the file doesn't exist.
+    Identical content is never a conflict. Resolves {:rev new-rev}; a lost race
+    rejects with :conflict.")
   (delete [this path]
     "Deletes the file; nil, also when it was already gone.")
   (list-folder [this path]

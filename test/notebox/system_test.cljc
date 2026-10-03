@@ -11,13 +11,16 @@
                        [notebox.dropbox.client]
                        [notebox.infra.browser]
                        [notebox.infra.http]
-                       [notebox.infra.secure-store]])
+                       [notebox.infra.js.luggage]
+                       [notebox.infra.secure-store]
+                       [notebox.storage.repository]])
             [notebox.shell.app]))
 
 (def excluded-keys
   #?(:cljs #{:notebox/ui}
      :clj  #{:notebox/ui :notebox.infra/http :notebox.infra/secure-store :notebox.infra/browser
-             :notebox.dropbox/auth :notebox.dropbox/client}))
+             :notebox.dropbox/auth :notebox.dropbox/client
+             :notebox.infra.js/luggage :notebox.storage/repository}))
 
 (defn- test-config []
   (apply dissoc (config/config :test) excluded-keys))

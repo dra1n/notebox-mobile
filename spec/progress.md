@@ -13,7 +13,7 @@ This file tracks the phase gates defined in [`roadmap.md` §9](roadmap.md#9-phas
 
 | Phase | Status |
 |---|---|
-| 0 Foundations | not started |
+| 0 Foundations | in progress: automated gate passed; manual item pending |
 | 1 Domain | not started |
 | 2 Dropbox infra | not started |
 | 3 Repository, cache, sync | not started |
@@ -26,17 +26,22 @@ This file tracks the phase gates defined in [`roadmap.md` §9](roadmap.md#9-phas
 ## Phase 0: Foundations
 
 Automated
-- [ ] `npm run verify` exits 0 and runs ≥ 1 test in each runner (clj, cljs node, jest)
-- [ ] `notebox.lint-rules-test`: clj-kondo fails on every file in `test/resources/lint-violations/`
-- [ ] `notebox.system-test`: the test profile inits and halts cleanly, in order
-- [ ] `npm run check:release`: the `:advanced` build compiles and `hermesc` accepts it
-- [ ] `npm run test:e2e`: the Maestro smoke flow sees text from a re-frame sub on the iOS simulator
+- [x] `npm run verify` exits 0 and runs ≥ 1 test in each runner (clj, cljs node, jest): 2026-10-03, 9ee203f. JVM 9 tests / 30 assertions; node 5 tests / 19 assertions; jest 1; clj-kondo 0 warnings; check-deps OK. Also checked that it **fails** (non-zero) when app code is broken.
+- [x] `notebox.lint-rules-test`: the checker reports every violation in `test/resources/lint-violations/` (7: cycle, domain→RN, infra→re-frame, ui→infra, cross-feature events, feature-order breach, unclassified ns) and none in `src`/`dev`: 2026-10-03, 9ee203f. Revised: the checker is `check_deps.clj`, not clj-kondo (roadmap §5.2 item 6).
+- [x] `notebox.system-test`: the test profile inits and halts cleanly, in order: 2026-10-03, 9ee203f. Runs on the JVM and in node; `:notebox/ui` (React Native) is excluded on both.
+- [x] `npm run check:release`: the `:advanced` build compiles and `hermesc` accepts it: 2026-10-03, 9ee203f. 280,690 B JS → 575,499 B bytecode, no compiler warnings.
+- [x] `npm run test:e2e`: the Maestro smoke flow sees text from a re-frame sub on the iOS simulator: 2026-10-03, 9ee203f. `smoke` passed in 3 s on the iPhone 16 Pro (iOS 18.3) simulator, asserting "Status: ready (e2e)".
 
 Manual
 - [ ] A view edit + `(dev/reset)` in the Krell REPL shows up on the simulator without restarting the app
 
 Notes
--
+- The layer/cycle rules moved from clj-kondo to `scripts/check_deps.clj` (see roadmap §5.2).
+- e2e runs against an `:advanced` build with the `:e2e` profile (`target/e2e`), not the dev build.
+- Phase 0 added the `react-native-get-random-values` native module: run `pod install` and
+  `npm run ios` once after pulling.
+- Restart a running Krell REPL after `deps.edn` changes. A REPL started earlier can't compile
+  the new namespaces, and the app shows "Could not find -main fn".
 
 ## Phase 1: Domain (L0)
 

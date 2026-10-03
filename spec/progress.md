@@ -15,7 +15,7 @@ This file tracks the phase gates defined in [`roadmap.md` §9](roadmap.md#9-phas
 |---|---|
 | 0 Foundations | done (2026-10-03, 094bc4d) |
 | 1 Domain | done (2026-10-03, f988768) |
-| 2 Dropbox infra | not started |
+| 2 Dropbox infra | in progress: automated gate passed; manual items pending |
 | 3 Repository, cache, sync | not started |
 | 4 re-frame features | not started |
 | 5 UI | not started |
@@ -64,17 +64,23 @@ Notes
 ## Phase 2: Dropbox infra (L1)
 
 Automated
-- [ ] Client contract tests (URL, headers, mode/rev, parsing recorded responses) for every endpoint
-- [ ] The error normalization table, including `Retry-After`
-- [ ] Auth: the RFC 7636 PKCE vector; one refresh + retry on 401; `invalid_grant` → `:unauthorized`
-- [ ] `dropbox/fake` passes the same contract suite as the client
+- [x] Client contract tests (URL, headers, mode/rev, parsing responses) for every endpoint: 2026-10-03, 054cfff. `http-test`: exact requests for download, upload (add/update), delete, list_folder (+continue), get_current_account, revoke, and the token endpoint. Also the non-ASCII `Dropbox-API-Arg`, and parsing of the documented response shapes in `fixtures/http/`. `client-test` checks the requests actually sent, with the bearer token. Revised: documented shapes rather than recordings (roadmap Phase 2).
+- [x] The error normalization table, including `Retry-After`: 2026-10-03, 054cfff. `errors-test`: 14 rows covering 409 not_found/lookup/conflict/other, 401, 400 invalid_grant/other/plain text, 429 (header and body retry_after), 503, 500 and 404. `client-test`: waits 7 s per `Retry-After`, 1 s by default, caps at 60 s, gives up after 3 attempts.
+- [x] Auth: the RFC 7636 PKCE vector; one refresh + retry on 401; `invalid_grant` → `:unauthorized`: 2026-10-03, 054cfff. `pkce-test` (JVM and Node); `client-test` checks the exact request sequence for 401 → refresh → retry, and that a second 401 is final; `auth-test` covers sign-in, a declined or forged redirect, single-flight refresh near expiry, a rejected refresh token removing itself, and sign-out with revoke.
+- [x] `dropbox/fake` passes the same contract suite as the client: 2026-10-03, 054cfff. `contract-test` runs one suite against the fake and against the HTTP client over a fake server (with paging). The suite caught a fidelity bug in the fake server (lower-cased file names), now fixed.
 
 Manual
 - [ ] After login on the simulator, `(dev/check-dropbox)` prints the email and parsed meta of the real account
 - [ ] `(dev/expire-token!)`, then `(dev/check-dropbox)`, succeeds after a logged refresh
 
 Notes
--
+- Login uses our own PKCE flow plus `Linking` (system browser, then iOS's "Open in Notebox?"
+  prompt), not `react-native-app-auth` (roadmap §7). A native auth session is a Phase 6 option.
+- Totals: 50 JVM tests / 589 assertions, 57 Node tests / 517. `check:release` 300 KB; e2e smoke
+  passes.
+- Before the manual items: register `notebox://oauth` in the Dropbox App Console for
+  `2t7xyn3a902rv0z`. Use a REPL started after this phase's `deps.edn` changes, and rebuild the
+  app (`pod install` + `npm run ios`), because `react-native-keychain` is a new native module.
 
 ## Phase 3: Repository, cache, sync engine (L1)
 

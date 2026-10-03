@@ -1,0 +1,6 @@
+{:paths ["src"]
+ :deps  {org.clojure/clojurescript {:mvn/version "1.12.145"}
+         io.vouch/krell            {:mvn/version "0.5.4"}
+         ;; Krell 0.5.4 needs data.json but doesn't declare it (fixed on master, unreleased)
+         org.clojure/data.json     {:mvn/version "2.5.0"}
+         reagent/reagent           {:mvn/version "2.0.1"}}}

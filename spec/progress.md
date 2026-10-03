@@ -14,7 +14,7 @@ This file tracks the phase gates defined in [`roadmap.md` §9](roadmap.md#9-phas
 | Phase | Status |
 |---|---|
 | 0 Foundations | done (2026-10-03, 094bc4d) |
-| 1 Domain | not started |
+| 1 Domain | done (2026-10-03, f988768) |
 | 2 Dropbox infra | not started |
 | 3 Repository, cache, sync | not started |
 | 4 re-frame features | not started |
@@ -46,14 +46,20 @@ Notes
 ## Phase 1: Domain (L0)
 
 Automated
-- [ ] `npm run test:clj` passes; Cloverage `notebox.domain.*` ≥ 95 % forms (enforced threshold)
-- [ ] Property tests (≥ 200 runs) for every op: idempotence, no-op on missing targets, meta = derived meta, unique slugs
-- [ ] The golden round-trip is byte-identical on every fixture file
-- [ ] The desktop-reader oracle reads every file the domain writes (or a note here on why it was dropped)
-- [ ] The search parity table passes (including Cyrillic and case folding)
+- [x] `npm run test:clj` passes; Cloverage `notebox.domain.*` ≥ 95 % forms (enforced threshold): 2026-10-03, f988768. 41 tests / 510 assertions. Forms: json 99.55, meta 100, note 99.29, ops 100, ordered 100, schema 99.01, search 100, tags 98.73, time 100. Enforced per namespace by `scripts/coverage_gate.clj`, which exits 3 when a namespace is below its minimum (checked by raising the minimum).
+- [x] Property tests (≥ 200 runs) for every op: idempotence, no-op on missing targets, meta = derived meta, unique slugs: 2026-10-03, f988768. `ops-test`: 300 runs each, plus "unknown keys survive every op" (200). All pass on the JVM and in Node.
+- [x] The golden round-trip is byte-identical on every fixture file: 2026-10-03, f988768. All 11 export files, plus all 12 op scenarios matching the JS reference byte for byte (files and warnings), on both platforms. JSON parity with the real `JSON.stringify`: 500 generated values in Node.
+- [x] The desktop-reader oracle reads every file the domain writes: 2026-10-03, f988768. Revised: Cheshire 5.10.2 `parse-string s true` / `generate-string`, the desktop's exact calls, in both directions, over every scenario plus 300 generated values. `:local/root` was dropped because it would pull in JavaFX and the Dropbox SDK.
+- [x] The search parity table passes (including Cyrillic and case folding): 2026-10-03, f988768. A table of 11 queries, each checked against the web's `matches-text` copied verbatim, plus 300 generated note/query pairs that must agree with it.
 
 Notes
--
+- Fixtures are hand-written (`test/resources/fixtures/generate.mjs`). The real library is too
+  big to commit. Re-running the generator reproduces the committed files exactly.
+- Node found that `JSON.parse` orders integer-like keys first, unlike the first JVM parser. The
+  JVM decoder now does the same, so both platforms agree.
+- The encoder copies unescaped runs of a string in one go. On a 4.4 MB book (2,000 notes) in
+  Node, `encode` takes 22 ms (it was 105 ms) and `decode` 17 ms. Re-measure on Hermes in Phase 3.
+- `:note/update` merges like the web's `Object.assign` (roadmap §6.2).
 
 ## Phase 2: Dropbox infra (L1)
 

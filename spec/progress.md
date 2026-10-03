@@ -108,6 +108,9 @@ Automated
 - [ ] The event/sub coverage meta-test passes (every registered id was exercised)
 - [ ] Derived sub tests: books with counts, tag index, search results, default-book fallback
 
+Manual
+- [ ] The user has reviewed the re-frame implementation against the web app (`src/notebox/feature/`, `fx/`, `shell/events.cljc`)
+
 Notes
 -
 

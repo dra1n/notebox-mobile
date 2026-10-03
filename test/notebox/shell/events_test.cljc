@@ -5,14 +5,19 @@
             [re-frame.db :refer [app-db]]
             [notebox.shell.events :as events]))
 
+(defn- stub-effects! []
+  (doseq [id [:settings/load :auth/check-session]] (rf/reg-fx id (fn [_]))))
+
 (deftest initialize-sets-up-app-db
   (rf-test/run-test-sync
+   (stub-effects!)
    (rf/dispatch [:app/initialize :e2e])
    (is (= :ready @(rf/subscribe [:app/status])))
    (is (= :e2e @(rf/subscribe [:app/profile])))))
 
 (deftest initialize-replaces-previous-state
   (rf-test/run-test-sync
+   (stub-effects!)
    (rf/dispatch [:app/initialize :dev])
    (rf/dispatch [:app/initialize :test])
    (is (= (events/initial-db :test) @app-db))))

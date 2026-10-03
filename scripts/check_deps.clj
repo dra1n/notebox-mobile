@@ -17,8 +17,8 @@
 ;; --- classification ---------------------------------------------------------
 
 (def feature-rank
-  "messaging, nav, sync ← auth ← library ← {editor, books, tags, search}"
-  {"messaging" 0, "nav" 0, "sync" 0
+  "messaging, nav, sync, settings ← auth ← library ← {editor, books, tags, search}"
+  {"messaging" 0, "nav" 0, "sync" 0, "settings" 0
    "auth" 1
    "library" 2
    "editor" 3, "books" 3, "tags" 3, "search" 3})

@@ -4,6 +4,7 @@
   (:require [cljs.test :as t]
             [clojure.string :as str]
             [re-frame.core :as rf]
+            [notebox.test.coverage] ; first: records events/subs for the coverage test
             [notebox.domain.golden-test]
             [notebox.domain.json-test]
             [notebox.domain.model-test]
@@ -17,9 +18,12 @@
             [notebox.dropbox.fake-store-test]
             [notebox.dropbox.http-test]
             [notebox.dropbox.pkce-test]
+            [notebox.feature.flows-test]
+            [notebox.feature.subs-test]
             [notebox.shell.events-test]
             [notebox.storage.repository-test]
-            [notebox.system-test]))
+            [notebox.system-test]
+            [notebox.event-coverage-test]))
 
 (def test-namespaces
   '[notebox.domain.golden-test
@@ -35,21 +39,28 @@
     notebox.dropbox.fake-store-test
     notebox.dropbox.http-test
     notebox.dropbox.pkce-test
+    notebox.feature.flows-test
+    notebox.feature.subs-test
     notebox.shell.events-test
     notebox.storage.repository-test
-    notebox.system-test])
+    notebox.system-test
+    notebox.event-coverage-test])
 
-;; Subscribing outside a reactive context is what tests do; don't drown the output.
+;; Expected in tests, so not printed: subscribing outside a reactive context, and
+;; re-registering effects when each test starts a fresh system.
 (rf/set-loggers!
  {:warn (fn [& args]
-          (when-not (str/includes? (str (first args)) "outside of a reactive context")
-            (apply js/console.warn args)))})
+          (let [msg (str (first args))]
+            (when-not (or (str/includes? msg "outside of a reactive context")
+                          (str/includes? msg "overwriting"))
+              (apply js/console.warn args))))})
 
 (defmethod t/report [::t/default :end-run-tests] [m]
   (set! (.-exitCode js/process) (if (t/successful? m) 0 1)))
 
 (defn -main [& _]
-  ;; run-tests is a macro, so the namespaces are spelled out again here
+  ;; run-tests is a macro, so the namespaces are spelled out again here;
+  ;; notebox.event-coverage-test must stay last
   (t/run-tests 'notebox.domain.golden-test
                'notebox.domain.json-test
                'notebox.domain.model-test
@@ -63,8 +74,11 @@
                'notebox.dropbox.fake-store-test
                'notebox.dropbox.http-test
                'notebox.dropbox.pkce-test
+               'notebox.feature.flows-test
+               'notebox.feature.subs-test
                'notebox.shell.events-test
                'notebox.storage.repository-test
-               'notebox.system-test))
+               'notebox.system-test
+               'notebox.event-coverage-test))
 
 (set! *main-cli-fn* -main)

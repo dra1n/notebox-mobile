@@ -24,8 +24,8 @@
 
 (defmulti create :impl)
 
-(defmethod create :fake [_]
-  (fake-browser (fn [_] "notebox://oauth?error=access_denied")))
+(defmethod create :fake [{:keys [respond]}]
+  (fake-browser (or respond (fn [_] "notebox://oauth?error=access_denied"))))
 
 (defmethod ig/init-key :notebox.infra/browser [_ opts]
   (create opts))

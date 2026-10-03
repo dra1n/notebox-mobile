@@ -23,7 +23,7 @@
   "The SecureStore for `(:impl opts)`."
   :impl)
 
-(defmethod create :memory [_] (memory-store))
+(defmethod create :memory [{:keys [initial]}] (memory-store (or initial {})))
 
 (defmethod ig/init-key :notebox.infra/secure-store [_ opts]
   (create opts))

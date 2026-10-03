@@ -255,7 +255,7 @@ nothing about Dropbox, HTTP or React Native; it only emits effect maps.
      `:on-unauthorized [:auth/session-expired]` in the Integrant config instead of `storage`
      code requiring `auth.events`.
 3. **Allowed feature order** (an arrow means "may require queries/subs of"):
-   `messaging, nav ← auth ← library ← {editor, books, tags, search} ← shell`.
+   `messaging, nav, sync, settings ← auth ← library ← {editor, books, tags, search} ← shell`.
    Logout no longer reaches into notes; it dispatches `:app/reset-session`, owned by the
    **shell**, which resets `app-db` to the initial state and clears the cache.
 4. **Event handlers are pure.** No `subscribe`/deref inside handlers (the web's
@@ -282,22 +282,21 @@ nothing about Dropbox, HTTP or React Native; it only emits effect maps.
 
 ```mermaid
 graph BT
-  config[:notebox/config]
-  http[:notebox.infra/http] --> config
+  http[:notebox.infra/http]
   secure[:notebox.infra/secure-store]
+  browser[:notebox.infra/browser]
   kv[:notebox.infra/kv-store]
-  net[:notebox.infra/platform]
-  auth[:notebox.dropbox/auth] --> config & http & secure
+  auth[:notebox.dropbox/auth] --> http & secure & browser
   client[:notebox.dropbox/client] --> http & auth
   luggage[:notebox.infra.js/luggage] --> client
   repo[:notebox.storage/repository] --> luggage
-  navref[:notebox.ui/nav-ref]
-  fxauth[:notebox.fx/auth] --> auth
+  fxauth[:notebox.fx/auth] --> auth & client
   fxstore[:notebox.fx/storage] --> repo
-  fxnav[:notebox.fx/navigation] --> navref
-  fxplat[:notebox.fx/platform] --> net
-  app[:notebox/app] --> fxauth & fxstore & fxnav & fxplat
-  ui[:notebox/ui] --> app & navref
+  fxset[:notebox.fx/settings] --> kv
+  fxcofx[:notebox.fx/cofx]
+  fxnav[:notebox.fx/navigation]
+  app[:notebox/app] --> fxauth & fxstore & fxset & fxcofx & fxnav
+  ui[:notebox/ui] --> app
 ```
 
 Sketch of the config (CLJS data or EDN read with `ig/read-string`; both verified):
@@ -354,12 +353,14 @@ src/notebox/
   config.cljs                    ; Integrant config
   domain/  note.cljc book.cljc meta.cljc ops.cljc search.cljc schema.cljc
   infra/   http.cljs secure_store.cljs browser.cljs
-  infra/rn/  keychain.cljs linking.cljs            ; React Native native modules (JS interop)
+  infra/   kv_store.cljs                         ; per-device settings (default book)
+  infra/rn/  keychain.cljs linking.cljs async_storage.cljs   ; React Native native modules (JS interop)
   infra/js/  luggage.cljs                          ; JS libraries (JS interop): Luggage + our backend
   dropbox/ api.cljs auth.cljs client.cljs fake.cljs fake_store.cljc http.cljc errors.cljc pkce.cljc
   storage/ repository.cljs                         ; ops → Luggage reads/writes, per-file queue
-  fx/      auth.cljs storage.cljs navigation.cljs platform.cljs
-  feature/<f>/ events.cljs subs.cljs queries.cljs        ; f ∈ auth, library, editor, books, tags, search, messaging, sync
+  fx/      storage.cljs auth.cljs settings.cljs cofx.cljs navigation.cljs util.cljs
+  feature/<f>/ events.cljc subs.cljc queries.cljc        ; f ∈ messaging, sync, settings, auth, library, editor, books, tags, search
+  shell/   app.cljc events.cljc                 ; registers the features; start-up and session flows
   ui/      theme.cljs components/… screens/… navigation.cljs root.cljs
   ui/views/…                     ; presentational components: pure (props → hiccup), no subscribe
 dev/notebox/dev.cljs             ; reset, fake data seeding, (dev/check-dropbox)
@@ -447,13 +448,28 @@ client and the user's other React Native apps use, and do the simplest thing.*
   books when opened, as on the web, and they're kept in `app-db` for the session. A failed
   save rejects; the feature layer rolls back and shows an error.
 
-### 6.4 Re-frame side (L3)
+### 6.4 Re-frame side (L2 + L3, implemented in Phase 4)
 
-- An event applies the op to `app-db` optimistically (the same `ops/apply-op`) and emits
-  `{:storage/apply-op {:op … :on-ok [...] :on-fail [...]}}`.
-- On failure the feature **rolls back** by reloading that book and the meta from Dropbox, and
-  shows a toast (hazard 6). `:unauthorized` goes to `[:auth/session-expired]`.
-- `syncing?` is derived from the in-flight saves the repository reports, not ad-hoc flags.
+- **One save flow** (`:library/save ops`), used by every feature: apply the ops to `app-db`
+  optimistically (the same `ops/apply-op`), then `{:storage/apply-ops {:ops … :on-ok :on-fail}}`.
+  The effect runs the ops in order and **stops at the first failure**, so a move (add to the
+  target, then remove from the source) duplicates rather than loses a note.
+- **On success**, Dropbox's copy is adopted once nothing else is in flight; warnings ("the note
+  was deleted elsewhere; your edit brought it back") become toasts.
+- **On failure**, `:library/save-failed` **rolls back in the same event**: the touched books and
+  the meta are reloaded from Dropbox, and an error toast is shown (hazard 6). An `:unauthorized`
+  error goes only to the configured `[:app/session-expired]`, which resets the session.
+- `saving?` comes from a pending-saves counter in `app-db` (`notebox.feature.sync`).
+- **Effects (L2)** are Integrant components (`notebox.fx.*`, all deriving `:notebox/fx`):
+  `storage`, `auth`, `settings` (kv-store), `cofx` (`:notebox/now`, `:notebox/new-slugs`,
+  `:notebox/uuid`, so handlers stay pure) and `navigation` (a navigator slot the UI fills).
+  Results that arrive after a component is halted are dropped, so nothing leaks across
+  `(dev/reset)`.
+- **Features (L3)** are `cljc`. Rank 0: `messaging`, `sync`, `settings`; rank 1: `auth`;
+  rank 2: `library` (the meta, loaded books, the save flow); rank 3: `editor`, `books`, `tags`,
+  `search`. The **shell** orchestrates cross-feature flows (start-up, sign-in, sign-out, session
+  expiry), so features only reference lower features. The default book lives in the kv-store
+  (AsyncStorage v3); the last book opened is kept for the session.
 
 ### 6.5 Concurrency (accepted)
 
@@ -753,15 +769,20 @@ is ticked from memory. Re-run the gate on the final commit of the phase.
   `tagsInfo` immediately (as tag names only) and fills in counts as books load, the same way
   search does.
 - **Gate (automated):**
-  - Every web save flow ([§3.3](#33-web-app-save-flows)) and every §1.1 addition has a
-    `day8.re-frame/test` test against the test system (`dropbox/fake`), including the rollback
-    and auth-expiry paths.
+  - Every web save flow ([§3.3](#33-web-app-save-flows)) and every §1.1 addition has an event
+    test against the test system (`dropbox/fake` seeded with the fixture library), including
+    the rollback and auth-expiry paths. *(Revised: the tests dispatch real events and wait on
+    `app-db` (`notebox.test.system/await-db`) rather than using day8's `run-test-async`, which
+    can't see the Promise-based effects.)*
   - **Event coverage meta-test:** in the test profile, a global interceptor records every handled
     event id; `notebox.event-coverage-test` (run last) fails if any id registered with
     `reg-event-fx`/`reg-event-db` was never handled. The same check applies to `reg-sub`.
   - Sub tests: the derived subs (books with counts, tag index, search results, default-book
     fallback) are checked against example `app-db`s.
-- **Gate (manual):** none. Features are verified through the UI in Phase 5.
+- **Gate (manual):** **the user reviews the re-frame implementation against the web app**
+  (`../notebox`): the events, effects and save flows in `src/notebox/feature/`,
+  `src/notebox/fx/` and `src/notebox/shell/events.cljc`. Requested by the user, who waited
+  until Phase 4 for it.
 
 ### Phase 5: UI (L4 + L5)
 - Navigation, the screens and components from [§8](#8-ui-and-navigation), the theme, and empty

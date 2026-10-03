@@ -11,7 +11,13 @@
                        [notebox.dropbox.client]
                        [notebox.infra.browser]
                        [notebox.infra.http]
+                       [notebox.fx.auth]
+                       [notebox.fx.cofx]
+                       [notebox.fx.navigation]
+                       [notebox.fx.settings]
+                       [notebox.fx.storage]
                        [notebox.infra.js.luggage]
+                       [notebox.infra.kv-store]
                        [notebox.infra.secure-store]
                        [notebox.storage.repository]])
             [notebox.shell.app]))
@@ -20,7 +26,13 @@
   #?(:cljs #{:notebox/ui}
      :clj  #{:notebox/ui :notebox.infra/http :notebox.infra/secure-store :notebox.infra/browser
              :notebox.dropbox/auth :notebox.dropbox/client
-             :notebox.infra.js/luggage :notebox.storage/repository}))
+             :notebox.infra.js/luggage :notebox.storage/repository :notebox.infra/kv-store
+             :notebox.fx/storage :notebox.fx/auth :notebox.fx/settings :notebox.fx/cofx
+             :notebox.fx/navigation}))
+
+;; On the JVM the effect components (cljs) aren't there: stub the effects that
+;; :app/initialize uses.
+#?(:clj (doseq [id [:settings/load :auth/check-session]] (rf/reg-fx id (fn [_]))))
 
 (defn- test-config []
   (apply dissoc (config/config :test) excluded-keys))

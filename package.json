@@ -3,20 +3,28 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "cljs:build": "clj -M -m krell.main -v -co build.edn -c",
-    "cljs:repl": "clj -M -m krell.main -co build.edn -c -r",
-    "cljs:release": "clj -M -m krell.main -co build.edn -O advanced -c",
+    "cljs:build": "clojure -M -m krell.main -v -co build.edn -c",
+    "cljs:repl": "clojure -M:dev -m krell.main -co build.edn -c -r",
+    "cljs:release": "clojure -M -m krell.main -co build.edn -O advanced -c",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "test:clj": "clojure -M:test",
+    "test:cljs": "clojure -M:cljs-test -m cljs.main -co test.edn -c && node target/test/main.js",
+    "lint:cljs": "clojure -M:lint --lint src test dev scripts",
+    "check:deps": "clojure -M:check-deps",
+    "check:release": "scripts/check-release.sh",
+    "test:e2e": "scripts/e2e.sh",
+    "verify": "npm run test:clj && npm run test:cljs && npm run lint:cljs && npm run check:deps && npm test"
   },
   "dependencies": {
     "@react-native/new-app-screen": "0.87.0",
     "react": "19.2.3",
     "react-native": "0.87.0",
     "react-native-device-info": "^15.0.2",
+    "react-native-get-random-values": "^2.0.0",
     "react-native-safe-area-context": "^5.5.2",
     "react-native-tcp-socket": "^6.4.3"
   },

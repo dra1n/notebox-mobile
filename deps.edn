@@ -3,4 +3,34 @@
          io.vouch/krell            {:mvn/version "0.5.4"}
          ;; Krell 0.5.4 needs data.json but doesn't declare it (fixed on master, unreleased)
          org.clojure/data.json     {:mvn/version "2.5.0"}
-         reagent/reagent           {:mvn/version "2.0.1"}}}
+         reagent/reagent           {:mvn/version "2.0.1"}
+         re-frame/re-frame         {:mvn/version "1.4.7"}
+         integrant/integrant       {:mvn/version "1.0.1"}
+         nano-id/nano-id           {:mvn/version "1.1.0"}}
+
+ :aliases
+ {;; REPL-only helpers (notebox.dev): reset, fake data seeding
+  :dev       {:extra-paths ["dev"]}
+
+  ;; JVM tests: cljc code (domain, sync core, config) + project checks
+  :test      {:extra-paths ["test" "test/resources" "scripts"]
+              :extra-deps  {day8.re-frame/test           {:mvn/version "0.1.7"}
+                            lambdaisland/kaocha          {:mvn/version "1.91.1392"}
+                            lambdaisland/kaocha-cloverage {:mvn/version "1.1.89"}
+                            org.clojure/test.check       {:mvn/version "1.1.3"}
+                            org.clojure/tools.namespace  {:mvn/version "1.5.1"}}
+              :main-opts   ["-m" "kaocha.runner"]}
+
+  ;; CLJS tests compiled for node (see test.edn)
+  ;; Compile: clojure -M:cljs-test -m cljs.main -co test.edn -c ; run: node target/test/main.js
+  :cljs-test {:extra-paths ["test"]
+              :extra-deps  {day8.re-frame/test     {:mvn/version "0.1.7"}
+                            org.clojure/test.check {:mvn/version "1.1.3"}}}
+
+  ;; Layer rules + namespace cycle check (scripts/check_deps.clj)
+  :check-deps {:extra-paths ["scripts"]
+               :extra-deps  {org.clojure/tools.namespace {:mvn/version "1.5.1"}}
+               :main-opts   ["-m" "check-deps"]}
+
+  :lint      {:replace-deps {clj-kondo/clj-kondo {:mvn/version "2026.08.04"}}
+              :main-opts    ["-m" "clj-kondo.main"]}}}

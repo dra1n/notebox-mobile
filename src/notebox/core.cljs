@@ -1,12 +1,31 @@
 (ns notebox.core
-  (:require [reagent.core :as r]
-            ["react-native" :as rn]))
+  "Krell entry point: starts the Integrant system once and renders its root view."
+  (:require ["react-native-get-random-values"] ; crypto.getRandomValues for nano-id; must load first
+            [integrant.core :as ig]
+            [reagent.core :as r]
+            [notebox.config :as config]
+            [notebox.shell.app]
+            [notebox.ui.root]))
 
-(defn hello []
-  [:> rn/View {:style {:flex 1
-                       :align-items "center"
-                       :justify-content "center"}}
-   [:> rn/Text {:style {:font-size 24}} "Hello from Notebox"]])
+;; A ratom, so that replacing the system (dev/reset) re-renders the app.
+(defonce system (r/atom nil))
+
+(defn start!
+  ([] (start! (config/build-profile)))
+  ([profile]
+   (reset! system (ig/init (config/config profile)))))
+
+(defn stop! []
+  (when-let [s @system]
+    (ig/halt! s)
+    (reset! system nil)))
+
+(defn app []
+  (if-let [root (:notebox/ui @system)]
+    [root]
+    [:<>]))
 
 (defn ^:export -main [& _args]
-  (r/as-element [hello]))
+  (when-not @system
+    (start!))
+  (r/as-element [app]))

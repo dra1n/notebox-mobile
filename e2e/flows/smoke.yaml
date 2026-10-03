@@ -1,0 +1,12 @@
+# Phase 0 smoke: the app starts its Integrant system with the :e2e profile and
+# renders text that comes from a re-frame subscription.
+appId: org.reactjs.native.example.Notebox
+---
+- launchApp:
+    stopApp: true
+- extendedWaitUntil:
+    visible: "Notebox"
+    timeout: 60000
+- assertVisible:
+    id: "app-status"
+    text: "Status: ready \\(e2e\\)"

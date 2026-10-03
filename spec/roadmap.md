@@ -248,9 +248,12 @@ nothing about Dropbox, HTTP or React Native; it only emits effect maps.
    `router-utils/path-for` pattern). Navigation is data: `{:nav/navigate [:note {:book-id .. :id ..}]}`.
 5. **No route watchers or post-event callbacks.** Screens dispatch explicitly on focus, for
    example `[:library/note-screen-opened book-id note-id]`, so causality is visible in handlers.
-6. **Enforcement.** Use the clj-kondo `:discouraged-namespace` linter with namespace groups
-   (for example forbid `notebox.feature.*.events` from requiring `notebox.feature.*.events`, and
-   forbid `notebox.infra.*` from requiring `re-frame.*`), and run it in CI.
+6. **Enforcement.** `scripts/check_deps.clj` (`npm run check:deps`, part of `verify`) classifies
+   every namespace into its layer and checks each require against an allowlist per layer, the
+   feature order above, and cycles. String requires (`["react-native" …]`) are included.
+   *(Changed in Phase 0: the plan was clj-kondo's `:discouraged-namespace`, but it can't express
+   "only the subs of a lower feature", and tools.namespace gives the cycle check for free.
+   clj-kondo still runs for general linting.)* `notebox.lint-rules-test` proves the rules bite.
 
 ### 5.3 Integrant system
 
@@ -512,6 +515,8 @@ as we go:
 - `card-row` (Books/Tags manage): white/`bg-lighter` card with a `bg-light` border, radius ~6,
   and a trailing "Rename" in `text-grey`. The selected (default) card uses `cyan-lightest` with
   a `cyan` border.
+- **Test ids:** write `:testID "…"` literally. Reagent would turn `:test-id` into `testId`, which
+  React Native ignores, so Maestro can't find the element.
 - `tag-chip`: radius 4, padding 10/6, Medium 13, `text`; background `cyan-light` (one design
   variant uses `#C3F0F5`; pick one). Editable chips get a ×. "+ Add tag" is an outlined chip that
   opens the creatable suggestion input (replaces `react-select`).
@@ -761,7 +766,7 @@ on the JVM in milliseconds, without React Native.
 | Events and subs | node | `day8.re-frame/test` + test system | every flow, rollback, auth expiry; the event/sub coverage meta-test | `test/notebox/feature/` |
 | Views | node | hiccup assertions, stubbed RN | every presentational view state and handler | `test/notebox/ui/` |
 | End-to-end | iOS sim / Android emu | Maestro + `:e2e` profile (seeded fake Dropbox) | user journeys, screenshots for design review | `e2e/` |
-| Static | JVM | clj-kondo layer rules, namespace cycle check, a lint-rules self-test | the no-cycles hard rule ([§5.2](#52-dependency-rules-no-cycles)) | `.clj-kondo/`, `test/resources/lint-violations/` |
+| Static | JVM | `check_deps.clj` (layer rules + cycles), its self-test, clj-kondo (general lint) | the no-cycles hard rule ([§5.2](#52-dependency-rules-no-cycles)) | `scripts/check_deps.clj`, `test/resources/lint-violations/`, `.clj-kondo/` |
 | Release | macOS | Krell `:advanced` + `hermesc` | the production bundle compiles and loads | `scripts/check-release.sh` |
 | Manual | device | the checklists in each phase gate | real account, cross-client, kill/offline | [`progress.md`](progress.md) |
 
@@ -777,11 +782,12 @@ Maestro.
 |---|---|
 | `test:clj` | `clojure -M:test` (Kaocha: domain + sync core; Cloverage with thresholds) |
 | `test:cljs` | build `test.edn` (`:target :nodejs`) and run it with node |
-| `lint:cljs` | `clj-kondo --lint src test` with the layer rules |
-| `check:deps` | fail on any namespace cycle in `src/` |
+| `lint:cljs` | clj-kondo over `src test dev scripts` (warnings fail) |
+| `check:deps` | layer rules + namespace cycles over `src dev` (`scripts/check_deps.clj`) |
 | `verify` | `test:clj` + `test:cljs` + `lint:cljs` + `check:deps` + `jest` (fast; run before every commit) |
 | `check:release` | `:advanced` build + `hermesc` on the output |
-| `test:e2e` | `maestro test e2e/` against a running `:e2e` build (iOS by default; `E2E_PLATFORM=android`) |
+| `test:e2e` | `scripts/e2e.sh`: an `:advanced` build with the `:e2e` profile into `target/e2e`, `index.js` pointed at it for the run (and restored), then `maestro test e2e/flows`. Needs Metro running and the app installed. iOS by default; `E2E_PLATFORM=android` |
+| `cljs:repl` | the Krell REPL, with `dev/` on the classpath (`(require '[notebox.dev :as dev])`) |
 
 ### 10.3 Test data
 

@@ -1,4 +1,25 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Notebox Mobile
+
+React Native app written in ClojureScript (Krell, re-frame, Integrant). The plan, the design
+snapshot and the phase gates live in [`spec/`](spec/): start with
+[`spec/roadmap.md`](spec/roadmap.md), and track gates in [`spec/progress.md`](spec/progress.md).
+
+## Development
+
+| Command | What |
+|---|---|
+| `npm start` | Metro |
+| `npm run ios` | build and install the iOS app (after native dependency changes: `cd ios && bundle exec pod install` first) |
+| `npm run cljs:repl` | Krell REPL + hot reload; `(require '[notebox.dev :as dev])`, `(dev/reset)` restarts the Integrant system |
+| `npm run cljs:build` | one-off dev compile (no REPL) |
+| `npm run verify` | **before every commit**: JVM tests (+ coverage), node tests, clj-kondo, dependency rules, Jest |
+| `npm run check:release` | `:advanced` build + Hermes check, into `target/release` |
+| `npm run test:e2e` | Maestro flows against an `:e2e` build (needs Metro running and the app installed) |
+
+Restart the REPL after changing `deps.edn`; its classpath is fixed at start.
+
+---
+
 
 # Getting Started
 

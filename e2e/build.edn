@@ -1,0 +1,4 @@
+;; Merged over build.edn by scripts/e2e.sh: the app with the :e2e profile.
+{:output-to       "target/e2e/main.js"
+ :output-dir      "target/e2e"
+ :closure-defines {notebox.config/PROFILE "e2e"}}

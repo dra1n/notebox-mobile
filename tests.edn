@@ -1,0 +1,15 @@
+#kaocha/v1
+{:tests   [{:id           :unit
+            :test-paths   ["test"]
+            :source-paths ["src" "scripts"]
+            :ns-patterns  ["-test$"]}]
+ :plugins [:kaocha.plugin/cloverage]
+ ;; Phase gates add per-namespace thresholds (spec/roadmap.md §9).
+ :cloverage/opts {:ns-regex          ["notebox\\..*"]
+                  :ns-exclude-regex  []
+                  :src-ns-path       ["src"]
+                  :output            "target/coverage"
+                  :text?             false
+                  :summary?          true
+                  :html?             true
+                  :fail-threshold    0}}

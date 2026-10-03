@@ -1,3 +1,4 @@
-{:main       notebox.core
- :output-to  "target/main.js"
- :output-dir "target"}
+{:main          notebox.core
+ :output-to     "target/main.js"
+ :output-dir    "target"
+ :infer-externs true}

@@ -1,0 +1,6 @@
+{:main          notebox.test-runner
+ :target        :nodejs
+ :output-to     "target/test/main.js"
+ :output-dir    "target/test"
+ :optimizations :none
+ :closure-defines {notebox.config/PROFILE "test"}}

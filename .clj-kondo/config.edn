@@ -1,0 +1,2 @@
+{;; Deliberate dependency-rule violations for notebox.lint-rules-test
+ :output {:exclude-files ["test/resources/lint-violations"]}}

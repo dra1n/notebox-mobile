@@ -1,0 +1,2077 @@
+<canvas id="0:403" name="Desktop" x="0" y="0" width="0" height="0">
+  <frame id="0:404" name="Tags mobile" x="1352" y="2859" width="420" height="761">
+    <frame id="0:405" name="panel 2" x="0" y="67" width="422" height="387">
+      <rounded-rectangle id="0:406" name="Rectangle 7" x="0" y="222" width="300" height="96" />
+      <rounded-rectangle id="0:407" name="Rectangle 4" x="0" y="252" width="421" height="60" />
+      <rounded-rectangle id="0:408" name="Rectangle 4" x="0" y="132" width="422" height="60" />
+      <rounded-rectangle id="0:409" name="Rectangle 4" x="0" y="32" width="420" height="40" />
+      <text id="0:410" name="1 2 3 12 9" x="373" y="74" width="18" height="300" />
+      <text id="0:411" name="Rename | Delete Rena" x="22" y="87" width="93" height="300" />
+      <text id="0:412" name="favorite new 5+ клас" x="23" y="63" width="102" height="300" />
+      <rounded-rectangle id="0:413" name="Rectangle 8" x="23" y="3" width="77" height="16" hidden="true" />
+      <rounded-rectangle id="0:414" name="Rectangle 4" x="0" y="32" width="420" height="1" />
+      <text id="0:415" name="Title Notes" x="24" y="44" width="370" height="16" />
+      <text id="0:416" name="5 tags" x="23" y="0" width="39" height="16" />
+      <rounded-rectangle id="0:417" name="Rectangle 4" x="0" y="384" width="420" height="1" />
+    </frame>
+    <frame id="0:418" name="header" x="0" y="0" width="421" height="50">
+      <rounded-rectangle id="0:419" name="Rectangle 5" x="0" y="0" width="421" height="50" />
+      <text id="0:420" name="TAGS" x="74" y="18" width="37" height="16" />
+      <instance id="0:421" name="humburger" x="26" y="17" width="23" height="19" />
+    </frame>
+  </frame>
+  <frame id="0:422" name="Tags tablet" x="443" y="2860" width="804" height="761">
+    <frame id="0:423" name="panel 2" x="1" y="64" width="810" height="318">
+      <rounded-rectangle id="0:424" name="Rectangle 7" x="0" y="222" width="300" height="96" />
+      <rounded-rectangle id="0:425" name="Rectangle 4" x="0" y="192" width="807" height="40" />
+      <rounded-rectangle id="0:426" name="Rectangle 4" x="0" y="112" width="808" height="40" />
+      <rounded-rectangle id="0:427" name="Rectangle 4" x="0" y="32" width="810" height="40" />
+      <text id="0:428" name="1 2 3 12 9" x="383" y="73" width="18" height="200" />
+      <text id="0:429" name="favorite new 5+ клас" x="23" y="73" width="98" height="200" />
+      <rounded-rectangle id="0:430" name="Rectangle 8" x="23" y="3" width="77" height="16" hidden="true" />
+      <rounded-rectangle id="0:431" name="Rectangle 4" x="0" y="32" width="798" height="1" />
+      <text id="0:432" name="Title Notes" x="24" y="44" width="391" height="16" />
+      <text id="0:433" name="Rename Delete Rename" x="625" y="74" width="114" height="200" />
+      <rounded-rectangle id="0:434" name="Rectangle 4" x="0" y="274" width="808" height="1" />
+      <text id="0:435" name="5 tags" x="23" y="0" width="39" height="16" />
+    </frame>
+    <frame id="0:436" name="header" x="0" y="0" width="804" height="50">
+      <rounded-rectangle id="0:437" name="Rectangle 5" x="0" y="0" width="804" height="50" />
+      <text id="0:438" name="TAGS" x="74" y="18" width="37" height="16" />
+      <instance id="0:439" name="humburger" x="26" y="17" width="23" height="19" />
+    </frame>
+  </frame>
+  <frame id="0:440" name="Tags" x="-675" y="2857" width="1020" height="761">
+    <frame id="0:441" name="panel 2" x="223" y="19" width="798" height="318">
+      <rounded-rectangle id="0:442" name="Rectangle 7" x="0" y="222" width="300" height="96" />
+      <rounded-rectangle id="0:443" name="Rectangle 4" x="0" y="192" width="796" height="40" />
+      <rounded-rectangle id="0:444" name="Rectangle 4" x="0" y="112" width="796" height="40" />
+      <rounded-rectangle id="0:445" name="Rectangle 4" x="0" y="32" width="796" height="40" />
+      <text id="0:446" name="1 2 3 12 9" x="383" y="73" width="18" height="200" />
+      <text id="0:447" name="favorite new 5+ клас" x="23" y="73" width="98" height="200" />
+      <rounded-rectangle id="0:448" name="Rectangle 8" x="23" y="3" width="77" height="16" hidden="true" />
+      <rounded-rectangle id="0:449" name="Rectangle 4" x="0" y="32" width="798" height="1" />
+      <text id="0:450" name="Title Notes" x="24" y="44" width="391" height="16" />
+      <text id="0:451" name="Rename Delete Rename" x="625" y="74" width="114" height="200" />
+      <rounded-rectangle id="0:452" name="Rectangle 4" x="0" y="274" width="798" height="1" />
+      <text id="0:453" name="5 tags" x="23" y="0" width="39" height="16" />
+    </frame>
+    <frame id="0:454" name="panel 1" x="0" y="0" width="223" height="761">
+      <rounded-rectangle id="0:455" name="Rectangle" x="0" y="0" width="223" height="761" />
+      <rounded-rectangle id="0:456" name="Rectangle 2" x="0" y="689" width="223" height="1" />
+      <rounded-rectangle id="0:457" name="Rectangle 3" x="0" y="305" width="223" height="35" />
+      <text id="0:458" name="+ Add new note All n" x="24" y="197" width="97" height="540" />
+      <rounded-rectangle id="0:459" name="Rectangle 2" x="0" y="176" width="223" height="1" />
+      <text id="0:460" name="Search" x="24" y="143" width="43" height="16" />
+      <rounded-rectangle id="0:461" name="Rectangle 2" x="0" y="126" width="223" height="1" />
+      <boolean-operation id="0:464" name="Shape" x="24" y="102.3043441772461" width="11.149999618530273" height="9.69565200805664" />
+      <text id="0:466" name="a.sterh@gmail.com dr" x="24" y="82" width="123" height="32" />
+      <rounded-rectangle id="0:467" name="Rectangle 2" x="0" y="71" width="223" height="1" />
+      <text id="0:468" name="NoteBox" x="60" y="4" width="94" height="71" hidden="true" />
+      <text id="0:469" name="NoteBox" x="61" y="2" width="99" height="71" />
+    </frame>
+  </frame>
+  <frame id="0:470" name="Tags" x="-677" y="3660" width="1020" height="761">
+    <frame id="0:471" name="panel 2" x="223" y="89" width="798" height="318" hidden="true">
+      <rounded-rectangle id="0:472" name="Rectangle 7" x="0" y="222" width="300" height="96" />
+      <rounded-rectangle id="0:473" name="Rectangle 4" x="0" y="192" width="796" height="40" />
+      <rounded-rectangle id="0:474" name="Rectangle 4" x="0" y="112" width="796" height="40" />
+      <rounded-rectangle id="0:475" name="Rectangle 4" x="0" y="32" width="796" height="40" />
+      <text id="0:476" name="1 2 3 12 9" x="383" y="73" width="18" height="200" />
+      <text id="0:477" name="favorite new 5+ клас" x="23" y="73" width="98" height="200" />
+      <rounded-rectangle id="0:478" name="Rectangle 8" x="23" y="3" width="77" height="16" hidden="true" />
+      <rounded-rectangle id="0:479" name="Rectangle 4" x="0" y="32" width="798" height="1" />
+      <text id="0:480" name="Title Notes" x="24" y="44" width="391" height="16" />
+      <text id="0:481" name="Rename Delete Rename" x="625" y="74" width="114" height="200" />
+      <rounded-rectangle id="0:482" name="Rectangle 4" x="0" y="274" width="798" height="1" />
+      <text id="0:483" name="5 tags" x="23" y="0" width="39" height="16" />
+    </frame>
+    <frame id="0:484" name="panel 2" x="223" y="49" width="798" height="355">
+      <rounded-rectangle id="0:485" name="Rectangle 7" x="0" y="222" width="300" height="96" />
+      <rounded-rectangle id="0:486" name="Rectangle 4" x="0" y="152" width="796" height="40" />
+      <rounded-rectangle id="0:487" name="Rectangle 4" x="0" y="233" width="796" height="40" />
+      <rounded-rectangle id="0:488" name="Rectangle 4" x="0" y="72" width="796" height="40" />
+      <rounded-rectangle id="0:489" name="Rectangle 4" x="0" y="32" width="796" height="40" hidden="true" />
+      <text id="0:490" name="2 5 3 57 3" x="383" y="73" width="18" height="200" />
+      <text id="0:491" name="Books Comics My note" x="23" y="73" width="223" height="200" />
+      <rounded-rectangle id="0:492" name="Rectangle 8" x="23" y="3" width="77" height="16" hidden="true" />
+      <rounded-rectangle id="0:493" name="Rectangle 4" x="0" y="32" width="798" height="1" hidden="true" />
+      <rounded-rectangle id="0:494" name="Rectangle 4" x="0" y="73" width="798" height="1" />
+      <text id="0:495" name="Book name Notes" x="24" y="46" width="384" height="14" />
+      <text id="0:496" name="Rename Make default" x="515" y="74" width="219" height="200" />
+      <rounded-rectangle id="0:497" name="Rectangle 4" x="0" y="274" width="798" height="1" hidden="true" />
+      <text id="0:498" name="7 books" x="23" y="0" width="50" height="16" hidden="true" />
+      <rounded-rectangle id="0:499" name="Rectangle 5" x="24" y="327" width="236" height="28" />
+      <rounded-rectangle id="0:500" name="Rectangle 5" x="272" y="327" width="138" height="28" />
+      <text id="0:501" name="ADD NOTEBOOK" x="287" y="333" width="115" height="16" />
+      <text id="0:502" name="Add new notebook" x="25" y="306" width="117" height="16" />
+    </frame>
+    <rounded-rectangle id="0:503" name="Rectangle 9" x="214" y="60" width="806" height="1" />
+    <frame id="0:504" name="panel 1" x="0" y="0" width="223" height="761">
+      <rounded-rectangle id="0:505" name="Rectangle" x="0" y="0" width="223" height="761" />
+      <rounded-rectangle id="0:506" name="Rectangle 2" x="0" y="689" width="223" height="1" />
+      <rounded-rectangle id="0:507" name="Rectangle 3" x="0" y="271" width="223" height="35" />
+      <text id="0:508" name="+ Add new note Books" x="24" y="197" width="97" height="540" />
+      <rounded-rectangle id="0:509" name="Rectangle 2" x="0" y="176" width="223" height="1" />
+      <text id="0:510" name="Search" x="24" y="143" width="43" height="16" />
+      <rounded-rectangle id="0:511" name="Rectangle 2" x="0" y="126" width="223" height="1" />
+      <boolean-operation id="0:514" name="Shape" x="24" y="102.3043441772461" width="11.149999618530273" height="9.69565200805664" />
+      <text id="0:516" name="a.sterh@gmail.com dr" x="24" y="82" width="123" height="32" />
+      <rounded-rectangle id="0:517" name="Rectangle 2" x="0" y="71" width="223" height="1" />
+      <text id="0:518" name="NoteBox" x="60" y="4" width="94" height="71" hidden="true" />
+      <text id="0:519" name="NoteBox" x="61" y="2" width="99" height="71" />
+    </frame>
+    <text id="0:520" name="Books: 5 Tags: 12" x="249" y="28" width="143" height="16" />
+    <rounded-rectangle id="0:521" name="Rectangle" x="223" y="57" width="95" height="3" />
+  </frame>
+  <frame id="0:522" name="Tags" x="444" y="3670" width="1020" height="761">
+    <frame id="0:523" name="panel 2" x="223" y="46" width="798" height="318">
+      <rounded-rectangle id="0:524" name="Rectangle 7" x="0" y="222" width="300" height="96" />
+      <rounded-rectangle id="0:525" name="Rectangle 4" x="0" y="152" width="796" height="40" />
+      <rounded-rectangle id="0:526" name="Rectangle 4" x="0" y="234" width="796" height="40" />
+      <rounded-rectangle id="0:527" name="Rectangle 4" x="0" y="72" width="796" height="40" />
+      <rounded-rectangle id="0:528" name="Rectangle 4" x="0" y="32" width="796" height="40" hidden="true" />
+      <text id="0:529" name="1 2 3 12 9" x="383" y="73" width="18" height="200" />
+      <text id="0:530" name="favorite new 5+ клас" x="23" y="73" width="98" height="200" />
+      <rounded-rectangle id="0:531" name="Rectangle 8" x="23" y="3" width="77" height="16" hidden="true" />
+      <rounded-rectangle id="0:532" name="Rectangle 4" x="0" y="32" width="798" height="1" hidden="true" />
+      <text id="0:533" name="Tag name Notes" x="24" y="46" width="380" height="14" />
+      <text id="0:534" name="Rename Delete Rename" x="625" y="74" width="114" height="200" />
+      <rounded-rectangle id="0:535" name="Rectangle 4" x="0" y="72" width="798" height="1" />
+      <text id="0:536" name="5 tags" x="23" y="0" width="39" height="16" hidden="true" />
+    </frame>
+    <frame id="0:537" name="panel 2" x="223" y="49" width="798" height="355" hidden="true">
+      <rounded-rectangle id="0:538" name="Rectangle 7" x="0" y="222" width="300" height="96" />
+      <rounded-rectangle id="0:539" name="Rectangle 4" x="0" y="152" width="796" height="40" />
+      <rounded-rectangle id="0:540" name="Rectangle 4" x="0" y="233" width="796" height="40" />
+      <rounded-rectangle id="0:541" name="Rectangle 4" x="0" y="72" width="796" height="40" />
+      <rounded-rectangle id="0:542" name="Rectangle 4" x="0" y="32" width="796" height="40" hidden="true" />
+      <text id="0:543" name="2 5 3 57 3" x="383" y="73" width="18" height="200" />
+      <text id="0:544" name="Books Comics My note" x="23" y="73" width="223" height="200" />
+      <rounded-rectangle id="0:545" name="Rectangle 8" x="23" y="3" width="77" height="16" hidden="true" />
+      <rounded-rectangle id="0:546" name="Rectangle 4" x="0" y="32" width="798" height="1" hidden="true" />
+      <rounded-rectangle id="0:547" name="Rectangle 4" x="0" y="73" width="798" height="1" />
+      <text id="0:548" name="Title Notes" x="24" y="46" width="380" height="14" />
+      <text id="0:549" name="Rename Make default" x="515" y="74" width="219" height="200" />
+      <rounded-rectangle id="0:550" name="Rectangle 4" x="0" y="274" width="798" height="1" hidden="true" />
+      <text id="0:551" name="7 books" x="23" y="0" width="50" height="16" hidden="true" />
+      <rounded-rectangle id="0:552" name="Rectangle 5" x="24" y="327" width="236" height="28" />
+      <rounded-rectangle id="0:553" name="Rectangle 5" x="272" y="327" width="138" height="28" />
+      <text id="0:554" name="ADD NOTEBOOK" x="287" y="333" width="115" height="16" />
+      <text id="0:555" name="Add new notebook" x="25" y="306" width="117" height="16" />
+    </frame>
+    <frame id="0:556" name="panel 1" x="0" y="0" width="223" height="761">
+      <rounded-rectangle id="0:557" name="Rectangle" x="0" y="0" width="223" height="761" />
+      <rounded-rectangle id="0:558" name="Rectangle 2" x="0" y="689" width="223" height="1" />
+      <rounded-rectangle id="0:559" name="Rectangle 3" x="0" y="271" width="223" height="35" />
+      <text id="0:560" name="+ Add new note Books" x="24" y="197" width="97" height="540" />
+      <rounded-rectangle id="0:561" name="Rectangle 2" x="0" y="176" width="223" height="1" />
+      <text id="0:562" name="Search" x="24" y="143" width="43" height="16" />
+      <rounded-rectangle id="0:563" name="Rectangle 2" x="0" y="126" width="223" height="1" />
+      <boolean-operation id="0:566" name="Shape" x="24" y="102.3043441772461" width="11.149999618530273" height="9.69565200805664" />
+      <text id="0:568" name="a.sterh@gmail.com dr" x="24" y="82" width="123" height="32" />
+      <rounded-rectangle id="0:569" name="Rectangle 2" x="0" y="71" width="223" height="1" />
+      <text id="0:570" name="NoteBox" x="60" y="4" width="94" height="71" hidden="true" />
+      <text id="0:571" name="NoteBox" x="61" y="2" width="99" height="71" />
+    </frame>
+    <rounded-rectangle id="0:572" name="Rectangle 9" x="223" y="60" width="806" height="1" />
+    <text id="0:573" name="Books: 5 Tags: 5" x="249" y="28" width="135" height="16" />
+    <rounded-rectangle id="0:574" name="Rectangle" x="323" y="57" width="83" height="3" />
+  </frame>
+  <frame id="0:575" name="Notebooks mobile" x="1352" y="2021" width="420" height="761">
+    <frame id="0:576" name="panel 2" x="0" y="67" width="422" height="464">
+      <rounded-rectangle id="0:577" name="Rectangle 7" x="0" y="222" width="300" height="96" />
+      <rounded-rectangle id="0:578" name="Rectangle 4" x="0" y="252" width="421" height="60" />
+      <rounded-rectangle id="0:579" name="Rectangle 4" x="0" y="132" width="422" height="60" />
+      <rounded-rectangle id="0:580" name="Rectangle 4" x="0" y="32" width="420" height="40" />
+      <text id="0:581" name="2 5 3 57 3" x="373" y="74" width="18" height="300" />
+      <text id="0:582" name="Rename | Make defaul" x="22" y="87" width="177" height="300" />
+      <text id="0:583" name="Books Comics My note" x="23" y="63" width="223" height="300" />
+      <rounded-rectangle id="0:584" name="Rectangle 8" x="23" y="3" width="77" height="16" hidden="true" />
+      <rounded-rectangle id="0:585" name="Rectangle 4" x="0" y="32" width="420" height="1" />
+      <text id="0:586" name="Title Notes" x="24" y="44" width="370" height="16" />
+      <text id="0:587" name="7 notebooks" x="23" y="0" width="78" height="16" />
+      <rounded-rectangle id="0:588" name="Rectangle 4" x="0" y="384" width="420" height="1" />
+      <rounded-rectangle id="0:589" name="Rectangle 5" x="24" y="436" width="222" height="28" />
+      <rounded-rectangle id="0:590" name="Rectangle 5" x="255" y="436" width="138" height="28" />
+      <text id="0:591" name="ADD NOTEBOOK" x="270" y="442" width="115" height="16" />
+      <text id="0:592" name="Add new notebook" x="25" y="415" width="117" height="16" />
+    </frame>
+    <frame id="0:593" name="header" x="0" y="0" width="421" height="50">
+      <rounded-rectangle id="0:594" name="Rectangle 5" x="0" y="0" width="421" height="50" />
+      <text id="0:595" name="NOTEBOOKS" x="74" y="18" width="86" height="16" />
+      <instance id="0:596" name="humburger" x="26" y="17" width="23" height="19" />
+    </frame>
+  </frame>
+  <frame id="0:597" name="Notebooks tablet" x="446" y="2023" width="804" height="761">
+    <frame id="0:598" name="panel 2" x="0" y="67" width="806" height="355">
+      <rounded-rectangle id="0:599" name="Rectangle 7" x="0" y="222" width="300" height="96" />
+      <rounded-rectangle id="0:600" name="Rectangle 4" x="0" y="192" width="806" height="40" />
+      <rounded-rectangle id="0:601" name="Rectangle 4" x="0" y="112" width="805" height="40" />
+      <rounded-rectangle id="0:602" name="Rectangle 4" x="0" y="32" width="805" height="40" />
+      <text id="0:603" name="2 5 3 57 3" x="383" y="73" width="18" height="200" />
+      <text id="0:604" name="Books Comics My note" x="23" y="73" width="223" height="200" />
+      <rounded-rectangle id="0:605" name="Rectangle 8" x="23" y="3" width="77" height="16" hidden="true" />
+      <rounded-rectangle id="0:606" name="Rectangle 4" x="0" y="32" width="805" height="1" />
+      <text id="0:607" name="Title Notes" x="24" y="44" width="391" height="16" />
+      <text id="0:608" name="Rename Make default" x="515" y="74" width="219" height="200" />
+      <rounded-rectangle id="0:609" name="Rectangle 4" x="0" y="274" width="805" height="1" />
+      <text id="0:610" name="7 notebooks" x="23" y="0" width="78" height="16" />
+      <rounded-rectangle id="0:611" name="Rectangle 5" x="24" y="327" width="236" height="28" />
+      <rounded-rectangle id="0:612" name="Rectangle 5" x="272" y="327" width="138" height="28" />
+      <text id="0:613" name="ADD NOTEBOOK" x="287" y="333" width="115" height="16" />
+      <text id="0:614" name="Add new notebook" x="25" y="306" width="117" height="16" />
+    </frame>
+    <frame id="0:615" name="header" x="0" y="0" width="804" height="50">
+      <rounded-rectangle id="0:616" name="Rectangle 5" x="0" y="0" width="804" height="50" />
+      <text id="0:617" name="NOTEBOOKS" x="74" y="18" width="86" height="16" />
+      <instance id="0:618" name="humburger" x="26" y="17" width="23" height="19" />
+    </frame>
+  </frame>
+  <frame id="0:619" name="Notebooks" x="-674" y="2023" width="1020" height="761">
+    <frame id="0:620" name="panel 2" x="223" y="19" width="798" height="355">
+      <rounded-rectangle id="0:621" name="Rectangle 7" x="0" y="222" width="300" height="96" />
+      <rounded-rectangle id="0:622" name="Rectangle 4" x="0" y="192" width="796" height="40" />
+      <rounded-rectangle id="0:623" name="Rectangle 4" x="0" y="112" width="796" height="40" />
+      <rounded-rectangle id="0:624" name="Rectangle 4" x="0" y="32" width="796" height="40" />
+      <text id="0:625" name="2 5 3 57 3" x="383" y="73" width="18" height="200" />
+      <text id="0:626" name="Books Comics My note" x="23" y="73" width="223" height="200" />
+      <rounded-rectangle id="0:627" name="Rectangle 8" x="23" y="3" width="77" height="16" hidden="true" />
+      <rounded-rectangle id="0:628" name="Rectangle 4" x="0" y="32" width="798" height="1" />
+      <text id="0:629" name="Title Notes" x="24" y="44" width="391" height="16" />
+      <text id="0:630" name="Rename Make default" x="515" y="74" width="219" height="200" />
+      <rounded-rectangle id="0:631" name="Rectangle 4" x="0" y="274" width="798" height="1" />
+      <text id="0:632" name="7 notebooks" x="23" y="0" width="78" height="16" />
+      <rounded-rectangle id="0:633" name="Rectangle 5" x="24" y="327" width="236" height="28" />
+      <rounded-rectangle id="0:634" name="Rectangle 5" x="272" y="327" width="138" height="28" />
+      <text id="0:635" name="ADD NOTEBOOK" x="287" y="333" width="115" height="16" />
+      <text id="0:636" name="Add new notebook" x="25" y="306" width="117" height="16" />
+    </frame>
+    <text id="0:637" name="Type something" x="2620" y="-1604" width="115" height="19" />
+    <frame id="0:638" name="panel 1" x="0" y="0" width="223" height="761">
+      <rounded-rectangle id="0:639" name="Rectangle" x="0" y="0" width="223" height="761" />
+      <rounded-rectangle id="0:640" name="Rectangle 2" x="0" y="689" width="223" height="1" />
+      <rounded-rectangle id="0:641" name="Rectangle 3" x="0" y="269" width="223" height="35" />
+      <text id="0:642" name="+ Add new note All n" x="24" y="197" width="97" height="540" />
+      <rounded-rectangle id="0:643" name="Rectangle 2" x="0" y="176" width="223" height="1" />
+      <text id="0:644" name="Search" x="24" y="143" width="43" height="16" />
+      <rounded-rectangle id="0:645" name="Rectangle 2" x="0" y="126" width="223" height="1" />
+      <boolean-operation id="0:648" name="Shape" x="24" y="102.3043441772461" width="11.149999618530273" height="9.69565200805664" />
+      <text id="0:650" name="a.sterh@gmail.com dr" x="24" y="82" width="123" height="32" />
+      <rounded-rectangle id="0:651" name="Rectangle 2" x="0" y="71" width="223" height="1" />
+      <text id="0:652" name="NoteBox" x="60" y="4" width="94" height="71" hidden="true" />
+      <instance id="0:653" name="logo" x="63" y="19" width="96" height="36" />
+      <text id="0:654" name="NoteBox" x="61" y="2" width="99" height="71" hidden="true" />
+    </frame>
+  </frame>
+  <frame id="0:655" name="Add new mobile" x="1351" y="1192" width="420" height="761">
+    <frame id="0:656" name="panel 3" x="0" y="70" width="736" height="657">
+      <text id="0:657" name="Add note…" x="30" y="85" width="706" height="440" />
+      <text id="0:658" name="Title" x="30" y="38" width="451" height="38" />
+      <text id="0:659" name="Л. Н. Толстой. Анна" x="45" y="0" width="195" height="16" />
+      <instance id="0:660" name="down" x="248" y="5" width="12" height="8" />
+      <frame id="0:661" name="Group" x="30" y="3" width="10" height="10" />
+      <text id="0:665" name="Новое поколение двор" x="31" y="23" width="451" height="38" hidden="true" />
+      <instance id="0:666" name="btn add note" x="32" y="629" width="99" height="28" />
+      <rounded-rectangle id="0:667" name="Rectangle 9" x="0" y="597" width="422" height="1" />
+      <rounded-rectangle id="0:668" name="Rectangle 9" x="0" y="495" width="422" height="1" />
+      <frame id="0:669" name="tags" x="35" y="520" width="352" height="54">
+        <text id="0:670" name="Add tag…" x="1" y="28" width="58" height="16" />
+        <text id="0:671" name="Tags" x="1" y="0" width="31" height="16" />
+        <rounded-rectangle id="0:672" name="Rectangle 11" x="0" y="53" width="352" height="1" />
+        <rounded-rectangle id="0:673" name="Rectangle 12" x="306.2573547363281" y="29.55025291442871" width="9.899494767189026" height="9.899494767189026" />
+        <rounded-rectangle id="0:674" name="Rectangle 12" x="305.5502624511719" y="38.74264144897461" width="9.899494767189026" height="9.899494767189026" />
+        <instance id="0:675" name="down" x="335" y="31" width="12" height="8" />
+        <rounded-rectangle id="0:676" name="Rectangle 13" x="325" y="27" width="1" height="18" />
+      </frame>
+    </frame>
+    <frame id="0:677" name="header" x="0" y="0" width="421" height="50">
+      <rounded-rectangle id="0:678" name="Rectangle 5" x="0" y="0" width="421" height="50" />
+      <text id="0:679" name="NEW NOTE" x="74" y="18" width="74" height="16" />
+      <instance id="0:680" name="humburger" x="26" y="17" width="23" height="19" />
+    </frame>
+    <text id="0:681" name="Cancel" x="338" y="706" width="43" height="16" />
+  </frame>
+  <frame id="0:682" name="Add new tablet" x="458" y="1191" width="804" height="761">
+    <frame id="0:683" name="panel 3" x="-3" y="70" width="797" height="657">
+      <text id="0:684" name="Add note…" x="30" y="85" width="706" height="440" />
+      <text id="0:685" name="Title" x="30" y="38" width="451" height="38" />
+      <text id="0:686" name="Л. Н. Толстой. Анна" x="45" y="0" width="195" height="16" />
+      <instance id="0:687" name="down" x="248" y="5" width="12" height="8" />
+      <frame id="0:688" name="Group" x="30" y="3" width="10" height="10" />
+      <text id="0:692" name="Новое поколение двор" x="31" y="23" width="451" height="38" hidden="true" />
+      <instance id="0:693" name="btn add note" x="32" y="629" width="99" height="28" />
+      <text id="0:694" name="Cancel" x="707" y="636" width="43" height="16" />
+      <rounded-rectangle id="0:695" name="Rectangle 9" x="0" y="597" width="797" height="1" />
+      <rounded-rectangle id="0:696" name="Rectangle 9" x="0" y="495" width="797" height="1" />
+      <frame id="0:697" name="tags" x="35" y="520" width="728" height="54">
+        <text id="0:698" name="Add tag…" x="1" y="28" width="58" height="16" />
+        <text id="0:699" name="Tags" x="1" y="0" width="31" height="16" />
+        <rounded-rectangle id="0:700" name="Rectangle 11" x="0" y="53" width="728" height="1" />
+        <rounded-rectangle id="0:701" name="Rectangle 12" x="686.2573852539062" y="29.55025291442871" width="9.899494767189026" height="9.899494767189026" />
+        <rounded-rectangle id="0:702" name="Rectangle 12" x="685.5502319335938" y="38.74264144897461" width="9.899494767189026" height="9.899494767189026" />
+        <instance id="0:703" name="down" x="715" y="31" width="12" height="8" />
+        <rounded-rectangle id="0:704" name="Rectangle 13" x="705" y="27" width="1" height="18" />
+      </frame>
+    </frame>
+    <frame id="0:705" name="header" x="0" y="0" width="804" height="50">
+      <rounded-rectangle id="0:706" name="Rectangle 5" x="0" y="0" width="804" height="50" />
+      <instance id="0:707" name="humburger" x="26" y="17" width="23" height="19" />
+    </frame>
+  </frame>
+  <frame id="0:708" name="Add new" x="-677" y="1190" width="1020" height="761">
+    <frame id="0:709" name="panel 3" x="224" y="32" width="797" height="707">
+      <text id="0:710" name="Add note…" x="35" y="85" width="706" height="440" />
+      <text id="0:711" name="Title" x="35" y="38" width="451" height="38" />
+      <text id="0:712" name="Л. Н. Толстой. Анна" x="50" y="0" width="195" height="16" />
+      <instance id="0:713" name="down" x="253" y="5" width="12" height="8" />
+      <frame id="0:714" name="Group" x="35" y="3" width="10" height="10" />
+      <text id="0:718" name="Новое поколение двор" x="36" y="23" width="451" height="38" hidden="true" />
+      <text id="0:719" name="Cancel" x="712" y="686" width="43" height="16" />
+      <rounded-rectangle id="0:720" name="Rectangle 9" x="0" y="660" width="797" height="1" />
+      <rounded-rectangle id="0:721" name="Rectangle 9" x="0" y="558" width="797" height="1" />
+      <frame id="0:722" name="tags" x="35" y="583" width="728" height="54">
+        <text id="0:723" name="Add tag…" x="1" y="28" width="58" height="16" />
+        <text id="0:724" name="Tags" x="1" y="0" width="31" height="16" />
+        <rounded-rectangle id="0:725" name="Rectangle 11" x="0" y="53" width="728" height="1" />
+        <rounded-rectangle id="0:726" name="Rectangle 12" x="686.2573852539062" y="29.55025291442871" width="9.899494767189026" height="9.899494767189026" />
+        <rounded-rectangle id="0:727" name="Rectangle 12" x="685.5502319335938" y="38.74264144897461" width="9.899494767189026" height="9.899494767189026" />
+        <instance id="0:728" name="down" x="715" y="31" width="12" height="8" />
+        <rounded-rectangle id="0:729" name="Rectangle 13" x="705" y="27" width="1" height="18" />
+      </frame>
+      <instance id="0:730" name="btn add note" x="37" y="679" width="99" height="28" />
+    </frame>
+    <frame id="0:731" name="panel 2" x="223" y="0" width="301" height="761" hidden="true">
+      <rounded-rectangle id="0:732" name="Rectangle 6" x="0" y="0" width="301" height="761" />
+      <rounded-rectangle id="0:733" name="Rectangle" x="300" y="0" width="1" height="761" />
+      <rounded-rectangle id="0:734" name="Rectangle 7" x="0" y="241" width="300" height="96" />
+      <rounded-rectangle id="0:735" name="Rectangle 4" x="0" y="337" width="301" height="1" />
+      <text id="0:736" name="— Это новое поколени" x="23" y="285" width="256" height="35" />
+      <text id="0:737" name="Новое поколение двор" x="23" y="257" width="226" height="19" />
+      <rounded-rectangle id="0:738" name="Rectangle 4" x="0" y="240" width="301" height="1" />
+      <text id="0:739" name="Вопрос для него сост" x="23" y="188" width="256" height="35" />
+      <text id="0:740" name="искренни ли эти люди" x="23" y="160" width="177" height="19" />
+      <rounded-rectangle id="0:741" name="Rectangle 4" x="0" y="144" width="301" height="1" />
+      <text id="0:742" name="Если добро имеет при" x="23" y="92" width="256" height="35" />
+      <text id="0:743" name="Если добро имеет при" x="23" y="64" width="203" height="19" />
+      <rounded-rectangle id="0:744" name="Rectangle 4" x="0" y="49" width="301" height="1" />
+      <rounded-rectangle id="0:745" name="Rectangle 8" x="23" y="22" width="77" height="16" hidden="true" />
+      <text id="0:746" name="67 notes" x="23" y="19" width="55" height="16" />
+    </frame>
+    <frame id="0:747" name="panel 1" x="0" y="0" width="223" height="761">
+      <rounded-rectangle id="0:748" name="Rectangle" x="0" y="0" width="223" height="761" />
+      <rounded-rectangle id="0:749" name="Rectangle 2" x="0" y="689" width="223" height="1" />
+      <rounded-rectangle id="0:750" name="Rectangle 3" x="0" y="198" width="223" height="35" />
+      <text id="0:751" name="+ Add new note All n" x="24" y="197" width="97" height="540" />
+      <rounded-rectangle id="0:752" name="Rectangle 2" x="0" y="176" width="223" height="1" />
+      <text id="0:753" name="Search" x="24" y="143" width="43" height="16" />
+      <rounded-rectangle id="0:754" name="Rectangle 2" x="0" y="126" width="223" height="1" />
+      <boolean-operation id="0:757" name="Shape" x="24" y="102.3043441772461" width="11.149999618530273" height="9.69565200805664" />
+      <text id="0:759" name="a.sterh@gmail.com dr" x="24" y="82" width="123" height="32" />
+      <rounded-rectangle id="0:760" name="Rectangle 2" x="0" y="71" width="223" height="1" />
+      <text id="0:761" name="NoteBox" x="60" y="4" width="94" height="71" hidden="true" />
+      <text id="0:762" name="NoteBox" x="61" y="2" width="99" height="71" />
+    </frame>
+  </frame>
+  <rounded-rectangle id="1001:486" name="image 1" x="-3979" y="-489" width="1020" height="761" />
+  <frame id="0:763" name="Edit note mobile" x="1354" y="363" width="420" height="761">
+    <frame id="0:764" name="panel 3" x="0" y="72" width="487" height="669">
+      <text id="0:765" name="— Это новое поколени" x="35" y="85" width="345" height="393" />
+      <text id="0:766" name="Новое поколение двор" x="35" y="38" width="451" height="38" />
+      <text id="0:767" name="Л. Н. Толстой. Анна" x="50" y="0" width="195" height="16" />
+      <instance id="0:768" name="down" x="253" y="5" width="12" height="8" />
+      <frame id="0:769" name="Group" x="35" y="3" width="10" height="10" />
+      <text id="0:773" name="Новое поколение двор" x="36" y="23" width="451" height="38" hidden="true" />
+      <instance id="0:774" name="btn update" x="36" y="641" width="84" height="28" />
+      <text id="0:775" name="Cancel" x="342" y="646" width="43" height="16" />
+      <rounded-rectangle id="0:776" name="Rectangle 9" x="0" y="620" width="420" height="1" />
+      <rounded-rectangle id="0:777" name="Rectangle 9" x="0" y="518" width="420" height="1" />
+      <frame id="0:778" name="tags" x="34" y="543" width="356" height="54">
+        <rounded-rectangle id="0:779" name="Rectangle 10" x="2" y="24" width="95" height="20" />
+        <instance id="0:780" name="remove" x="81" y="30" width="8" height="9" />
+        <text id="0:781" name="классика" x="9" y="25" width="62" height="16" />
+        <rounded-rectangle id="0:782" name="Rectangle 10" x="107" y="24" width="118" height="20" />
+        <instance id="0:783" name="remove" x="210" y="30" width="8" height="9" />
+        <text id="0:784" name="прочитанное" x="114" y="25" width="86" height="16" />
+        <rounded-rectangle id="0:785" name="Rectangle 10" x="235" y="24" width="49" height="20" />
+        <instance id="0:786" name="remove" x="269" y="30" width="8" height="9" />
+        <text id="0:787" name="5+" x="242" y="25" width="16" height="16" />
+        <text id="0:788" name="Tags" x="2" y="0" width="31" height="16" />
+        <rounded-rectangle id="0:789" name="Rectangle 11" x="0" y="53" width="356" height="1" />
+        <rounded-rectangle id="0:790" name="Rectangle 12" x="314.2573547363281" y="29.55025291442871" width="9.899494767189026" height="9.899494767189026" />
+        <rounded-rectangle id="0:791" name="Rectangle 12" x="313.5502624511719" y="38.74264144897461" width="9.899494767189026" height="9.899494767189026" />
+        <instance id="0:792" name="down" x="343" y="31" width="12" height="8" />
+        <rounded-rectangle id="0:793" name="Rectangle 13" x="333" y="27" width="1" height="18" />
+      </frame>
+    </frame>
+    <frame id="0:794" name="panel 2" x="0" y="0" width="421" height="761" hidden="true">
+      <rounded-rectangle id="0:795" name="Rectangle 6" x="0" y="0" width="421" height="761" />
+      <rounded-rectangle id="0:796" name="Rectangle" x="300" y="0" width="1" height="761" hidden="true" />
+      <rounded-rectangle id="0:797" name="Rectangle 7" x="0" y="291" width="418" height="96" />
+      <rounded-rectangle id="0:798" name="Rectangle 4" x="0" y="387" width="420" height="1" />
+      <text id="0:799" name="— Это новое поколени" x="23" y="335" width="368" height="36" />
+      <text id="0:800" name="Новое поколение двор" x="23" y="307" width="226" height="19" />
+      <rounded-rectangle id="0:801" name="Rectangle 4" x="0" y="290" width="420" height="1" />
+      <text id="0:802" name="Вопрос для него сост" x="23" y="238" width="369" height="35" />
+      <text id="0:803" name="искренни ли эти люди" x="23" y="210" width="177" height="19" />
+      <rounded-rectangle id="0:804" name="Rectangle 4" x="0" y="194" width="420" height="1" />
+      <text id="0:805" name="Если добро имеет при" x="23" y="142" width="372" height="35" />
+      <text id="0:806" name="Если добро имеет при" x="23" y="114" width="203" height="19" />
+      <rounded-rectangle id="0:807" name="Rectangle 4" x="0" y="99" width="420" height="1" />
+      <rounded-rectangle id="0:808" name="Rectangle 8" x="23" y="72" width="77" height="16" hidden="true" />
+      <text id="0:809" name="67 notes" x="23" y="69" width="55" height="16" />
+    </frame>
+    <frame id="0:810" name="header" x="0" y="0" width="421" height="50">
+      <rounded-rectangle id="0:811" name="Rectangle 5" x="0" y="0" width="421" height="50" />
+      <text id="0:812" name="EDIT NOTE" x="74" y="18" width="73" height="16" />
+      <instance id="0:813" name="humburger" x="26" y="17" width="23" height="19" />
+    </frame>
+    <frame id="0:814" name="panel 1" x="0" y="0" width="223" height="761" hidden="true">
+      <rounded-rectangle id="0:815" name="Rectangle" x="0" y="0" width="223" height="761" />
+      <rounded-rectangle id="0:816" name="Rectangle 2" x="0" y="689" width="223" height="1" />
+      <rounded-rectangle id="0:817" name="Rectangle 3" x="0" y="234" width="223" height="35" />
+      <text id="0:818" name="+ Add new note All n" x="24" y="197" width="97" height="540" />
+      <rounded-rectangle id="0:819" name="Rectangle 2" x="0" y="176" width="223" height="1" />
+      <text id="0:820" name="Search" x="24" y="143" width="43" height="16" />
+      <rounded-rectangle id="0:821" name="Rectangle 2" x="0" y="126" width="223" height="1" />
+      <boolean-operation id="0:824" name="Shape" x="24" y="102.3043441772461" width="11.149999618530273" height="9.69565200805664" />
+      <text id="0:826" name="a.sterh@gmail.com dr" x="24" y="82" width="123" height="32" />
+      <rounded-rectangle id="0:827" name="Rectangle 2" x="0" y="71" width="223" height="1" />
+      <text id="0:828" name="NoteBox" x="60" y="4" width="94" height="71" hidden="true" />
+      <text id="0:829" name="NoteBox" x="61" y="2" width="99" height="71" />
+    </frame>
+  </frame>
+  <frame id="0:830" name="Edit note mobile change book" x="1847" y="364" width="420" height="761">
+    <frame id="0:831" name="panel 3" x="0" y="62" width="487" height="679">
+      <text id="0:832" name="— Это новое поколени" x="35" y="95" width="345" height="393" />
+      <text id="0:833" name="Новое поколение двор" x="35" y="48" width="451" height="38" />
+      <frame id="309:521" name="Group 1" x="23" y="0" width="325" height="199">
+        <rounded-rectangle id="0:834" name="Rectangle 14" x="23" y="0" width="325" height="199" />
+        <rounded-rectangle id="0:835" name="Rectangle 15" x="23" y="75" width="325" height="37" />
+        <instance id="0:836" name="folder icon" x="35" y="51" width="10" height="10" />
+        <instance id="0:837" name="folder icon" x="35" y="89" width="10" height="10" />
+        <instance id="0:838" name="folder icon" x="35" y="127" width="10" height="10" />
+        <instance id="0:839" name="folder icon" x="35" y="165" width="10" height="10" />
+        <text id="0:840" name="Л. Н. Толстой. Анна" x="57" y="9" width="195" height="171" />
+        <instance id="0:841" name="down" x="266" y="15" width="12" height="8" />
+        <instance id="0:842" name="folder icon green" x="35" y="13" width="10" height="10" />
+      </frame>
+      <text id="0:843" name="Новое поколение двор" x="36" y="33" width="451" height="38" hidden="true" />
+      <instance id="0:844" name="btn update" x="36" y="651" width="84" height="28" />
+      <text id="0:845" name="Cancel" x="342" y="656" width="43" height="16" />
+      <rounded-rectangle id="0:846" name="Rectangle 9" x="0" y="630" width="420" height="1" />
+      <rounded-rectangle id="0:847" name="Rectangle 9" x="0" y="528" width="420" height="1" />
+      <frame id="0:848" name="tags" x="34" y="553" width="356" height="54">
+        <rounded-rectangle id="0:849" name="Rectangle 10" x="2" y="24" width="95" height="20" />
+        <instance id="0:850" name="remove" x="81" y="30" width="8" height="9" />
+        <text id="0:851" name="классика" x="9" y="25" width="62" height="16" />
+        <rounded-rectangle id="0:852" name="Rectangle 10" x="107" y="24" width="118" height="20" />
+        <instance id="0:853" name="remove" x="210" y="30" width="8" height="9" />
+        <text id="0:854" name="прочитанное" x="114" y="25" width="86" height="16" />
+        <rounded-rectangle id="0:855" name="Rectangle 10" x="235" y="24" width="49" height="20" />
+        <instance id="0:856" name="remove" x="269" y="30" width="8" height="9" />
+        <text id="0:857" name="5+" x="242" y="25" width="16" height="16" />
+        <text id="0:858" name="Tags" x="2" y="0" width="31" height="16" />
+        <rounded-rectangle id="0:859" name="Rectangle 11" x="0" y="53" width="356" height="1" />
+        <rounded-rectangle id="0:860" name="Rectangle 12" x="314.2573547363281" y="29.55025291442871" width="9.899494767189026" height="9.899494767189026" />
+        <rounded-rectangle id="0:861" name="Rectangle 12" x="313.5502624511719" y="38.74264144897461" width="9.899494767189026" height="9.899494767189026" />
+        <instance id="0:862" name="down" x="343" y="31" width="12" height="8" />
+        <rounded-rectangle id="0:863" name="Rectangle 13" x="333" y="27" width="1" height="18" />
+      </frame>
+    </frame>
+    <frame id="0:864" name="panel 2" x="0" y="0" width="421" height="761" hidden="true">
+      <rounded-rectangle id="0:865" name="Rectangle 6" x="0" y="0" width="421" height="761" />
+      <rounded-rectangle id="0:866" name="Rectangle" x="300" y="0" width="1" height="761" hidden="true" />
+      <rounded-rectangle id="0:867" name="Rectangle 7" x="0" y="291" width="418" height="96" />
+      <rounded-rectangle id="0:868" name="Rectangle 4" x="0" y="387" width="420" height="1" />
+      <text id="0:869" name="— Это новое поколени" x="23" y="335" width="368" height="36" />
+      <text id="0:870" name="Новое поколение двор" x="23" y="307" width="226" height="19" />
+      <rounded-rectangle id="0:871" name="Rectangle 4" x="0" y="290" width="420" height="1" />
+      <text id="0:872" name="Вопрос для него сост" x="23" y="238" width="369" height="35" />
+      <text id="0:873" name="искренни ли эти люди" x="23" y="210" width="177" height="19" />
+      <rounded-rectangle id="0:874" name="Rectangle 4" x="0" y="194" width="420" height="1" />
+      <text id="0:875" name="Если добро имеет при" x="23" y="142" width="372" height="35" />
+      <text id="0:876" name="Если добро имеет при" x="23" y="114" width="203" height="19" />
+      <rounded-rectangle id="0:877" name="Rectangle 4" x="0" y="99" width="420" height="1" />
+      <rounded-rectangle id="0:878" name="Rectangle 8" x="23" y="72" width="77" height="16" hidden="true" />
+      <text id="0:879" name="67 notes" x="23" y="69" width="55" height="16" />
+    </frame>
+    <frame id="0:880" name="header" x="0" y="0" width="421" height="50">
+      <rounded-rectangle id="0:881" name="Rectangle 5" x="0" y="0" width="421" height="50" />
+      <text id="0:882" name="EDIT NOTE" x="74" y="18" width="73" height="16" />
+      <instance id="0:883" name="humburger" x="26" y="17" width="23" height="19" />
+    </frame>
+    <frame id="0:884" name="panel 1" x="0" y="0" width="223" height="761" hidden="true">
+      <rounded-rectangle id="0:885" name="Rectangle" x="0" y="0" width="223" height="761" />
+      <rounded-rectangle id="0:886" name="Rectangle 2" x="0" y="689" width="223" height="1" />
+      <rounded-rectangle id="0:887" name="Rectangle 3" x="0" y="234" width="223" height="35" />
+      <text id="0:888" name="+ Add new note All n" x="24" y="197" width="97" height="540" />
+      <rounded-rectangle id="0:889" name="Rectangle 2" x="0" y="176" width="223" height="1" />
+      <text id="0:890" name="Search" x="24" y="143" width="43" height="16" />
+      <rounded-rectangle id="0:891" name="Rectangle 2" x="0" y="126" width="223" height="1" />
+      <boolean-operation id="0:894" name="Shape" x="24" y="102.3043441772461" width="11.149999618530273" height="9.69565200805664" />
+      <text id="0:896" name="a.sterh@gmail.com dr" x="24" y="82" width="123" height="32" />
+      <rounded-rectangle id="0:897" name="Rectangle 2" x="0" y="71" width="223" height="1" />
+      <text id="0:898" name="NoteBox" x="60" y="4" width="94" height="71" hidden="true" />
+      <text id="0:899" name="NoteBox" x="61" y="2" width="99" height="71" />
+    </frame>
+    <rounded-rectangle id="0:900" name="Rectangle 17" x="23" y="96" width="325" height="1" />
+  </frame>
+  <frame id="0:901" name="Edit note tablet" x="457" y="362" width="804" height="761">
+    <frame id="0:902" name="panel 3" x="302" y="72" width="496" height="669">
+      <text id="0:903" name="— Это новое поколени" x="35" y="85" width="435" height="393" />
+      <text id="0:904" name="Новое поколение двор" x="35" y="38" width="451" height="38" />
+      <text id="0:905" name="Л. Н. Толстой. Анна" x="50" y="0" width="195" height="16" />
+      <instance id="0:906" name="down" x="253" y="5" width="12" height="8" />
+      <frame id="0:907" name="Group" x="35" y="3" width="10" height="10" />
+      <text id="0:911" name="Новое поколение двор" x="36" y="23" width="451" height="38" hidden="true" />
+      <instance id="0:912" name="btn update" x="36" y="641" width="84" height="28" />
+      <text id="0:913" name="Cancel" x="412" y="646" width="43" height="16" />
+      <rounded-rectangle id="0:914" name="Rectangle 9" x="0" y="620" width="496" height="1" />
+      <rounded-rectangle id="0:915" name="Rectangle 9" x="0" y="518" width="496" height="1" />
+      <frame id="0:916" name="tags" x="35" y="543" width="422" height="54">
+        <rounded-rectangle id="0:917" name="Rectangle 10" x="1" y="24" width="95" height="20" />
+        <instance id="0:918" name="remove" x="80" y="30" width="8" height="9" />
+        <text id="0:919" name="классика" x="8" y="25" width="62" height="16" />
+        <rounded-rectangle id="0:920" name="Rectangle 10" x="106" y="24" width="118" height="20" />
+        <instance id="0:921" name="remove" x="209" y="30" width="8" height="9" />
+        <text id="0:922" name="прочитанное" x="113" y="25" width="86" height="16" />
+        <rounded-rectangle id="0:923" name="Rectangle 10" x="234" y="24" width="49" height="20" />
+        <instance id="0:924" name="remove" x="268" y="30" width="8" height="9" />
+        <text id="0:925" name="5+" x="241" y="25" width="16" height="16" />
+        <text id="0:926" name="Tags" x="1" y="0" width="31" height="16" />
+        <rounded-rectangle id="0:927" name="Rectangle 11" x="0" y="53" width="422" height="1" />
+        <rounded-rectangle id="0:928" name="Rectangle 12" x="376.2573547363281" y="29.55025291442871" width="9.899494767189026" height="9.899494767189026" />
+        <rounded-rectangle id="0:929" name="Rectangle 12" x="375.5502624511719" y="38.74264144897461" width="9.899494767189026" height="9.899494767189026" />
+        <instance id="0:930" name="down" x="405" y="31" width="12" height="8" />
+        <rounded-rectangle id="0:931" name="Rectangle 13" x="395" y="27" width="1" height="18" />
+      </frame>
+    </frame>
+    <frame id="0:932" name="panel 2" x="0" y="0" width="301" height="761">
+      <rounded-rectangle id="0:933" name="Rectangle 6" x="0" y="0" width="301" height="761" />
+      <rounded-rectangle id="0:934" name="Rectangle" x="300" y="0" width="1" height="761" />
+      <rounded-rectangle id="0:935" name="Rectangle 7" x="0" y="291" width="300" height="96" />
+      <rounded-rectangle id="0:936" name="Rectangle 4" x="0" y="387" width="301" height="1" />
+      <text id="0:937" name="— Это новое поколени" x="23" y="335" width="256" height="35" />
+      <text id="0:938" name="Новое поколение двор" x="23" y="307" width="226" height="19" />
+      <rounded-rectangle id="0:939" name="Rectangle 4" x="0" y="290" width="301" height="1" />
+      <text id="0:940" name="Вопрос для него сост" x="23" y="238" width="256" height="35" />
+      <text id="0:941" name="искренни ли эти люди" x="23" y="210" width="177" height="19" />
+      <rounded-rectangle id="0:942" name="Rectangle 4" x="0" y="194" width="301" height="1" />
+      <text id="0:943" name="Если добро имеет при" x="23" y="142" width="256" height="35" />
+      <text id="0:944" name="Если добро имеет при" x="23" y="114" width="203" height="19" />
+      <rounded-rectangle id="0:945" name="Rectangle 4" x="0" y="99" width="301" height="1" />
+      <rounded-rectangle id="0:946" name="Rectangle 8" x="23" y="72" width="77" height="16" hidden="true" />
+      <text id="0:947" name="67 notes" x="23" y="69" width="55" height="16" />
+    </frame>
+    <frame id="0:948" name="header" x="0" y="0" width="804" height="50">
+      <rounded-rectangle id="0:949" name="Rectangle 5" x="0" y="0" width="804" height="50" />
+      <instance id="0:950" name="humburger" x="26" y="17" width="23" height="19" />
+    </frame>
+    <frame id="0:951" name="panel 1" x="0" y="0" width="223" height="761" hidden="true">
+      <rounded-rectangle id="0:952" name="Rectangle" x="0" y="0" width="223" height="761" />
+      <rounded-rectangle id="0:953" name="Rectangle 2" x="0" y="689" width="223" height="1" />
+      <rounded-rectangle id="0:954" name="Rectangle 3" x="0" y="234" width="223" height="35" />
+      <text id="0:955" name="+ Add new note All n" x="24" y="197" width="97" height="540" />
+      <rounded-rectangle id="0:956" name="Rectangle 2" x="0" y="176" width="223" height="1" />
+      <text id="0:957" name="Search" x="24" y="143" width="43" height="16" />
+      <rounded-rectangle id="0:958" name="Rectangle 2" x="0" y="126" width="223" height="1" />
+      <boolean-operation id="0:961" name="Shape" x="24" y="102.3043441772461" width="11.149999618530273" height="9.69565200805664" />
+      <text id="0:963" name="a.sterh@gmail.com dr" x="24" y="82" width="123" height="32" />
+      <rounded-rectangle id="0:964" name="Rectangle 2" x="0" y="71" width="223" height="1" />
+      <text id="0:965" name="NoteBox" x="60" y="4" width="94" height="71" hidden="true" />
+      <text id="0:966" name="NoteBox" x="61" y="2" width="99" height="71" />
+    </frame>
+  </frame>
+  <frame id="0:967" name="Edit" x="-675" y="362" width="1020" height="761">
+    <frame id="0:968" name="panel 3" x="524" y="32" width="496" height="709">
+      <symbol id="102:274" name="— Это новое поколени" x="35" y="85" width="422" height="421" />
+      <text id="0:970" name="Новое поколение двор" x="35" y="38" width="451" height="38" />
+      <text id="0:971" name="Л. Н. Толстой. Анна" x="50" y="0" width="195" height="16" />
+      <instance id="0:972" name="down" x="253" y="5" width="12" height="8" />
+      <frame id="0:973" name="Group" x="35" y="3" width="10" height="10" />
+      <text id="0:977" name="Новое поколение двор" x="36" y="23" width="451" height="38" hidden="true" />
+      <instance id="0:978" name="btn update" x="36" y="681" width="84" height="28" />
+      <text id="0:979" name="Cancel" x="412" y="686" width="43" height="16" />
+      <rounded-rectangle id="0:980" name="Rectangle 9" x="0" y="660" width="496" height="1" />
+      <rounded-rectangle id="0:981" name="Rectangle 9" x="0" y="558" width="496" height="1" />
+      <frame id="0:982" name="tags" x="35" y="583" width="422" height="54">
+        <rounded-rectangle id="0:983" name="Rectangle 10" x="1" y="24" width="95" height="20" />
+        <instance id="0:984" name="remove" x="80" y="30" width="8" height="9" />
+        <text id="0:985" name="классика" x="8" y="25" width="62" height="16" />
+        <rounded-rectangle id="0:986" name="Rectangle 10" x="106" y="24" width="118" height="20" />
+        <instance id="0:987" name="remove" x="209" y="30" width="8" height="9" />
+        <text id="0:988" name="прочитанное" x="113" y="25" width="86" height="16" />
+        <rounded-rectangle id="0:989" name="Rectangle 10" x="234" y="24" width="49" height="20" />
+        <instance id="0:990" name="remove" x="268" y="30" width="8" height="9" />
+        <text id="0:991" name="5+" x="241" y="25" width="16" height="16" />
+        <text id="0:992" name="Tags" x="1" y="0" width="31" height="16" />
+        <rounded-rectangle id="0:993" name="Rectangle 11" x="0" y="53" width="422" height="1" />
+        <rounded-rectangle id="0:994" name="Rectangle 12" x="376.2573547363281" y="29.55025291442871" width="9.899494767189026" height="9.899494767189026" />
+        <rounded-rectangle id="0:995" name="Rectangle 12" x="375.5502624511719" y="38.74264144897461" width="9.899494767189026" height="9.899494767189026" />
+        <instance id="0:996" name="down" x="405" y="31" width="12" height="8" />
+        <rounded-rectangle id="0:997" name="Rectangle 13" x="395" y="27" width="1" height="18" />
+      </frame>
+    </frame>
+    <frame id="0:998" name="panel 2" x="223" y="0" width="301" height="761">
+      <rounded-rectangle id="0:999" name="Rectangle 6" x="0" y="0" width="301" height="761" />
+      <rounded-rectangle id="0:1000" name="Rectangle" x="300" y="0" width="1" height="761" />
+      <rounded-rectangle id="0:1001" name="Rectangle 7" x="0" y="241" width="300" height="96" />
+      <rounded-rectangle id="0:1002" name="Rectangle 4" x="0" y="337" width="301" height="1" />
+      <symbol id="102:277" name="— Это новое поколени" x="23" y="285" width="256" height="35" />
+      <text id="0:1004" name="Новое поколение двор" x="23" y="257" width="226" height="19" />
+      <rounded-rectangle id="0:1005" name="Rectangle 4" x="0" y="240" width="301" height="1" />
+      <symbol id="102:276" name="Вопрос для него сост" x="23" y="188" width="256" height="35" />
+      <text id="0:1007" name="искренни ли эти люди" x="23" y="160" width="177" height="19" />
+      <rounded-rectangle id="0:1008" name="Rectangle 4" x="0" y="144" width="301" height="1" />
+      <symbol id="102:275" name="Если добро имеет при" x="23" y="92" width="256" height="35" />
+      <text id="0:1010" name="Если добро имеет при" x="23" y="64" width="203" height="19" />
+      <rounded-rectangle id="0:1011" name="Rectangle 4" x="0" y="49" width="301" height="1" />
+      <rounded-rectangle id="0:1012" name="Rectangle 8" x="23" y="22" width="77" height="16" hidden="true" />
+      <text id="0:1013" name="67 notes" x="23" y="19" width="55" height="16" />
+      <rounded-rectangle id="0:1014" name="Rectangle 4" x="0" y="380" width="301" height="1" />
+      <text id="0:1015" name="Book name" x="43" y="350" width="71" height="16" />
+      <frame id="0:1016" name="book" x="24" y="352" width="11" height="13" hidden="true" />
+      <instance id="0:1022" name="book" x="23" y="351" width="12" height="14" />
+    </frame>
+    <frame id="0:1023" name="panel 1" x="0" y="0" width="223" height="761">
+      <rounded-rectangle id="0:1024" name="Rectangle" x="0" y="0" width="223" height="761" />
+      <rounded-rectangle id="0:1025" name="Rectangle 2" x="0" y="689" width="223" height="1" />
+      <rounded-rectangle id="0:1026" name="Rectangle 3" x="0" y="234" width="223" height="35" />
+      <text id="0:1027" name="+ Add new note All n" x="24" y="197" width="97" height="540" />
+      <rounded-rectangle id="0:1028" name="Rectangle 2" x="0" y="176" width="223" height="1" />
+      <text id="0:1029" name="Search" x="24" y="143" width="43" height="16" />
+      <rounded-rectangle id="0:1030" name="Rectangle 2" x="0" y="126" width="223" height="1" />
+      <boolean-operation id="0:1033" name="Shape" x="24" y="102.3043441772461" width="11.149999618530273" height="9.69565200805664" />
+      <text id="0:1035" name="a.sterh@gmail.com dr" x="24" y="82" width="123" height="32" />
+      <rounded-rectangle id="0:1036" name="Rectangle 2" x="0" y="71" width="223" height="1" />
+      <text id="0:1037" name="NoteBox" x="60" y="4" width="94" height="71" hidden="true" />
+      <text id="0:1038" name="NoteBox" x="61" y="2" width="99" height="71" />
+    </frame>
+  </frame>
+  <frame id="0:1039" name="Empty note" x="-1778" y="-459" width="1020" height="761">
+    <frame id="0:1040" name="panel 3" x="614" y="244" width="350" height="163">
+      <text id="0:1041" name="You have not had any" x="747" y="283" width="190" height="64" />
+      <text id="0:1042" name="No any note" x="745" y="244" width="219" height="38" />
+      <text id="0:1043" name="Новое поколение двор" x="544" y="213" width="451" height="38" hidden="true" />
+      <instance id="0:1044" name="btn update" x="751" y="379" width="104" height="28" />
+      <instance id="0:1045" name="note svg" x="614" y="251" width="100" height="95" />
+    </frame>
+    <frame id="0:1046" name="panel 2" x="223" y="0" width="301" height="761">
+      <rounded-rectangle id="0:1047" name="Rectangle 6" x="0" y="0" width="301" height="761" />
+      <rounded-rectangle id="0:1048" name="Rectangle" x="300" y="0" width="1" height="761" />
+      <rounded-rectangle id="0:1049" name="Rectangle 7" x="0" y="140" width="300" height="289" />
+      <rounded-rectangle id="716:468" name="Rectangle 11" x="0" y="140" width="300" height="95" />
+      <rounded-rectangle id="719:477" name="Rectangle 12" x="0" y="110" width="3" height="289" hidden="true" />
+      <rounded-rectangle id="719:478" name="Rectangle 13" x="0" y="110" width="3" height="95" hidden="true" />
+      <rounded-rectangle id="0:1050" name="Rectangle 4" x="0" y="429" width="301" height="1" />
+      <text id="0:1051" name="— Это новое поколени" x="23" y="376" width="256" height="35" />
+      <text id="0:1052" name="Новое поколение двор" x="23" y="348" width="226" height="19" />
+      <rounded-rectangle id="0:1053" name="Rectangle 4" x="0" y="331" width="301" height="1" />
+      <text id="0:1054" name="Вопрос для него сост" x="23" y="279" width="256" height="35" />
+      <text id="0:1055" name="искренни ли эти люди" x="23" y="251" width="177" height="19" />
+      <rounded-rectangle id="0:1056" name="Rectangle 4" x="0" y="235" width="301" height="1" />
+      <text id="0:1057" name="Если добро имеет при" x="23" y="183" width="256" height="35" />
+      <text id="0:1058" name="Если добро имеет при" x="23" y="155" width="203" height="19" />
+      <rounded-rectangle id="0:1059" name="Rectangle 4" x="0" y="79" width="301" height="1" />
+      <rounded-rectangle id="0:1060" name="Rectangle 8" x="23" y="22" width="77" height="16" hidden="true" />
+      <rounded-rectangle id="0:1062" name="Rectangle 4" x="0" y="139" width="301" height="1" />
+      <text id="0:1063" name="Book name" x="48" y="92" width="71" height="16" />
+      <text id="716:444" name="Book name" x="48" y="112" width="40" height="14" />
+      <text id="0:1061" name="67 notes" x="23" y="51" width="134" height="14" />
+      <text id="1002:490" name="67 notes" x="36" y="27" width="37" height="14" />
+      <rounded-rectangle id="1002:489" name="Rectangle 5" x="23" y="19" width="253" height="28" />
+      <frame id="0:1064" name="book" x="24" y="352" width="11" height="13" hidden="true" />
+      <instance id="0:1070" name="book" x="23" y="63" width="12" height="14" hidden="true" />
+      <instance id="719:473" name="open book" x="23" y="94" width="17" height="13" />
+      <rounded-rectangle id="716:450" name="Rectangle 9" x="0" y="492" width="301" height="1" />
+      <text id="716:451" name="Book name" x="43" y="445" width="171" height="16" />
+      <text id="716:452" name="Book name" x="43" y="465" width="47" height="14" />
+      <instance id="716:453" name="book" x="23" y="446" width="12" height="14" />
+      <rounded-rectangle id="716:459" name="Rectangle 10" x="0" y="555" width="301" height="1" />
+      <text id="716:460" name="Book name" x="43" y="508" width="123" height="16" />
+      <text id="716:461" name="Book name" x="43" y="528" width="40" height="14" />
+      <instance id="716:462" name="book" x="23" y="509" width="12" height="14" />
+      <rounded-rectangle id="719:479" name="Rectangle 14" x="0" y="620" width="301" height="1" />
+      <text id="719:480" name="Book name" x="43" y="573" width="230" height="16" />
+      <text id="719:481" name="Book name" x="43" y="593" width="40" height="14" />
+      <instance id="719:482" name="book" x="23" y="574" width="12" height="14" />
+    </frame>
+    <frame id="0:1071" name="panel 1" x="0" y="0" width="223" height="761">
+      <rounded-rectangle id="0:1072" name="Rectangle" x="0" y="0" width="223" height="761" />
+      <rounded-rectangle id="0:1073" name="Rectangle 2" x="0" y="707" width="223" height="1" />
+      <rounded-rectangle id="0:1074" name="Rectangle 3" x="0" y="197" width="223" height="35" />
+      <text id="0:1075" name="+ Add new note All n" x="24" y="196" width="69" height="556" />
+      <rounded-rectangle id="0:1078" name="Rectangle 2" x="0" y="126" width="223" height="1" />
+      <boolean-operation id="0:1081" name="Shape" x="24" y="102.3043441772461" width="11.149999618530273" height="9.69565200805664" />
+      <text id="0:1083" name="a.sterh@gmail.com dr" x="24" y="82" width="123" height="32" />
+      <rounded-rectangle id="0:1084" name="Rectangle 2" x="0" y="71" width="223" height="1" />
+      <text id="0:1085" name="NoteBox" x="60" y="4" width="94" height="71" hidden="true" />
+      <text id="0:1086" name="NoteBox" x="61" y="2" width="99" height="71" />
+      <instance id="309:339" name="btn new note" x="24" y="147" width="148" height="28" />
+    </frame>
+  </frame>
+  <frame id="309:365" name="Empty page" x="-2859" y="-459" width="1020" height="761">
+    <frame id="309:366" name="panel 3" x="461" y="244" width="376" height="163">
+      <text id="309:367" name="You have not had any" x="594" y="283" width="243" height="64" />
+      <text id="309:368" name="No any note" x="592" y="244" width="219" height="38" />
+      <text id="309:369" name="Новое поколение двор" x="391" y="213" width="451" height="38" hidden="true" />
+      <instance id="309:370" name="btn update" x="598" y="379" width="104" height="28" />
+      <instance id="309:371" name="note svg" x="461" y="251" width="100" height="95" />
+    </frame>
+    <frame id="309:372" name="panel 2" x="223" y="0" width="301" height="761" hidden="true">
+      <rounded-rectangle id="309:373" name="Rectangle 6" x="0" y="0" width="301" height="761" />
+      <rounded-rectangle id="309:374" name="Rectangle" x="300" y="0" width="1" height="761" />
+      <rounded-rectangle id="309:382" name="Rectangle 4" x="0" y="144" width="301" height="1" />
+      <rounded-rectangle id="309:385" name="Rectangle 4" x="0" y="49" width="301" height="1" />
+      <rounded-rectangle id="309:386" name="Rectangle 8" x="23" y="22" width="77" height="16" hidden="true" />
+      <text id="309:387" name="67 notes" x="23" y="19" width="47" height="16" />
+      <frame id="309:390" name="book" x="24" y="352" width="0" height="0" hidden="true" />
+      <rounded-rectangle id="309:437" name="Rectangle 19" x="23" y="65" width="184" height="17" />
+      <rounded-rectangle id="309:438" name="Rectangle 20" x="23" y="93" width="256" height="34" />
+    </frame>
+    <frame id="309:397" name="panel 1" x="0" y="0" width="223" height="761">
+      <rounded-rectangle id="309:398" name="Rectangle" x="0" y="0" width="223" height="761" />
+      <rounded-rectangle id="309:399" name="Rectangle 2" x="0" y="707" width="223" height="1" />
+      <rounded-rectangle id="309:400" name="Rectangle 3" x="0" y="239" width="223" height="35" />
+      <text id="309:401" name="+ Add new note All n" x="24" y="238" width="90" height="504" />
+      <rounded-rectangle id="309:402" name="Rectangle 2" x="0" y="176" width="223" height="1" hidden="true" />
+      <rounded-rectangle id="607:444" name="Rectangle 5" x="24" y="147" width="176" height="28" />
+      <text id="309:403" name="Search" x="39" y="153" width="55" height="16" />
+      <rounded-rectangle id="309:404" name="Rectangle 2" x="0" y="126" width="223" height="1" />
+      <boolean-operation id="309:405" name="Shape" x="24" y="102.3043441772461" width="11.149999618530273" height="9.69565200805664" />
+      <text id="309:409" name="a.sterh@gmail.com dr" x="24" y="82" width="123" height="32" />
+      <rounded-rectangle id="309:410" name="Rectangle 2" x="0" y="71" width="223" height="1" />
+      <text id="309:411" name="NoteBox" x="60" y="4" width="94" height="71" hidden="true" />
+      <text id="309:412" name="NoteBox" x="61" y="2" width="99" height="71" />
+      <instance id="309:413" name="btn new note" x="24" y="190" width="176" height="28" />
+    </frame>
+    <frame id="414:651" name="flash success" x="247" y="70" width="283" height="36">
+      <rounded-rectangle id="413:636" name="Rectangle 6" x="247" y="70" width="283" height="36" />
+      <text id="413:637" name="ADD NOTE" x="290.757568359375" y="80" width="223" height="16" />
+      <frame id="414:641" name="check 1" x="263" y="79" width="17" height="17" />
+    </frame>
+    <frame id="414:652" name="flash error" x="247" y="20" width="357" height="36">
+      <rounded-rectangle id="414:653" name="Rectangle 6" x="247" y="20" width="357" height="36" />
+      <text id="414:654" name="ADD NOTE" x="290.757568359375" y="30" width="298" height="16" />
+      <frame id="520:444" name="Group 2" x="258" y="27" width="24" height="24">
+        <regular-polygon id="414:661" name="Polygon 1" x="258" y="27" width="24" height="24" />
+        <text id="414:662" name="!" x="268" y="30" width="4" height="16" />
+      </frame>
+    </frame>
+  </frame>
+  <rounded-rectangle id="1002:488" name="image 2" x="-3501" y="437" width="113" height="124" />
+  <frame id="309:439" name="Add new note without any book" x="-2859" y="1212" width="1020" height="761">
+    <frame id="309:446" name="panel 2" x="223" y="0" width="301" height="761" hidden="true">
+      <rounded-rectangle id="309:447" name="Rectangle 6" x="0" y="0" width="301" height="761" />
+      <rounded-rectangle id="309:448" name="Rectangle" x="300" y="0" width="1" height="761" />
+      <rounded-rectangle id="309:449" name="Rectangle 4" x="0" y="144" width="301" height="1" />
+      <rounded-rectangle id="309:450" name="Rectangle 4" x="0" y="49" width="301" height="1" />
+      <rounded-rectangle id="309:451" name="Rectangle 8" x="23" y="22" width="77" height="16" hidden="true" />
+      <text id="309:452" name="67 notes" x="23" y="19" width="47" height="16" />
+      <frame id="309:453" name="book" x="24" y="352" width="0" height="0" hidden="true" />
+      <rounded-rectangle id="309:459" name="Rectangle 19" x="23" y="65" width="184" height="17" />
+      <rounded-rectangle id="309:460" name="Rectangle 20" x="23" y="93" width="256" height="34" />
+    </frame>
+    <frame id="309:493" name="panel 3" x="223" y="32" width="797" height="707">
+      <text id="309:494" name="Add note…" x="35" y="85" width="706" height="440" />
+      <text id="309:495" name="Title" x="35" y="38" width="451" height="38" />
+      <frame id="309:522" name="Group 1" x="23" y="-10" width="0" height="0" hidden="true">
+        <rounded-rectangle id="309:523" name="Rectangle 14" x="23" y="-10" width="325" height="199" />
+        <rounded-rectangle id="309:524" name="Rectangle 15" x="23" y="65" width="325" height="37" />
+        <instance id="309:525" name="folder icon" x="35" y="41" width="10" height="10" />
+        <instance id="309:526" name="folder icon" x="35" y="79" width="10" height="10" />
+        <instance id="309:527" name="folder icon" x="35" y="117" width="10" height="10" />
+        <instance id="309:528" name="folder icon" x="35" y="155" width="10" height="10" />
+        <text id="309:529" name="Л. Н. Толстой. Анна" x="57" y="-1" width="195" height="171" />
+        <instance id="309:530" name="down" x="266" y="5" width="12" height="8" />
+        <instance id="309:531" name="folder icon green" x="35" y="3" width="10" height="10" />
+      </frame>
+      <text id="309:496" name="Л. Н. Толстой. Анна" x="35" y="0" width="71" height="16" />
+      <instance id="309:497" name="down" x="253" y="5" width="12" height="8" hidden="true" />
+      <frame id="309:498" name="Group" x="35" y="3" width="0" height="0" hidden="true" />
+      <text id="309:502" name="Новое поколение двор" x="36" y="23" width="451" height="38" hidden="true" />
+      <text id="309:503" name="Cancel" x="712" y="686" width="43" height="16" />
+      <rounded-rectangle id="309:504" name="Rectangle 9" x="0" y="660" width="797" height="1" />
+      <rounded-rectangle id="309:505" name="Rectangle 9" x="0" y="558" width="797" height="1" />
+      <frame id="309:506" name="tags" x="35" y="583" width="728" height="54">
+        <text id="309:507" name="Add tag…" x="1" y="28" width="58" height="16" />
+        <text id="309:508" name="Tags" x="1" y="0" width="31" height="16" />
+        <rounded-rectangle id="309:509" name="Rectangle 11" x="0" y="53" width="728" height="1" />
+        <rounded-rectangle id="309:510" name="Rectangle 12" x="686.2573852539062" y="29.55025291442871" width="9.899494767189026" height="9.899494767189026" />
+        <rounded-rectangle id="309:511" name="Rectangle 12" x="685.5502319335938" y="38.74264144897461" width="9.899494767189026" height="9.899494767189026" />
+        <instance id="309:512" name="down" x="715" y="31" width="12" height="8" />
+        <rounded-rectangle id="309:513" name="Rectangle 13" x="705" y="27" width="1" height="18" />
+      </frame>
+      <instance id="309:514" name="btn add note" x="37" y="679" width="99" height="28" />
+      <instance id="309:669" name="data updating" x="670" y="-23" width="117" height="25" />
+    </frame>
+    <frame id="309:461" name="panel 1" x="0" y="0" width="223" height="761">
+      <rounded-rectangle id="309:462" name="Rectangle" x="0" y="0" width="223" height="761" />
+      <rounded-rectangle id="309:463" name="Rectangle 2" x="0" y="707" width="223" height="1" />
+      <rounded-rectangle id="309:464" name="Rectangle 3" x="0" y="244" width="223" height="35" />
+      <text id="309:465" name="+ Add new note All n" x="24" y="243" width="90" height="504" />
+      <rounded-rectangle id="309:466" name="Rectangle 2" x="0" y="176" width="223" height="1" />
+      <text id="309:467" name="Search" x="24" y="143" width="43" height="16" />
+      <rounded-rectangle id="309:468" name="Rectangle 2" x="0" y="126" width="223" height="1" />
+      <boolean-operation id="309:469" name="Shape" x="24" y="102.3043441772461" width="11.149999618530273" height="9.69565200805664" />
+      <text id="309:473" name="a.sterh@gmail.com dr" x="24" y="82" width="123" height="32" />
+      <rounded-rectangle id="309:474" name="Rectangle 2" x="0" y="71" width="223" height="1" />
+      <text id="309:475" name="NoteBox" x="60" y="4" width="94" height="71" hidden="true" />
+      <text id="309:476" name="NoteBox" x="61" y="2" width="99" height="71" />
+      <instance id="309:477" name="btn new note" x="24" y="197" width="148" height="28" />
+    </frame>
+  </frame>
+  <frame id="408:496" name="Add new note without any book" x="-1799" y="1212" width="1020" height="761">
+    <frame id="408:497" name="panel 2" x="223" y="0" width="301" height="761" hidden="true">
+      <rounded-rectangle id="408:498" name="Rectangle 6" x="0" y="0" width="301" height="761" />
+      <rounded-rectangle id="408:499" name="Rectangle" x="300" y="0" width="1" height="761" />
+      <rounded-rectangle id="408:500" name="Rectangle 4" x="0" y="144" width="301" height="1" />
+      <rounded-rectangle id="408:501" name="Rectangle 4" x="0" y="49" width="301" height="1" />
+      <rounded-rectangle id="408:502" name="Rectangle 8" x="23" y="22" width="77" height="16" hidden="true" />
+      <text id="408:503" name="67 notes" x="23" y="19" width="47" height="16" />
+      <frame id="408:504" name="book" x="24" y="352" width="0" height="0" hidden="true" />
+      <rounded-rectangle id="408:510" name="Rectangle 19" x="23" y="65" width="184" height="17" />
+      <rounded-rectangle id="408:511" name="Rectangle 20" x="23" y="93" width="256" height="34" />
+    </frame>
+    <frame id="408:512" name="panel 3" x="223" y="32" width="797" height="707">
+      <text id="408:513" name="Add note…" x="35" y="85" width="706" height="440" />
+      <text id="408:514" name="Title" x="35" y="38" width="451" height="38" />
+      <frame id="408:515" name="Group 1" x="23" y="-10" width="0" height="0" hidden="true">
+        <rounded-rectangle id="408:516" name="Rectangle 14" x="23" y="-10" width="325" height="199" />
+        <rounded-rectangle id="408:517" name="Rectangle 15" x="23" y="65" width="325" height="37" />
+        <instance id="408:518" name="folder icon" x="35" y="41" width="10" height="10" />
+        <instance id="408:519" name="folder icon" x="35" y="79" width="10" height="10" />
+        <instance id="408:520" name="folder icon" x="35" y="117" width="10" height="10" />
+        <instance id="408:521" name="folder icon" x="35" y="155" width="10" height="10" />
+        <text id="408:522" name="Л. Н. Толстой. Анна" x="57" y="-1" width="195" height="171" />
+        <instance id="408:523" name="down" x="266" y="5" width="12" height="8" />
+        <instance id="408:524" name="folder icon green" x="35" y="3" width="10" height="10" />
+      </frame>
+      <text id="408:525" name="Л. Н. Толстой. Анна" x="35" y="0" width="71" height="16" />
+      <text id="408:593" name="Select from the list" x="652" y="0" width="117" height="16" />
+      <instance id="408:526" name="down" x="253" y="5" width="12" height="8" hidden="true" />
+      <frame id="408:527" name="Group" x="35" y="3" width="0" height="0" hidden="true" />
+      <text id="408:531" name="Новое поколение двор" x="36" y="23" width="451" height="38" hidden="true" />
+      <text id="408:532" name="Cancel" x="712" y="686" width="43" height="16" />
+      <rounded-rectangle id="408:533" name="Rectangle 9" x="0" y="660" width="797" height="1" />
+      <rounded-rectangle id="408:534" name="Rectangle 9" x="0" y="558" width="797" height="1" />
+      <frame id="408:535" name="tags" x="35" y="583" width="728" height="54">
+        <text id="408:536" name="Add tag…" x="1" y="28" width="58" height="16" />
+        <text id="408:537" name="Tags" x="1" y="0" width="31" height="16" />
+        <rounded-rectangle id="408:538" name="Rectangle 11" x="0" y="53" width="728" height="1" />
+        <rounded-rectangle id="408:539" name="Rectangle 12" x="686.2573852539062" y="29.55025291442871" width="9.899494767189026" height="9.899494767189026" />
+        <rounded-rectangle id="408:540" name="Rectangle 12" x="685.5502319335938" y="38.74264144897461" width="9.899494767189026" height="9.899494767189026" />
+        <instance id="408:541" name="down" x="715" y="31" width="12" height="8" />
+        <rounded-rectangle id="408:542" name="Rectangle 13" x="705" y="27" width="1" height="18" />
+      </frame>
+      <instance id="408:543" name="btn add note" x="37" y="679" width="99" height="28" />
+    </frame>
+    <frame id="408:545" name="panel 1" x="0" y="0" width="223" height="761">
+      <rounded-rectangle id="408:546" name="Rectangle" x="0" y="0" width="223" height="761" />
+      <rounded-rectangle id="408:547" name="Rectangle 2" x="0" y="707" width="223" height="1" />
+      <rounded-rectangle id="408:548" name="Rectangle 3" x="0" y="244" width="223" height="35" />
+      <text id="408:549" name="+ Add new note All n" x="24" y="243" width="90" height="504" />
+      <rounded-rectangle id="408:550" name="Rectangle 2" x="0" y="176" width="223" height="1" />
+      <text id="408:551" name="Search" x="24" y="143" width="43" height="16" />
+      <rounded-rectangle id="408:552" name="Rectangle 2" x="0" y="126" width="223" height="1" />
+      <boolean-operation id="408:553" name="Shape" x="24" y="102.3043441772461" width="11.149999618530273" height="9.69565200805664" />
+      <text id="408:557" name="a.sterh@gmail.com dr" x="24" y="82" width="123" height="32" />
+      <rounded-rectangle id="408:558" name="Rectangle 2" x="0" y="71" width="223" height="1" />
+      <text id="408:559" name="NoteBox" x="60" y="4" width="94" height="71" hidden="true" />
+      <text id="408:560" name="NoteBox" x="61" y="2" width="99" height="71" />
+      <instance id="408:561" name="btn new note" x="24" y="197" width="148" height="28" />
+    </frame>
+  </frame>
+  <frame id="309:554" name="Add new note without any book" x="-2859" y="2040" width="1020" height="761">
+    <frame id="309:555" name="panel 2" x="223" y="0" width="301" height="761" hidden="true">
+      <rounded-rectangle id="309:556" name="Rectangle 6" x="0" y="0" width="301" height="761" />
+      <rounded-rectangle id="309:557" name="Rectangle" x="300" y="0" width="1" height="761" />
+      <rounded-rectangle id="309:558" name="Rectangle 4" x="0" y="144" width="301" height="1" />
+      <rounded-rectangle id="309:559" name="Rectangle 4" x="0" y="49" width="301" height="1" />
+      <rounded-rectangle id="309:560" name="Rectangle 8" x="23" y="22" width="77" height="16" hidden="true" />
+      <text id="309:561" name="67 notes" x="23" y="19" width="47" height="16" />
+      <frame id="309:562" name="book" x="24" y="352" width="0" height="0" hidden="true" />
+      <rounded-rectangle id="309:568" name="Rectangle 19" x="23" y="65" width="184" height="17" />
+      <rounded-rectangle id="309:569" name="Rectangle 20" x="23" y="93" width="256" height="34" />
+    </frame>
+    <frame id="309:570" name="panel 3" x="223" y="32" width="797" height="707">
+      <text id="309:571" name="Add note…" x="35" y="106" width="706" height="440" />
+      <text id="309:572" name="Title" x="35" y="48" width="451" height="38" />
+      <frame id="309:573" name="Group 1" x="23" y="-10" width="0" height="0" hidden="true">
+        <rounded-rectangle id="309:574" name="Rectangle 14" x="23" y="-10" width="325" height="199" />
+        <rounded-rectangle id="309:575" name="Rectangle 15" x="23" y="65" width="325" height="37" />
+        <instance id="309:576" name="folder icon" x="35" y="41" width="10" height="10" />
+        <instance id="309:577" name="folder icon" x="35" y="79" width="10" height="10" />
+        <instance id="309:578" name="folder icon" x="35" y="117" width="10" height="10" />
+        <instance id="309:579" name="folder icon" x="35" y="155" width="10" height="10" />
+        <text id="309:580" name="Л. Н. Толстой. Анна" x="57" y="-1" width="195" height="171" />
+        <instance id="309:581" name="down" x="266" y="5" width="12" height="8" />
+        <instance id="309:582" name="folder icon green" x="35" y="3" width="10" height="10" />
+      </frame>
+      <text id="309:583" name="Л. Н. Толстой. Анна" x="35" y="0" width="71" height="16" />
+      <instance id="309:584" name="down" x="253" y="5" width="12" height="8" hidden="true" />
+      <frame id="309:585" name="Group" x="35" y="3" width="0" height="0" hidden="true" />
+      <text id="309:589" name="Новое поколение двор" x="36" y="23" width="451" height="38" hidden="true" />
+      <text id="309:590" name="Cancel" x="712" y="686" width="43" height="16" />
+      <rounded-rectangle id="309:591" name="Rectangle 9" x="0" y="660" width="797" height="1" />
+      <rounded-rectangle id="309:592" name="Rectangle 9" x="0" y="558" width="797" height="1" />
+      <frame id="309:593" name="tags" x="35" y="583" width="728" height="54">
+        <text id="309:594" name="Add tag…" x="1" y="28" width="58" height="16" />
+        <text id="309:595" name="Tags" x="1" y="0" width="31" height="16" />
+        <rounded-rectangle id="309:596" name="Rectangle 11" x="0" y="53" width="728" height="1" />
+        <rounded-rectangle id="309:597" name="Rectangle 12" x="686.2573852539062" y="29.55025291442871" width="9.899494767189026" height="9.899494767189026" />
+        <rounded-rectangle id="309:598" name="Rectangle 12" x="685.5502319335938" y="38.74264144897461" width="9.899494767189026" height="9.899494767189026" />
+        <instance id="309:599" name="down" x="715" y="31" width="12" height="8" />
+        <rounded-rectangle id="309:600" name="Rectangle 13" x="705" y="27" width="1" height="18" />
+      </frame>
+      <instance id="309:601" name="btn add note" x="37" y="679" width="99" height="28" />
+      <rounded-rectangle id="309:647" name="Rectangle 21" x="26" y="-5" width="608" height="26" />
+      <text id="408:495" name="Select from the list" x="652" y="0" width="117" height="16" />
+      <instance id="309:655" name="required" x="26" y="20" width="51" height="14" />
+      <rounded-rectangle id="309:649" name="Rectangle 22" x="26" y="41" width="743" height="39" />
+      <instance id="309:658" name="required" x="26" y="79" width="51" height="14" />
+      <rounded-rectangle id="309:650" name="Rectangle 23" x="26" y="102" width="743" height="412" />
+      <instance id="309:661" name="required" x="26" y="513" width="51" height="14" />
+    </frame>
+    <frame id="309:602" name="panel 1" x="0" y="0" width="223" height="761">
+      <rounded-rectangle id="309:603" name="Rectangle" x="0" y="0" width="223" height="761" />
+      <rounded-rectangle id="309:604" name="Rectangle 2" x="0" y="707" width="223" height="1" />
+      <rounded-rectangle id="309:605" name="Rectangle 3" x="0" y="244" width="223" height="35" />
+      <text id="309:606" name="+ Add new note All n" x="24" y="243" width="90" height="504" />
+      <rounded-rectangle id="309:607" name="Rectangle 2" x="0" y="176" width="223" height="1" />
+      <text id="309:608" name="Search" x="24" y="143" width="43" height="16" />
+      <rounded-rectangle id="309:609" name="Rectangle 2" x="0" y="126" width="223" height="1" />
+      <boolean-operation id="309:610" name="Shape" x="24" y="102.3043441772461" width="11.149999618530273" height="9.69565200805664" />
+      <text id="309:614" name="a.sterh@gmail.com dr" x="24" y="82" width="123" height="32" />
+      <rounded-rectangle id="309:615" name="Rectangle 2" x="0" y="71" width="223" height="1" />
+      <text id="309:616" name="NoteBox" x="60" y="4" width="94" height="71" hidden="true" />
+      <text id="309:617" name="NoteBox" x="61" y="2" width="99" height="71" />
+      <instance id="309:618" name="btn new note" x="24" y="197" width="148" height="28" />
+    </frame>
+  </frame>
+  <frame id="309:673" name="Add new note without any book" x="-2859" y="2873" width="1020" height="761">
+    <frame id="309:674" name="panel 2" x="223" y="0" width="301" height="761" hidden="true">
+      <rounded-rectangle id="309:675" name="Rectangle 6" x="0" y="0" width="301" height="761" />
+      <rounded-rectangle id="309:676" name="Rectangle" x="300" y="0" width="1" height="761" />
+      <rounded-rectangle id="309:677" name="Rectangle 4" x="0" y="144" width="301" height="1" />
+      <rounded-rectangle id="309:678" name="Rectangle 4" x="0" y="49" width="301" height="1" />
+      <rounded-rectangle id="309:679" name="Rectangle 8" x="23" y="22" width="77" height="16" hidden="true" />
+      <text id="309:680" name="67 notes" x="23" y="19" width="47" height="16" />
+      <frame id="309:681" name="book" x="24" y="352" width="0" height="0" hidden="true" />
+      <rounded-rectangle id="309:687" name="Rectangle 19" x="23" y="65" width="184" height="17" />
+      <rounded-rectangle id="309:688" name="Rectangle 20" x="23" y="93" width="256" height="34" />
+    </frame>
+    <frame id="309:689" name="panel 3" x="223" y="32" width="797" height="707">
+      <text id="309:690" name="Add note…" x="35" y="106" width="706" height="440" />
+      <text id="309:691" name="Title" x="35" y="48" width="451" height="38" />
+      <frame id="309:692" name="Group 1" x="23" y="-10" width="0" height="0" hidden="true">
+        <rounded-rectangle id="309:693" name="Rectangle 14" x="23" y="-10" width="325" height="199" />
+        <rounded-rectangle id="309:694" name="Rectangle 15" x="23" y="65" width="325" height="37" />
+        <instance id="309:695" name="folder icon" x="35" y="41" width="10" height="10" />
+        <instance id="309:696" name="folder icon" x="35" y="79" width="10" height="10" />
+        <instance id="309:697" name="folder icon" x="35" y="117" width="10" height="10" />
+        <instance id="309:698" name="folder icon" x="35" y="155" width="10" height="10" />
+        <text id="309:699" name="Л. Н. Толстой. Анна" x="57" y="-1" width="195" height="171" />
+        <instance id="309:700" name="down" x="266" y="5" width="12" height="8" />
+        <instance id="309:701" name="folder icon green" x="35" y="3" width="10" height="10" />
+      </frame>
+      <text id="309:702" name="Л. Н. Толстой. Анна" x="55" y="0" width="128" height="16" />
+      <text id="409:619" name="+ Add new book" x="669" y="-3" width="100" height="16" />
+      <instance id="309:703" name="down" x="253" y="5" width="12" height="8" />
+      <frame id="309:704" name="Group" x="35" y="3" width="10" height="10" />
+      <text id="309:708" name="Новое поколение двор" x="36" y="23" width="451" height="38" hidden="true" />
+      <text id="309:709" name="Cancel" x="712" y="686" width="43" height="16" />
+      <text id="409:634" name="Cancel" x="632" y="686" width="40" height="16" />
+      <rounded-rectangle id="309:710" name="Rectangle 9" x="0" y="660" width="797" height="1" />
+      <rounded-rectangle id="309:711" name="Rectangle 9" x="0" y="558" width="797" height="1" />
+      <frame id="309:712" name="tags" x="35" y="583" width="728" height="54">
+        <text id="309:713" name="Add tag…" x="1" y="28" width="58" height="16" />
+        <text id="309:714" name="Tags" x="1" y="0" width="31" height="16" />
+        <rounded-rectangle id="309:715" name="Rectangle 11" x="0" y="53" width="728" height="1" />
+        <rounded-rectangle id="309:716" name="Rectangle 12" x="686.2573852539062" y="29.55025291442871" width="9.899494767189026" height="9.899494767189026" />
+        <rounded-rectangle id="309:717" name="Rectangle 12" x="685.5502319335938" y="38.74264144897461" width="9.899494767189026" height="9.899494767189026" />
+        <instance id="309:718" name="down" x="715" y="31" width="12" height="8" />
+        <rounded-rectangle id="309:719" name="Rectangle 13" x="705" y="27" width="1" height="18" />
+      </frame>
+      <instance id="309:720" name="btn add note" x="37" y="679" width="99" height="28" />
+      <rounded-rectangle id="309:725" name="Rectangle 23" x="26" y="102" width="743" height="412" />
+      <instance id="309:726" name="required" x="26" y="513" width="51" height="14" />
+    </frame>
+    <frame id="309:727" name="panel 1" x="0" y="0" width="223" height="761">
+      <rounded-rectangle id="309:728" name="Rectangle" x="0" y="0" width="223" height="761" />
+      <rounded-rectangle id="309:729" name="Rectangle 2" x="0" y="707" width="223" height="1" />
+      <rounded-rectangle id="309:730" name="Rectangle 3" x="0" y="244" width="223" height="35" />
+      <text id="309:731" name="+ Add new note All n" x="24" y="243" width="90" height="504" />
+      <rounded-rectangle id="309:732" name="Rectangle 2" x="0" y="176" width="223" height="1" />
+      <text id="309:733" name="Search" x="24" y="143" width="43" height="16" />
+      <rounded-rectangle id="309:734" name="Rectangle 2" x="0" y="126" width="223" height="1" />
+      <boolean-operation id="309:735" name="Shape" x="24" y="102.3043441772461" width="11.149999618530273" height="9.69565200805664" />
+      <text id="309:739" name="a.sterh@gmail.com dr" x="24" y="82" width="123" height="32" />
+      <rounded-rectangle id="309:740" name="Rectangle 2" x="0" y="71" width="223" height="1" />
+      <text id="309:741" name="NoteBox" x="60" y="4" width="94" height="71" hidden="true" />
+      <text id="309:742" name="NoteBox" x="61" y="2" width="99" height="71" />
+      <instance id="309:743" name="btn new note" x="24" y="197" width="148" height="28" />
+    </frame>
+  </frame>
+  <frame id="408:386" name="Add new note without any book" x="-1799" y="2873" width="1020" height="761">
+    <frame id="408:387" name="panel 2" x="223" y="0" width="301" height="761" hidden="true">
+      <rounded-rectangle id="408:388" name="Rectangle 6" x="0" y="0" width="301" height="761" />
+      <rounded-rectangle id="408:389" name="Rectangle" x="300" y="0" width="1" height="761" />
+      <rounded-rectangle id="408:390" name="Rectangle 4" x="0" y="144" width="301" height="1" />
+      <rounded-rectangle id="408:391" name="Rectangle 4" x="0" y="49" width="301" height="1" />
+      <rounded-rectangle id="408:392" name="Rectangle 8" x="23" y="22" width="77" height="16" hidden="true" />
+      <text id="408:393" name="67 notes" x="23" y="19" width="47" height="16" />
+      <frame id="408:394" name="book" x="24" y="352" width="0" height="0" hidden="true" />
+      <rounded-rectangle id="408:400" name="Rectangle 19" x="23" y="65" width="184" height="17" />
+      <rounded-rectangle id="408:401" name="Rectangle 20" x="23" y="93" width="256" height="34" />
+    </frame>
+    <frame id="408:402" name="panel 3" x="223" y="32" width="797" height="707">
+      <rounded-rectangle id="408:434" name="Rectangle 23" x="26" y="102" width="743" height="412" />
+      <text id="408:404" name="Title" x="35" y="48" width="451" height="38" />
+      <frame id="408:405" name="Group 1" x="23" y="-10" width="258" height="195">
+        <rounded-rectangle id="408:406" name="Rectangle 14" x="23" y="-10" width="258" height="195" />
+        <rounded-rectangle id="408:407" name="Rectangle 15" x="23" y="65" width="258" height="37" hidden="true" />
+        <instance id="408:408" name="folder icon" x="35" y="41" width="10" height="10" />
+        <instance id="408:409" name="folder icon" x="35" y="79" width="10" height="10" />
+        <instance id="408:410" name="folder icon" x="35" y="117" width="10" height="10" />
+        <instance id="408:411" name="folder icon" x="35" y="155" width="10" height="10" />
+        <text id="408:412" name="Л. Н. Толстой. Анна" x="57" y="-1" width="128" height="171" />
+        <instance id="408:413" name="down" x="266" y="5" width="12" height="8" hidden="true" />
+        <instance id="408:414" name="folder icon green" x="35" y="3" width="10" height="10" />
+      </frame>
+      <text id="408:415" name="Л. Н. Толстой. Анна" x="55" y="0" width="128" height="16" hidden="true" />
+      <instance id="408:416" name="down" x="253" y="5" width="12" height="8" />
+      <frame id="408:417" name="Group" x="35" y="3" width="10" height="10" />
+      <text id="408:421" name="Новое поколение двор" x="36" y="23" width="451" height="38" hidden="true" />
+      <text id="408:422" name="Cancel" x="712" y="686" width="43" height="16" />
+      <rounded-rectangle id="408:423" name="Rectangle 9" x="0" y="660" width="797" height="1" />
+      <rounded-rectangle id="408:424" name="Rectangle 9" x="0" y="558" width="797" height="1" />
+      <frame id="408:425" name="tags" x="35" y="583" width="728" height="54">
+        <text id="408:426" name="Add tag…" x="1" y="28" width="58" height="16" />
+        <text id="408:427" name="Tags" x="1" y="0" width="31" height="16" />
+        <rounded-rectangle id="408:428" name="Rectangle 11" x="0" y="53" width="728" height="1" />
+        <frame id="714:460" name="Group 3" x="685.5502319335938" y="29.5502872467041" width="9.899540901184082" height="9.899499893188477" />
+        <instance id="408:431" name="down" x="715" y="31" width="12" height="8" />
+        <rounded-rectangle id="408:432" name="Rectangle 13" x="705" y="27" width="1" height="18" />
+      </frame>
+      <instance id="408:433" name="btn add note" x="37" y="679" width="99" height="28" />
+      <instance id="408:435" name="required" x="26" y="513" width="51" height="14" />
+      <text id="408:487" name="+ Add new book" x="669" y="-3" width="100" height="16" />
+      <rounded-rectangle id="408:494" name="Rectangle 27" x="25" y="184" width="256" height="1" />
+    </frame>
+    <frame id="408:436" name="panel 1" x="0" y="0" width="223" height="761">
+      <rounded-rectangle id="408:437" name="Rectangle" x="0" y="0" width="223" height="761" />
+      <rounded-rectangle id="408:438" name="Rectangle 2" x="0" y="707" width="223" height="1" />
+      <rounded-rectangle id="408:439" name="Rectangle 3" x="0" y="244" width="223" height="35" />
+      <text id="408:440" name="+ Add new note All n" x="24" y="243" width="90" height="504" />
+      <rounded-rectangle id="408:441" name="Rectangle 2" x="0" y="176" width="223" height="1" />
+      <text id="408:442" name="Search" x="24" y="143" width="43" height="16" />
+      <rounded-rectangle id="408:443" name="Rectangle 2" x="0" y="126" width="223" height="1" />
+      <boolean-operation id="408:444" name="Shape" x="24" y="102.3043441772461" width="11.149999618530273" height="9.69565200805664" />
+      <text id="408:448" name="a.sterh@gmail.com dr" x="24" y="82" width="123" height="32" />
+      <rounded-rectangle id="408:449" name="Rectangle 2" x="0" y="71" width="223" height="1" />
+      <text id="408:450" name="NoteBox" x="60" y="4" width="94" height="71" hidden="true" />
+      <text id="408:451" name="NoteBox" x="61" y="2" width="99" height="71" />
+      <instance id="408:452" name="btn new note" x="24" y="197" width="148" height="28" />
+    </frame>
+  </frame>
+  <frame id="0:1087" name="Note not found" x="-1778" y="363" width="1020" height="761">
+    <frame id="0:1088" name="panel 3" x="622" y="251" width="343" height="134">
+      <text id="0:1089" name="You ask a note which" x="755" y="321" width="190" height="64" />
+      <text id="0:1090" name="This note does not f" x="753" y="252" width="212" height="60" />
+      <text id="0:1091" name="Новое поколение двор" x="533" y="213" width="451" height="38" hidden="true" />
+      <instance id="0:1092" name="note svg" x="622" y="251" width="88.95454406738281" height="95" />
+    </frame>
+    <frame id="0:1093" name="panel 2" x="223" y="0" width="301" height="761">
+      <rounded-rectangle id="0:1094" name="Rectangle 6" x="0" y="0" width="301" height="761" />
+      <rounded-rectangle id="0:1095" name="Rectangle" x="300" y="0" width="1" height="761" />
+      <rounded-rectangle id="0:1096" name="Rectangle 7" x="0" y="271" width="300" height="96" />
+      <rounded-rectangle id="0:1097" name="Rectangle 4" x="0" y="367" width="301" height="1" />
+      <text id="0:1098" name="— Это новое поколени" x="23" y="315" width="256" height="35" />
+      <text id="0:1099" name="Новое поколение двор" x="23" y="287" width="226" height="19" />
+      <rounded-rectangle id="0:1100" name="Rectangle 4" x="0" y="270" width="301" height="1" />
+      <text id="0:1101" name="Вопрос для него сост" x="23" y="218" width="256" height="35" />
+      <text id="0:1102" name="искренни ли эти люди" x="23" y="190" width="177" height="19" />
+      <rounded-rectangle id="0:1103" name="Rectangle 4" x="0" y="174" width="301" height="1" />
+      <text id="0:1104" name="Если добро имеет при" x="23" y="122" width="256" height="35" />
+      <text id="0:1105" name="Если добро имеет при" x="23" y="94" width="203" height="19" />
+      <rounded-rectangle id="0:1106" name="Rectangle 4" x="0" y="79" width="301" height="1" />
+      <text id="1002:503" name="67 notes" x="23" y="51" width="123" height="14" />
+      <text id="1002:504" name="67 notes" x="36" y="27" width="30" height="14" />
+      <rounded-rectangle id="1002:506" name="Rectangle 13" x="255.25732421875" y="28.55029296875" width="9.899494767189026" height="9.899494767189026" />
+      <rounded-rectangle id="1002:507" name="Rectangle 12" x="254.55029296875" y="37.74267578125" width="9.899494767189026" height="9.899494767189026" />
+      <rounded-rectangle id="1002:505" name="Rectangle 5" x="23" y="19" width="253" height="28" />
+      <rounded-rectangle id="0:1107" name="Rectangle 8" x="23" y="22" width="77" height="16" hidden="true" />
+      <frame id="0:1111" name="book" x="24" y="352" width="11" height="13" hidden="true" />
+    </frame>
+    <frame id="0:1118" name="panel 1" x="0" y="0" width="223" height="761">
+      <rounded-rectangle id="0:1119" name="Rectangle" x="0" y="0" width="223" height="761" />
+      <rounded-rectangle id="0:1120" name="Rectangle 2" x="0" y="689" width="223" height="1" />
+      <rounded-rectangle id="0:1125" name="Rectangle 2" x="0" y="126" width="223" height="1" />
+      <boolean-operation id="0:1128" name="Shape" x="24" y="102.3043441772461" width="11.149999618530273" height="9.69565200805664" />
+      <text id="0:1130" name="a.sterh@gmail.com dr" x="24" y="82" width="123" height="32" />
+      <rounded-rectangle id="0:1131" name="Rectangle 2" x="0" y="71" width="223" height="1" />
+      <text id="0:1132" name="NoteBox" x="60" y="4" width="94" height="71" hidden="true" />
+      <text id="0:1133" name="NoteBox" x="61" y="2" width="99" height="71" />
+      <rounded-rectangle id="1002:498" name="Rectangle 3" x="0" y="197" width="223" height="35" />
+      <text id="1002:499" name="+ Add new note All n" x="24" y="196" width="69" height="556" />
+      <instance id="1002:500" name="btn new note" x="24" y="147" width="148" height="28" />
+    </frame>
+  </frame>
+  <frame id="0:1193" name="Show note mobile" x="2777" y="-464" width="420" height="761">
+    <frame id="0:1194" name="panel 3" x="1" y="72" width="487" height="671">
+      <text id="0:1195" name="— Это новое поколени" x="35" y="85" width="354" height="439" />
+      <text id="0:1196" name="Новое поколение двор" x="35" y="38" width="354" height="38" />
+      <text id="0:1197" name="Л. Н. Толстой. Анна" x="50" y="0" width="195" height="16" />
+      <frame id="0:1198" name="Group" x="35" y="3" width="10" height="10" />
+      <text id="0:1202" name="Новое поколение двор" x="36" y="23" width="451" height="38" hidden="true" />
+      <instance id="0:1203" name="btn edit" x="36" y="643" width="57" height="28" />
+      <rounded-rectangle id="0:1204" name="Rectangle 9" x="0" y="627" width="417" height="1" />
+      <frame id="0:1205" name="tags" x="36" y="563" width="228" height="44">
+        <rounded-rectangle id="0:1206" name="Rectangle 10" x="0" y="24" width="77" height="20" />
+        <text id="0:1207" name="классика" x="7" y="25" width="62" height="16" />
+        <rounded-rectangle id="0:1208" name="Rectangle 10" x="87" y="24" width="100" height="20" />
+        <text id="0:1209" name="прочитанное" x="94" y="25" width="86" height="16" />
+        <rounded-rectangle id="0:1210" name="Rectangle 10" x="197" y="24" width="31" height="20" />
+        <text id="0:1211" name="5+" x="204" y="25" width="16" height="16" />
+        <text id="0:1212" name="Tags" x="0" y="0" width="31" height="16" />
+      </frame>
+      <rounded-rectangle id="0:1213" name="Rectangle 9" x="0" y="547" width="417" height="1" />
+    </frame>
+    <frame id="0:1214" name="panel 2" x="0" y="0" width="421" height="761" hidden="true">
+      <rounded-rectangle id="0:1215" name="Rectangle 6" x="0" y="0" width="421" height="761" />
+      <rounded-rectangle id="0:1216" name="Rectangle" x="300" y="0" width="1" height="761" hidden="true" />
+      <rounded-rectangle id="0:1217" name="Rectangle 7" x="0" y="291" width="418" height="96" />
+      <rounded-rectangle id="0:1218" name="Rectangle 4" x="0" y="387" width="420" height="1" />
+      <text id="0:1219" name="— Это новое поколени" x="23" y="335" width="368" height="36" />
+      <text id="0:1220" name="Новое поколение двор" x="23" y="307" width="226" height="19" />
+      <rounded-rectangle id="0:1221" name="Rectangle 4" x="0" y="290" width="420" height="1" />
+      <text id="0:1222" name="Вопрос для него сост" x="23" y="238" width="369" height="35" />
+      <text id="0:1223" name="искренни ли эти люди" x="23" y="210" width="177" height="19" />
+      <rounded-rectangle id="0:1224" name="Rectangle 4" x="0" y="194" width="420" height="1" />
+      <text id="0:1225" name="Если добро имеет при" x="23" y="142" width="372" height="35" />
+      <text id="0:1226" name="Если добро имеет при" x="23" y="114" width="203" height="19" />
+      <rounded-rectangle id="0:1227" name="Rectangle 4" x="0" y="99" width="420" height="1" />
+      <rounded-rectangle id="0:1228" name="Rectangle 8" x="23" y="72" width="77" height="16" hidden="true" />
+      <text id="0:1229" name="67 notes" x="23" y="69" width="55" height="16" />
+    </frame>
+    <frame id="0:1230" name="header" x="0" y="0" width="421" height="50">
+      <rounded-rectangle id="0:1231" name="Rectangle 5" x="0" y="0" width="421" height="50" />
+      <text id="0:1232" name="ALL NOTES" x="74" y="18" width="77" height="16" />
+      <instance id="0:1233" name="humburger" x="26" y="17" width="23" height="19" />
+    </frame>
+    <frame id="0:1234" name="panel 1" x="0" y="0" width="223" height="761" hidden="true">
+      <rounded-rectangle id="0:1235" name="Rectangle" x="0" y="0" width="223" height="761" />
+      <rounded-rectangle id="0:1236" name="Rectangle 2" x="0" y="689" width="223" height="1" />
+      <rounded-rectangle id="0:1237" name="Rectangle 3" x="0" y="234" width="223" height="35" />
+      <text id="0:1238" name="+ Add new note All n" x="24" y="197" width="97" height="540" />
+      <rounded-rectangle id="0:1239" name="Rectangle 2" x="0" y="176" width="223" height="1" />
+      <text id="0:1240" name="Search" x="24" y="143" width="43" height="16" />
+      <rounded-rectangle id="0:1241" name="Rectangle 2" x="0" y="126" width="223" height="1" />
+      <boolean-operation id="0:1244" name="Shape" x="24" y="102.3043441772461" width="11.149999618530273" height="9.69565200805664" />
+      <text id="0:1246" name="a.sterh@gmail.com dr" x="24" y="82" width="123" height="32" />
+      <rounded-rectangle id="0:1247" name="Rectangle 2" x="0" y="71" width="223" height="1" />
+      <text id="0:1248" name="NoteBox" x="60" y="4" width="94" height="71" hidden="true" />
+      <text id="0:1249" name="NoteBox" x="61" y="2" width="99" height="71" />
+    </frame>
+  </frame>
+  <frame id="0:1250" name="Show notes list mobile" x="2257" y="-464" width="420" height="761">
+    <frame id="0:1251" name="panel 3" x="301" y="68" width="496" height="631" hidden="true">
+      <text id="0:1252" name="— Это новое поколени" x="35" y="89" width="422" height="440" />
+      <text id="0:1253" name="Новое поколение двор" x="35" y="42" width="451" height="38" />
+      <text id="0:1254" name="Л. Н. Толстой. Анна" x="50" y="4" width="195" height="16" />
+      <frame id="0:1255" name="Group" x="35" y="7" width="10" height="10" />
+      <text id="0:1259" name="Новое поколение двор" x="36" y="27" width="451" height="38" hidden="true" />
+      <instance id="0:1260" name="btn edit" x="405" y="0" width="57" height="28" />
+      <rounded-rectangle id="0:1261" name="Rectangle 9" x="0" y="562" width="496" height="1" />
+      <frame id="0:1262" name="tags" x="36" y="587" width="228" height="44">
+        <rounded-rectangle id="0:1263" name="Rectangle 10" x="0" y="24" width="77" height="20" />
+        <text id="0:1264" name="классика" x="7" y="25" width="62" height="16" />
+        <rounded-rectangle id="0:1265" name="Rectangle 10" x="87" y="24" width="100" height="20" />
+        <text id="0:1266" name="прочитанное" x="94" y="25" width="86" height="16" />
+        <rounded-rectangle id="0:1267" name="Rectangle 10" x="197" y="24" width="31" height="20" />
+        <text id="0:1268" name="5+" x="204" y="25" width="16" height="16" />
+        <text id="0:1269" name="Tags" x="0" y="0" width="31" height="16" />
+      </frame>
+    </frame>
+    <frame id="0:1270" name="panel 2" x="0" y="0" width="421" height="761">
+      <rounded-rectangle id="0:1271" name="Rectangle 6" x="0" y="0" width="421" height="761" />
+      <rounded-rectangle id="0:1272" name="Rectangle" x="300" y="0" width="1" height="761" hidden="true" />
+      <rounded-rectangle id="0:1273" name="Rectangle 7" x="0" y="291" width="418" height="96" />
+      <rounded-rectangle id="0:1274" name="Rectangle 4" x="0" y="387" width="420" height="1" />
+      <text id="0:1275" name="— Это новое поколени" x="23" y="335" width="368" height="36" />
+      <text id="0:1276" name="Новое поколение двор" x="23" y="307" width="226" height="19" />
+      <rounded-rectangle id="0:1277" name="Rectangle 4" x="0" y="290" width="420" height="1" />
+      <text id="0:1278" name="Вопрос для него сост" x="23" y="238" width="369" height="35" />
+      <text id="0:1279" name="искренни ли эти люди" x="23" y="210" width="177" height="19" />
+      <rounded-rectangle id="0:1280" name="Rectangle 4" x="0" y="194" width="420" height="1" />
+      <text id="0:1281" name="Если добро имеет при" x="23" y="142" width="372" height="35" />
+      <text id="0:1282" name="Если добро имеет при" x="23" y="114" width="203" height="19" />
+      <rounded-rectangle id="0:1283" name="Rectangle 4" x="0" y="99" width="420" height="1" />
+      <rounded-rectangle id="0:1284" name="Rectangle 8" x="23" y="72" width="77" height="16" hidden="true" />
+      <text id="0:1285" name="67 notes" x="23" y="69" width="55" height="16" />
+    </frame>
+    <frame id="0:1286" name="header" x="0" y="0" width="421" height="50">
+      <rounded-rectangle id="0:1287" name="Rectangle 5" x="0" y="0" width="421" height="50" />
+      <text id="0:1288" name="ALL NOTES" x="74" y="18" width="77" height="16" />
+      <instance id="0:1289" name="humburger" x="26" y="17" width="23" height="19" />
+    </frame>
+    <frame id="0:1290" name="panel 1" x="0" y="0" width="223" height="761" hidden="true">
+      <rounded-rectangle id="0:1291" name="Rectangle" x="0" y="0" width="223" height="761" />
+      <rounded-rectangle id="0:1292" name="Rectangle 2" x="0" y="689" width="223" height="1" />
+      <rounded-rectangle id="0:1293" name="Rectangle 3" x="0" y="234" width="223" height="35" />
+      <text id="0:1294" name="+ Add new note All n" x="24" y="197" width="97" height="540" />
+      <rounded-rectangle id="0:1295" name="Rectangle 2" x="0" y="176" width="223" height="1" />
+      <text id="0:1296" name="Search" x="24" y="143" width="43" height="16" />
+      <rounded-rectangle id="0:1297" name="Rectangle 2" x="0" y="126" width="223" height="1" />
+      <boolean-operation id="0:1300" name="Shape" x="24" y="102.3043441772461" width="11.149999618530273" height="9.69565200805664" />
+      <text id="0:1302" name="a.sterh@gmail.com dr" x="24" y="82" width="123" height="32" />
+      <rounded-rectangle id="0:1303" name="Rectangle 2" x="0" y="71" width="223" height="1" />
+      <text id="0:1304" name="NoteBox" x="60" y="4" width="94" height="71" hidden="true" />
+      <text id="0:1305" name="NoteBox" x="61" y="2" width="99" height="71" />
+    </frame>
+  </frame>
+  <frame id="0:1306" name="Show note tablet: open menu" x="1353" y="-464" width="804" height="761">
+    <frame id="0:1307" name="panel 3" x="301" y="68" width="496" height="631">
+      <text id="0:1308" name="— Это новое поколени" x="35" y="89" width="422" height="440" />
+      <text id="0:1309" name="Новое поколение двор" x="35" y="42" width="451" height="38" />
+      <text id="0:1310" name="Л. Н. Толстой. Анна" x="50" y="4" width="195" height="16" />
+      <frame id="0:1311" name="Group" x="35" y="7" width="10" height="10" />
+      <text id="0:1315" name="Новое поколение двор" x="36" y="27" width="451" height="38" hidden="true" />
+      <instance id="0:1316" name="btn edit" x="405" y="0" width="57" height="28" />
+      <rounded-rectangle id="0:1317" name="Rectangle 9" x="0" y="562" width="496" height="1" />
+      <frame id="0:1318" name="tags" x="36" y="587" width="228" height="44">
+        <rounded-rectangle id="0:1319" name="Rectangle 10" x="0" y="24" width="77" height="20" />
+        <text id="0:1320" name="классика" x="7" y="25" width="62" height="16" />
+        <rounded-rectangle id="0:1321" name="Rectangle 10" x="87" y="24" width="100" height="20" />
+        <text id="0:1322" name="прочитанное" x="94" y="25" width="86" height="16" />
+        <rounded-rectangle id="0:1323" name="Rectangle 10" x="197" y="24" width="31" height="20" />
+        <text id="0:1324" name="5+" x="204" y="25" width="16" height="16" />
+        <text id="0:1325" name="Tags" x="0" y="0" width="31" height="16" />
+      </frame>
+    </frame>
+    <frame id="0:1326" name="panel 2" x="0" y="0" width="301" height="761">
+      <rounded-rectangle id="0:1327" name="Rectangle 6" x="0" y="0" width="301" height="761" />
+      <rounded-rectangle id="0:1328" name="Rectangle" x="300" y="0" width="1" height="761" />
+      <rounded-rectangle id="0:1329" name="Rectangle 7" x="0" y="291" width="300" height="96" />
+      <rounded-rectangle id="0:1330" name="Rectangle 4" x="0" y="387" width="301" height="1" />
+      <text id="0:1331" name="— Это новое поколени" x="23" y="335" width="256" height="35" />
+      <text id="0:1332" name="Новое поколение двор" x="23" y="307" width="226" height="19" />
+      <rounded-rectangle id="0:1333" name="Rectangle 4" x="0" y="290" width="301" height="1" />
+      <text id="0:1334" name="Вопрос для него сост" x="23" y="238" width="256" height="35" />
+      <text id="0:1335" name="искренни ли эти люди" x="23" y="210" width="177" height="19" />
+      <rounded-rectangle id="0:1336" name="Rectangle 4" x="0" y="194" width="301" height="1" />
+      <text id="0:1337" name="Если добро имеет при" x="23" y="142" width="256" height="35" />
+      <text id="0:1338" name="Если добро имеет при" x="23" y="114" width="203" height="19" />
+      <rounded-rectangle id="0:1339" name="Rectangle 4" x="0" y="99" width="301" height="1" />
+      <rounded-rectangle id="0:1340" name="Rectangle 8" x="23" y="72" width="77" height="16" hidden="true" />
+      <text id="0:1341" name="67 notes" x="23" y="69" width="55" height="16" />
+    </frame>
+    <frame id="0:1342" name="header" x="0" y="0" width="804" height="50">
+      <rounded-rectangle id="0:1343" name="Rectangle 5" x="0" y="0" width="804" height="50" />
+      <instance id="0:1344" name="humburger" x="26" y="17" width="23" height="19" />
+    </frame>
+    <frame id="0:1345" name="panel 1" x="0" y="0" width="223" height="761">
+      <rounded-rectangle id="0:1346" name="Rectangle" x="0" y="0" width="223" height="761" />
+      <rounded-rectangle id="0:1347" name="Rectangle 2" x="0" y="689" width="223" height="1" />
+      <rounded-rectangle id="0:1348" name="Rectangle 3" x="0" y="234" width="223" height="35" />
+      <text id="0:1349" name="+ Add new note All n" x="24" y="197" width="97" height="540" />
+      <rounded-rectangle id="0:1350" name="Rectangle 2" x="0" y="176" width="223" height="1" />
+      <text id="0:1351" name="Search" x="24" y="143" width="43" height="16" />
+      <rounded-rectangle id="0:1352" name="Rectangle 2" x="0" y="126" width="223" height="1" />
+      <boolean-operation id="0:1355" name="Shape" x="24" y="102.3043441772461" width="11.149999618530273" height="9.69565200805664" />
+      <text id="0:1357" name="a.sterh@gmail.com dr" x="24" y="82" width="123" height="32" />
+      <rounded-rectangle id="0:1358" name="Rectangle 2" x="0" y="71" width="223" height="1" />
+      <text id="0:1359" name="NoteBox" x="60" y="4" width="94" height="71" hidden="true" />
+      <text id="0:1360" name="NoteBox" x="61" y="2" width="99" height="71" />
+    </frame>
+    <rounded-rectangle id="0:1361" name="Rectangle 14" x="223" y="0" width="1" height="50" />
+    <rounded-rectangle id="0:1362" name="Rectangle 15" x="223" y="0" width="582" height="761" />
+  </frame>
+  <frame id="0:1363" name="Show note tablet" x="449" y="-464" width="804" height="761">
+    <frame id="0:1364" name="panel 3" x="301" y="72" width="496" height="663">
+      <symbol id="189:272" name="— Это новое поколени" x="35" y="85" width="422" height="415" />
+      <text id="0:1366" name="Новое поколение двор" x="35" y="38" width="451" height="38" />
+      <text id="0:1367" name="Л. Н. Толстой. Анна" x="50" y="0" width="195" height="16" />
+      <frame id="0:1368" name="Group" x="35" y="3" width="10" height="10" />
+      <text id="0:1372" name="Новое поколение двор" x="36" y="23" width="451" height="38" hidden="true" />
+      <instance id="0:1373" name="btn edit" x="35" y="635" width="57" height="28" />
+      <rounded-rectangle id="0:1374" name="Rectangle 9" x="0" y="518" width="496" height="1" />
+      <rounded-rectangle id="0:1375" name="Rectangle 9" x="0" y="608" width="496" height="1" />
+      <frame id="0:1376" name="tags" x="36" y="543" width="228" height="44">
+        <rounded-rectangle id="0:1377" name="Rectangle 10" x="0" y="24" width="77" height="20" />
+        <text id="0:1378" name="классика" x="7" y="25" width="62" height="16" />
+        <rounded-rectangle id="0:1379" name="Rectangle 10" x="87" y="24" width="100" height="20" />
+        <text id="0:1380" name="прочитанное" x="94" y="25" width="86" height="16" />
+        <rounded-rectangle id="0:1381" name="Rectangle 10" x="197" y="24" width="31" height="20" />
+        <text id="0:1382" name="5+" x="204" y="25" width="16" height="16" />
+        <text id="0:1383" name="Tags" x="0" y="0" width="31" height="16" />
+      </frame>
+    </frame>
+    <frame id="0:1384" name="panel 2" x="0" y="0" width="301" height="761">
+      <rounded-rectangle id="0:1385" name="Rectangle 6" x="0" y="0" width="301" height="761" />
+      <rounded-rectangle id="0:1386" name="Rectangle" x="300" y="0" width="1" height="761" />
+      <rounded-rectangle id="0:1387" name="Rectangle 7" x="0" y="291" width="300" height="96" />
+      <rounded-rectangle id="0:1388" name="Rectangle 4" x="0" y="387" width="301" height="1" />
+      <text id="0:1389" name="— Это новое поколени" x="23" y="335" width="507" height="36" />
+      <text id="0:1390" name="Новое поколение двор" x="23" y="307" width="226" height="19" />
+      <rounded-rectangle id="0:1391" name="Rectangle 4" x="0" y="290" width="301" height="1" />
+      <text id="0:1392" name="Вопрос для него сост" x="23" y="238" width="256" height="35" />
+      <text id="0:1393" name="искренни ли эти люди" x="23" y="210" width="177" height="19" />
+      <rounded-rectangle id="0:1394" name="Rectangle 4" x="0" y="194" width="301" height="1" />
+      <text id="0:1395" name="Если добро имеет при" x="23" y="143" width="256" height="35" />
+      <text id="0:1396" name="Если добро имеет при" x="23" y="114" width="203" height="19" />
+      <rounded-rectangle id="0:1397" name="Rectangle 4" x="0" y="99" width="301" height="1" />
+      <rounded-rectangle id="0:1398" name="Rectangle 8" x="23" y="72" width="77" height="16" hidden="true" />
+      <text id="0:1399" name="67 notes" x="23" y="69" width="55" height="16" />
+    </frame>
+    <frame id="0:1400" name="header" x="0" y="0" width="804" height="50">
+      <rounded-rectangle id="0:1401" name="Rectangle 5" x="0" y="0" width="804" height="50" />
+      <instance id="0:1402" name="humburger" x="26" y="17" width="23" height="19" />
+    </frame>
+    <frame id="0:1403" name="panel 1" x="0" y="0" width="223" height="761" hidden="true">
+      <rounded-rectangle id="0:1404" name="Rectangle" x="0" y="0" width="223" height="761" />
+      <rounded-rectangle id="0:1405" name="Rectangle 2" x="0" y="689" width="223" height="1" />
+      <rounded-rectangle id="0:1406" name="Rectangle 3" x="0" y="234" width="223" height="35" />
+      <text id="0:1407" name="+ Add new note All n" x="24" y="197" width="97" height="540" />
+      <rounded-rectangle id="0:1408" name="Rectangle 2" x="0" y="176" width="223" height="1" />
+      <text id="0:1409" name="Search" x="24" y="143" width="43" height="16" />
+      <rounded-rectangle id="0:1410" name="Rectangle 2" x="0" y="126" width="223" height="1" />
+      <boolean-operation id="0:1413" name="Shape" x="24" y="102.3043441772461" width="11.149999618530273" height="9.69565200805664" />
+      <text id="0:1415" name="a.sterh@gmail.com dr" x="24" y="82" width="123" height="32" />
+      <rounded-rectangle id="0:1416" name="Rectangle 2" x="0" y="71" width="223" height="1" />
+      <text id="0:1417" name="NoteBox" x="60" y="4" width="94" height="71" hidden="true" />
+      <text id="0:1418" name="NoteBox" x="61" y="2" width="99" height="71" />
+    </frame>
+  </frame>
+  <frame id="0:1419" name="Show note" x="-671" y="-464" width="1020" height="761">
+    <frame id="0:1420" name="panel 3" x="524" y="32" width="496" height="698">
+      <text id="0:1421" name="— Это новое поколени" x="35" y="84" width="422" height="440" />
+      <text id="0:1422" name="Новое поколение двор" x="35" y="38" width="451" height="38" />
+      <text id="0:1423" name="Л. Н. Толстой. Анна" x="50" y="0" width="195" height="16" />
+      <frame id="0:1424" name="Group" x="35" y="3" width="10" height="10" />
+      <text id="0:1428" name="Новое поколение двор" x="36" y="23" width="451" height="38" hidden="true" />
+      <instance id="0:1429" name="btn edit" x="36" y="670" width="57" height="28" />
+      <rounded-rectangle id="0:1430" name="Rectangle 9" x="0" y="548" width="496" height="1" />
+      <rounded-rectangle id="0:1431" name="Rectangle 9" x="0" y="648" width="496" height="1" />
+      <frame id="0:1432" name="tags" x="36" y="573" width="228" height="44">
+        <rounded-rectangle id="0:1433" name="Rectangle 10" x="0" y="24" width="77" height="20" />
+        <text id="0:1434" name="классика" x="7" y="25" width="62" height="16" />
+        <rounded-rectangle id="0:1435" name="Rectangle 10" x="87" y="24" width="100" height="20" />
+        <text id="0:1436" name="прочитанное" x="94" y="25" width="86" height="16" />
+        <rounded-rectangle id="0:1437" name="Rectangle 10" x="197" y="24" width="31" height="20" />
+        <text id="0:1438" name="5+" x="204" y="25" width="16" height="16" />
+        <text id="0:1439" name="Tags" x="0" y="0" width="31" height="16" />
+      </frame>
+    </frame>
+    <frame id="0:1440" name="panel 2" x="223" y="0" width="301" height="761">
+      <rounded-rectangle id="0:1441" name="Rectangle 6" x="0" y="0" width="301" height="761" />
+      <rounded-rectangle id="0:1442" name="Rectangle" x="300" y="0" width="1" height="761" />
+      <rounded-rectangle id="0:1443" name="Rectangle 7" x="0" y="241" width="300" height="96" />
+      <rounded-rectangle id="0:1444" name="Rectangle 4" x="0" y="337" width="301" height="1" />
+      <text id="0:1445" name="— Это новое поколени" x="23" y="285" width="256" height="35" />
+      <text id="0:1446" name="Новое поколение двор" x="23" y="257" width="226" height="19" />
+      <rounded-rectangle id="0:1447" name="Rectangle 4" x="0" y="240" width="301" height="1" />
+      <text id="0:1448" name="Вопрос для него сост" x="23" y="188" width="256" height="35" />
+      <text id="0:1449" name="искренни ли эти люди" x="23" y="160" width="177" height="19" />
+      <rounded-rectangle id="0:1450" name="Rectangle 4" x="0" y="144" width="301" height="1" />
+      <text id="0:1451" name="Если добро имеет при" x="23" y="92" width="256" height="35" />
+      <text id="0:1452" name="Если добро имеет при" x="23" y="64" width="203" height="19" />
+      <rounded-rectangle id="0:1453" name="Rectangle 4" x="0" y="49" width="301" height="1" />
+      <rounded-rectangle id="0:1454" name="Rectangle 8" x="23" y="22" width="77" height="16" hidden="true" />
+      <text id="0:1455" name="67 notes" x="23" y="19" width="55" height="16" />
+    </frame>
+    <frame id="0:1456" name="panel 1" x="0" y="0" width="223" height="761">
+      <rounded-rectangle id="0:1457" name="Rectangle" x="0" y="0" width="223" height="761" />
+      <rounded-rectangle id="0:1458" name="Rectangle 2" x="0" y="689" width="223" height="1" />
+      <rounded-rectangle id="0:1459" name="Rectangle 3" x="0" y="234" width="223" height="35" />
+      <text id="0:1460" name="+ Add new note All n" x="24" y="197" width="97" height="540" />
+      <rounded-rectangle id="0:1461" name="Rectangle 2" x="0" y="176" width="223" height="1" />
+      <text id="0:1462" name="Search" x="24" y="143" width="43" height="16" />
+      <rounded-rectangle id="0:1463" name="Rectangle 2" x="0" y="126" width="223" height="1" />
+      <boolean-operation id="0:1466" name="Shape" x="24" y="102.3043441772461" width="11.149999618530273" height="9.69565200805664" />
+      <text id="0:1468" name="a.sterh@gmail.com dr" x="24" y="82" width="123" height="32" />
+      <rounded-rectangle id="0:1469" name="Rectangle 2" x="0" y="71" width="223" height="1" />
+      <text id="0:1470" name="NoteBox" x="60" y="4" width="94" height="71" hidden="true" />
+      <text id="0:1471" name="NoteBox" x="61" y="2" width="99" height="71" />
+    </frame>
+  </frame>
+  <frame id="0:1472" name="Artboard" x="4797" y="-1162" width="1975" height="269">
+    <rounded-rectangle id="0:1473" name="Rectangle 9" x="29" y="19" width="72" height="72" />
+    <text id="0:1474" name="#6CC5CF" x="35" y="103" width="61" height="16" />
+    <text id="734:470" name="#6CC5CF" x="35" y="123" width="30" height="16" />
+    <rounded-rectangle id="743:508" name="Rectangle 20" x="29" y="149" width="72" height="72" />
+    <text id="743:509" name="#6CC5CF" x="35" y="233" width="0" height="16" />
+    <text id="743:510" name="#6CC5CF" x="35" y="253" width="115" height="16" />
+    <rounded-rectangle id="414:644" name="Rectangle 11" x="109" y="19" width="72" height="72" />
+    <text id="414:645" name="#6CC5CF" x="115" y="103" width="59" height="16" />
+    <text id="734:471" name="#6CC5CF" x="115" y="123" width="61" height="16" />
+    <rounded-rectangle id="0:1475" name="Rectangle 9" x="189" y="19" width="72" height="72" />
+    <text id="0:1476" name="#ADE4EA" x="275" y="103" width="57" height="16" />
+    <text id="734:473" name="#ADE4EA" x="265" y="123" width="80" height="16" />
+    <rounded-rectangle id="414:665" name="Rectangle 13" x="269" y="19" width="72" height="72" />
+    <text id="414:666" name="#ADE4EA" x="195" y="103" width="60" height="16" />
+    <text id="734:472" name="#ADE4EA" x="195" y="123" width="61" height="16" />
+    <rounded-rectangle id="0:1477" name="Rectangle 9" x="769" y="19" width="72" height="72" />
+    <text id="0:1478" name="#2C292B" x="775" y="103" width="47" height="16" />
+    <text id="734:482" name="#2C292B" x="755" y="123" width="92" height="16" />
+    <rounded-rectangle id="734:480" name="Rectangle 15" x="1029" y="19" width="72" height="72" />
+    <text id="734:481" name="#2C292B" x="1035" y="103" width="58" height="16" />
+    <text id="734:488" name="#2C292B" x="1035" y="123" width="47" height="16" />
+    <rounded-rectangle id="734:485" name="Rectangle 16" x="949" y="19" width="72" height="72" />
+    <text id="734:486" name="#2C292B" x="955" y="103" width="56" height="16" />
+    <text id="734:487" name="#2C292B" x="955" y="123" width="53" height="16" />
+    <rounded-rectangle id="0:1479" name="Rectangle 9" x="529" y="19" width="72" height="72" />
+    <text id="0:1480" name="#323232" x="535" y="103" width="56" height="16" />
+    <text id="734:477" name="#323232" x="535" y="123" width="24" height="16" />
+    <rounded-rectangle id="0:1481" name="Rectangle 9" x="689" y="19" width="72" height="72" />
+    <text id="0:1482" name="#888888" x="695" y="103" width="56" height="16" />
+    <text id="734:479" name="#888888" x="695" y="123" width="54" height="16" />
+    <rounded-rectangle id="0:1483" name="Rectangle 9" x="609" y="19" width="72" height="72" />
+    <text id="0:1484" name="#696468" x="615" y="103" width="56" height="16" />
+    <text id="734:478" name="#696468" x="595" y="123" width="86" height="16" />
+    <rounded-rectangle id="734:489" name="Rectangle 17" x="1109" y="19" width="72" height="72" />
+    <text id="734:490" name="#696468" x="1115" y="103" width="56" height="16" />
+    <text id="734:491" name="#696468" x="1105" y="123" width="71" height="16" />
+    <rounded-rectangle id="0:1485" name="Rectangle 9" x="849" y="19" width="72" height="72" />
+    <text id="0:1486" name="#C6C6C6" x="855" y="103" width="60" height="16" />
+    <text id="734:483" name="#C6C6C6" x="855" y="103" width="60" height="16" />
+    <text id="734:484" name="#C6C6C6" x="855" y="123" width="85" height="16" />
+    <rounded-rectangle id="0:1487" name="Rectangle 9" x="1189" y="19" width="72" height="72" />
+    <text id="0:1488" name="#DFDFDF" x="1195" y="103" width="60" height="16" />
+    <text id="734:492" name="#DFDFDF" x="1195" y="123" width="47" height="16" />
+    <rounded-rectangle id="0:1489" name="Rectangle 9" x="1269" y="19" width="72" height="72" />
+    <text id="0:1490" name="#F6F6F6" x="1275" y="103" width="56" height="16" />
+    <text id="734:493" name="#F6F6F6" x="1275" y="123" width="59" height="16" />
+    <rounded-rectangle id="0:1491" name="Rectangle 9" x="1349" y="19" width="72" height="72" />
+    <text id="0:1492" name="#FFD4BF" x="1355" y="103" width="59" height="16" />
+    <text id="734:494" name="#FFD4BF" x="1335" y="123" width="94" height="16" />
+    <rounded-rectangle id="414:663" name="Rectangle 12" x="429" y="19" width="72" height="72" />
+    <text id="414:664" name="#FFD4BF" x="435" y="103" width="58" height="16" />
+    <text id="734:475" name="#FFD4BF" x="435" y="103" width="58" height="16" />
+    <text id="734:476" name="#FFD4BF" x="435" y="123" width="57" height="16" />
+    <rounded-rectangle id="734:495" name="Rectangle 18" x="1429" y="19" width="72" height="72" />
+    <text id="734:496" name="#FFD4BF" x="1435" y="103" width="58" height="16" />
+    <text id="734:497" name="#FFD4BF" x="1435" y="103" width="58" height="16" />
+    <text id="734:498" name="#FFD4BF" x="1435" y="123" width="63" height="16" />
+    <rounded-rectangle id="309:282" name="Rectangle 10" x="349" y="19" width="72" height="72" />
+    <text id="309:283" name="#FFD4BF" x="355" y="103" width="59" height="16" />
+    <text id="734:474" name="#FFD4BF" x="355" y="123" width="58" height="16" />
+    <rounded-rectangle id="712:458" name="Rectangle 14" x="1509" y="19" width="72" height="72" />
+    <text id="712:459" name="#FFD4BF" x="1515" y="103" width="57" height="16" />
+    <text id="734:499" name="#FFD4BF" x="1505" y="123" width="103" height="16" />
+    <rounded-rectangle id="734:500" name="Rectangle 19" x="1589" y="19" width="72" height="72" />
+    <text id="734:501" name="#FFD4BF" x="1595" y="103" width="56" height="16" />
+    <text id="734:502" name="#FFD4BF" x="1615" y="123" width="34" height="16" />
+  </frame>
+  <text id="410:635" name="TODO: flash message about success or deleting hover for buttons and links" x="-3388" y="1212" width="473" height="84" />
+  <text id="0:1493" name="Some filters?" x="1007" y="-579" width="209" height="42" />
+  <text id="0:1494" name="фильтр для ноутбуков" x="62" y="1973" width="168" height="19" />
+  <frame id="0:1495" name="Artboard" x="-721" y="4486" width="1165" height="169">
+    <rounded-rectangle id="0:1496" name="Rectangle 9" x="119" y="19" width="72" height="72" />
+    <text id="0:1497" name="#6CC5CF" x="125" y="103" width="59" height="16" />
+    <rounded-rectangle id="408:492" name="Rectangle 11" x="39" y="19" width="72" height="72" />
+    <text id="408:493" name="#6CC5CF" x="45" y="103" width="61" height="16" />
+    <rounded-rectangle id="0:1498" name="Rectangle 9" x="199" y="19" width="72" height="72" />
+    <text id="0:1499" name="#ADE4EA" x="205" y="103" width="60" height="16" />
+    <rounded-rectangle id="0:1500" name="Rectangle 9" x="279" y="19" width="72" height="72" />
+    <text id="0:1501" name="#2C292B" x="285" y="103" width="58" height="16" />
+    <rounded-rectangle id="0:1502" name="Rectangle 9" x="359" y="19" width="72" height="72" />
+    <text id="0:1503" name="#323232" x="365" y="103" width="56" height="16" />
+    <rounded-rectangle id="0:1504" name="Rectangle 9" x="439" y="19" width="72" height="72" />
+    <text id="0:1505" name="#888888" x="445" y="103" width="56" height="16" />
+    <rounded-rectangle id="0:1506" name="Rectangle 9" x="519" y="19" width="72" height="72" />
+    <text id="0:1507" name="#696468" x="525" y="103" width="56" height="16" />
+    <rounded-rectangle id="0:1508" name="Rectangle 9" x="599" y="19" width="72" height="72" />
+    <text id="0:1509" name="#C6C6C6" x="605" y="103" width="60" height="16" />
+    <rounded-rectangle id="0:1510" name="Rectangle 9" x="679" y="19" width="72" height="72" />
+    <text id="0:1511" name="#DFDFDF" x="685" y="103" width="60" height="16" />
+    <rounded-rectangle id="0:1512" name="Rectangle 9" x="759" y="19" width="72" height="72" />
+    <text id="0:1513" name="#F6F6F6" x="765" y="103" width="56" height="16" />
+    <rounded-rectangle id="0:1514" name="Rectangle 9" x="839" y="19" width="72" height="72" />
+    <text id="0:1515" name="#FFD4BF" x="845" y="103" width="58" height="16" />
+    <rounded-rectangle id="309:280" name="Rectangle 10" x="919" y="19" width="72" height="72" />
+    <text id="309:281" name="#FFD4BF" x="925" y="103" width="59" height="16" />
+    <rounded-rectangle id="712:456" name="Rectangle 12" x="999" y="19" width="72" height="72" />
+    <text id="712:457" name="#FFD4BF" x="1005" y="103" width="57" height="16" />
+  </frame>
+  <section id="1503:454" name="Notebox Mobile Application" x="4797" y="-760" width="2458" height="1948">
+    <frame id="1502:435" name="notebox-books-home" x="64" y="64" width="402" height="874">
+      <frame id="1502:436" name="status-bar" x="0" y="0" width="402" height="44">
+        <text id="1502:437" name="9:41" x="24" y="20" width="28" height="16" />
+        <frame id="1502:438" name="icons" x="309" y="22" width="69" height="12">
+          <frame id="1502:724" name="ios-signal" x="0" y="0.5" width="17" height="11" />
+          <frame id="1502:730" name="ios-wifi-signal" x="23" y="0.5" width="15" height="11" />
+          <frame id="1502:736" name="ios-battery-full" x="44" y="0" width="25" height="12" />
+        </frame>
+      </frame>
+      <frame id="1502:442" name="Frame" x="0" y="44" width="402" height="830">
+        <frame id="1502:443" name="header" x="0" y="0" width="402" height="64">
+          <frame id="1502:444" name="left-trigger" x="16" y="14.5" width="94" height="35">
+            <instance id="1506:454" name="humburger" x="0" y="8" width="23" height="19" />
+            <text id="1502:450" name="NoteBox" x="31" y="0" width="63" height="35" />
+          </frame>
+          <instance id="1502:451" name="btn add note" x="287" y="18" width="99" height="28" />
+        </frame>
+        <frame id="1502:454" name="search-and-stats" x="0" y="64" width="402" height="96">
+          <frame id="1502:455" name="search-input" x="16" y="16" width="370" height="36">
+            <frame id="1502:727" name="search" x="12" y="10" width="16" height="16" />
+            <text id="1502:457" name="Search notes, tags, books..." x="36" y="10" width="322" height="16" />
+          </frame>
+          <frame id="1502:458" name="Frame" x="16" y="64" width="370" height="16">
+            <text id="1502:459" name="30 books (67 notes) in total" x="0" y="0" width="172" height="16" />
+          </frame>
+        </frame>
+        <frame id="1502:465" name="notes-scroll" x="0" y="160" width="402" height="670">
+          <frame id="1502:466" name="Frame" x="0" y="0" width="402" height="68">
+            <frame id="1502:467" name="Frame" x="16" y="16" width="370" height="36">
+              <instance id="1506:515" name="book" x="0" y="0" width="12" height="14" />
+              <frame id="1502:470" name="Frame" x="24" y="0" width="346" height="36">
+                <text id="1506:513" name="Book name" x="0" y="0" width="71" height="16" />
+                <text id="1506:514" name="Book name" x="0" y="22" width="40" height="14" />
+              </frame>
+            </frame>
+          </frame>
+          <rounded-rectangle id="1506:512" name="Rectangle 14" x="0" y="69" width="402" height="1" />
+          <frame id="1506:522" name="Frame" x="0" y="69" width="402" height="68">
+            <frame id="1506:523" name="Frame" x="16" y="16" width="370" height="36">
+              <instance id="1506:524" name="book" x="0" y="0" width="12" height="14" />
+              <frame id="1506:525" name="Frame" x="24" y="0" width="346" height="36">
+                <text id="1506:526" name="Book name" x="0" y="0" width="171" height="16" />
+                <text id="1506:527" name="Book name" x="0" y="22" width="47" height="14" />
+              </frame>
+            </frame>
+          </frame>
+          <rounded-rectangle id="1506:528" name="Rectangle 15" x="0" y="138" width="402" height="1" />
+          <frame id="1506:535" name="Frame" x="0" y="138" width="402" height="68">
+            <frame id="1506:536" name="Frame" x="16" y="16" width="370" height="36">
+              <instance id="1506:537" name="book" x="0" y="0" width="12" height="14" />
+              <frame id="1506:538" name="Frame" x="24" y="0" width="346" height="36">
+                <text id="1506:539" name="Book name" x="0" y="0" width="123" height="16" />
+                <text id="1506:540" name="Book name" x="0" y="22" width="40" height="14" />
+              </frame>
+            </frame>
+          </frame>
+          <rounded-rectangle id="1506:541" name="Rectangle 16" x="0" y="207" width="402" height="1" />
+          <frame id="1506:548" name="Frame" x="0" y="207" width="402" height="68">
+            <frame id="1506:549" name="Frame" x="16" y="16" width="370" height="36">
+              <instance id="1506:550" name="book" x="0" y="0" width="12" height="14" />
+              <frame id="1506:551" name="Frame" x="24" y="0" width="346" height="36">
+                <text id="1506:552" name="Book name" x="0" y="0" width="230" height="16" />
+                <text id="1506:553" name="Book name" x="0" y="22" width="40" height="14" />
+              </frame>
+            </frame>
+          </frame>
+          <rounded-rectangle id="1506:554" name="Rectangle 17" x="0" y="276" width="402" height="1" />
+        </frame>
+      </frame>
+    </frame>
+    <frame id="1506:561" name="notebox-notes-home" x="522" y="64" width="402" height="874">
+      <frame id="1506:562" name="status-bar" x="0" y="0" width="402" height="44">
+        <text id="1506:563" name="9:41" x="24" y="20" width="28" height="16" />
+        <frame id="1506:564" name="icons" x="309" y="22" width="69" height="12">
+          <frame id="1506:565" name="ios-signal" x="0" y="0.5" width="17" height="11" />
+          <frame id="1506:567" name="ios-wifi-signal" x="23" y="0.5" width="15" height="11" />
+          <frame id="1506:569" name="ios-battery-full" x="44" y="0" width="25" height="12" />
+        </frame>
+      </frame>
+      <frame id="1506:571" name="Frame" x="0" y="44" width="402" height="830">
+        <frame id="1506:645" name="header" x="0" y="0" width="402" height="64">
+          <frame id="1506:646" name="Frame" x="16" y="22" width="59" height="20">
+            <frame id="1506:647" name="arrow-left" x="0" y="0" width="20" height="20" />
+            <text id="1506:649" name="Back" x="28" y="2" width="31" height="16" />
+          </frame>
+          <text id="1506:650" name="Book name" x="145.5" y="24" width="71" height="16" />
+          <instance id="1506:655" name="btn add note" x="287" y="18" width="99" height="28" />
+        </frame>
+        <frame id="1506:577" name="search-and-stats" x="0" y="64" width="402" height="96">
+          <frame id="1506:578" name="search-input" x="16" y="16" width="370" height="36">
+            <frame id="1506:579" name="search" x="12" y="10" width="16" height="16" />
+            <text id="1506:581" name="Search notes, tags..." x="36" y="10" width="322" height="16" />
+          </frame>
+          <frame id="1506:582" name="Frame" x="16" y="64" width="370" height="16">
+            <text id="1506:583" name="16 notes in total" x="0" y="0" width="102" height="16" />
+          </frame>
+        </frame>
+        <frame id="1506:587" name="notes-scroll" x="0" y="160" width="402" height="670">
+          <frame id="1506:588" name="Frame" x="0" y="0" width="402" height="92">
+            <frame id="1506:591" name="Frame" x="16" y="16" width="370" height="60">
+              <text id="1506:660" name="искренни ли эти люди" x="0" y="0" width="177" height="19" />
+              <text id="1506:659" name="Вопрос для него сост" x="0" y="25" width="370" height="35" />
+            </frame>
+          </frame>
+          <rounded-rectangle id="1506:594" name="Rectangle 14" x="0" y="93" width="402" height="1" />
+          <frame id="1506:595" name="Frame" x="0" y="93" width="402" height="92">
+            <frame id="1506:598" name="Frame" x="16" y="16" width="370" height="60">
+              <text id="1506:663" name="Новое поколение двор" x="0" y="0" width="226" height="19" />
+              <text id="1506:662" name="— Это новое поколени" x="0" y="25" width="256" height="35" />
+            </frame>
+          </frame>
+          <rounded-rectangle id="1506:601" name="Rectangle 15" x="0" y="186" width="402" height="1" />
+          <rounded-rectangle id="1506:608" name="Rectangle 16" x="0" y="187" width="402" height="1" />
+          <frame id="1506:609" name="Frame" x="0" y="187" width="402" height="92">
+            <frame id="1506:679" name="Frame" x="16" y="16" width="370" height="60">
+              <text id="1506:683" name="Если добро имеет при" x="0" y="0" width="203" height="19" />
+              <text id="1506:682" name="Если добро имеет при" x="0" y="25" width="370" height="35" />
+            </frame>
+          </frame>
+          <rounded-rectangle id="1506:615" name="Rectangle 17" x="0" y="280" width="402" height="1" />
+        </frame>
+      </frame>
+    </frame>
+    <frame id="1502:483" name="notebox-note-detail" x="980" y="64" width="402" height="874">
+      <frame id="1502:484" name="status-bar" x="0" y="0" width="402" height="44">
+        <text id="1502:485" name="9:41" x="24" y="20" width="28" height="16" />
+        <frame id="1502:486" name="icons" x="309" y="22" width="69" height="12">
+          <frame id="1502:733" name="ios-signal" x="0" y="0.5" width="17" height="11" />
+          <frame id="1502:739" name="ios-wifi-signal" x="23" y="0.5" width="15" height="11" />
+          <frame id="1502:742" name="ios-battery-full" x="44" y="0" width="25" height="12" />
+        </frame>
+      </frame>
+      <frame id="1502:490" name="Frame" x="0" y="44" width="402" height="830">
+        <frame id="1502:491" name="header" x="0" y="0" width="402" height="64">
+          <frame id="1502:492" name="Frame" x="16" y="22" width="59" height="20">
+            <frame id="1502:745" name="arrow-left" x="0" y="0" width="20" height="20" />
+            <text id="1502:494" name="Back" x="28" y="2" width="31" height="16" />
+          </frame>
+          <text id="1502:495" name="Новое поколение дво..." x="124.5" y="24" width="155" height="16" />
+          <instance id="1502:496" name="btn edit" x="329" y="18" width="57" height="28" />
+        </frame>
+        <frame id="1502:499" name="reading-panel" x="0" y="64" width="402" height="766">
+          <frame id="1502:500" name="Frame" x="20" y="20" width="181" height="15">
+            <text id="1502:501" name="Л. Н. Толстой. Анна Каренина" x="0" y="0" width="181" height="15" />
+          </frame>
+          <text id="1502:502" name="Новое поколение дворянства" x="20" y="51" width="362" height="28" />
+          <line id="1502:503" name="Line" x="20" y="95" width="362" height="0" />
+          <frame id="1502:504" name="Frame" x="20" y="111" width="362" height="420">
+            <text id="1502:505" name="— Это новое поколение дворянства. — Новое-то новое. Но не дворянство. Это землевладельцы, а мы помещики. Они как дворяне налагают сами на себя руки. — Да ведь вы говорите, что это отжившее учреждение. — Отжившее-то отжившее, а все бы с ним надо обращаться поуважительнее. Хоть бы Снетков… Хороши мы, нет ли, мы тысячу лет росли." x="0" y="0" width="362" height="240" />
+            <text id="1502:506" name="Знаете, придется если вам пред домом разводить садик, планировать, и растет у вас на этом месте столетнее дерево… Оно хотя и корявое и старое, а всё вы для клумбочек цветочных не срубите старика, а так клумбочки распланируете, чтобы воспользоваться деревом. Его в год не вырастишь." x="0" y="252" width="362" height="168" />
+          </frame>
+          <frame id="1502:507" name="Frame" x="20" y="547" width="362" height="155" />
+          <frame id="1502:509" name="Frame" x="20" y="718" width="362" height="28">
+            <frame id="1502:511" name="Frame" x="0" y="0" width="362" height="28">
+              <frame id="1502:512" name="Frame" x="0" y="0" width="80" height="28">
+                <text id="1502:513" name="классика" x="10" y="6" width="60" height="16" />
+              </frame>
+              <frame id="1502:514" name="Frame" x="88" y="0" width="104" height="28">
+                <text id="1502:515" name="прочитанное" x="10" y="6" width="84" height="16" />
+              </frame>
+              <frame id="1502:516" name="Frame" x="200" y="0" width="37" height="28">
+                <text id="1502:517" name="5+" x="10" y="6" width="17" height="16" />
+              </frame>
+            </frame>
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+    <frame id="1502:519" name="notebox-create-note" x="1896" y="64" width="402" height="874">
+      <frame id="1502:520" name="status-bar" x="0" y="0" width="402" height="44">
+        <text id="1502:521" name="9:41" x="24" y="20" width="28" height="16" />
+        <frame id="1502:522" name="icons" x="309" y="22" width="69" height="12">
+          <frame id="1502:748" name="ios-signal" x="0" y="0.5" width="17" height="11" />
+          <frame id="1502:751" name="ios-wifi-signal" x="23" y="0.5" width="15" height="11" />
+          <frame id="1502:754" name="ios-battery-full" x="44" y="0" width="25" height="12" />
+        </frame>
+      </frame>
+      <frame id="1502:526" name="Frame" x="0" y="44" width="402" height="830">
+        <frame id="1502:527" name="header" x="0" y="0" width="402" height="64">
+          <text id="1502:528" name="Cancel" x="16" y="23" width="46" height="18" />
+          <text id="1502:529" name="New Note" x="139" y="22.5" width="71" height="19" />
+          <instance id="1502:530" name="btn add note" x="287" y="18" width="99" height="28" />
+        </frame>
+        <frame id="1502:533" name="Frame" x="0" y="64" width="402" height="766">
+          <frame id="1502:534" name="Frame" x="20" y="20" width="362" height="36">
+            <text id="1502:535" name="Select Notebook..." x="12" y="10" width="318" height="16" />
+            <instance id="1502:536" name="down" x="338" y="14" width="12" height="8" />
+          </frame>
+          <frame id="1502:539" name="Frame" x="20" y="76" width="362" height="43">
+            <frame id="1502:541" name="Frame" x="0" y="0" width="362" height="43">
+              <text id="1502:542" name="Enter note title..." x="0" y="10" width="362" height="23" />
+            </frame>
+          </frame>
+          <frame id="1502:543" name="Frame" x="20" y="139" width="362" height="539">
+            <frame id="1502:545" name="Frame" x="0" y="0" width="362" height="539">
+              <text id="1502:546" name="Add note content here..." x="0" y="10" width="362" height="22" />
+            </frame>
+          </frame>
+          <frame id="1502:547" name="Frame" x="20" y="698" width="362" height="48">
+            <frame id="1502:550" name="Frame" x="0" y="20" width="362" height="28">
+              <frame id="1502:551" name="Frame" x="0" y="0" width="92" height="28">
+                <text id="1502:552" name="+ Add tag..." x="10" y="6" width="72" height="16" />
+              </frame>
+            </frame>
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+    <frame id="1502:554" name="notebox-edit-note" x="1438" y="64" width="402" height="874">
+      <frame id="1502:555" name="status-bar" x="0" y="0" width="402" height="44">
+        <text id="1502:556" name="9:41" x="24" y="20" width="28" height="16" />
+        <frame id="1502:557" name="icons" x="309" y="22" width="69" height="12">
+          <frame id="1502:757" name="ios-signal" x="0" y="0.5" width="17" height="11" />
+          <frame id="1502:760" name="ios-wifi-signal" x="23" y="0.5" width="15" height="11" />
+          <frame id="1502:763" name="ios-battery-full" x="44" y="0" width="25" height="12" />
+        </frame>
+      </frame>
+      <frame id="1502:561" name="Frame" x="0" y="44" width="402" height="830">
+        <frame id="1502:562" name="header" x="0" y="0" width="402" height="64">
+          <text id="1502:563" name="Cancel" x="16" y="23" width="46" height="18" />
+          <text id="1502:564" name="Edit Note" x="161.5" y="22.5" width="66" height="19" />
+          <frame id="1502:565" name="save-button" x="327" y="18" width="59" height="28">
+            <text id="1502:566" name="SAVE" x="12" y="6" width="35" height="16" />
+          </frame>
+        </frame>
+        <frame id="1502:567" name="Frame" x="0" y="64" width="402" height="766">
+          <frame id="1502:568" name="Frame" x="20" y="20" width="362" height="36">
+            <text id="1502:569" name="Анна Каренина" x="12" y="10" width="318" height="16" />
+            <instance id="1502:570" name="down" x="338" y="14" width="12" height="8" />
+          </frame>
+          <frame id="1502:573" name="Frame" x="20" y="76" width="362" height="39">
+            <frame id="1502:575" name="Frame" x="0" y="0" width="362" height="39">
+              <text id="1502:576" name="Новое поколение дворянства" x="0" y="8" width="362" height="23" />
+            </frame>
+          </frame>
+          <frame id="1502:577" name="Frame" x="20" y="135" width="362" height="543">
+            <frame id="1502:579" name="Frame" x="0" y="0" width="362" height="543">
+              <text id="1502:580" name="— Это новое поколение дворянства. — Новое-то новое. Но не дворянство. Это землевладельцы..." x="0" y="10" width="362" height="66" />
+            </frame>
+          </frame>
+          <frame id="1502:581" name="Frame" x="20" y="698" width="362" height="48">
+            <frame id="1502:584" name="Frame" x="0" y="20" width="362" height="28">
+              <frame id="1502:585" name="Frame" x="0" y="0" width="93" height="28">
+                <text id="1502:586" name="классика" x="10" y="6" width="59" height="16" />
+                <instance id="1506:477" name="remove" x="75" y="9.5" width="8" height="9" />
+              </frame>
+              <frame id="1502:587" name="Frame" x="101" y="0" width="117" height="28">
+                <text id="1502:588" name="прочитанное" x="10" y="6" width="83" height="16" />
+                <instance id="1506:496" name="remove" x="99" y="9.5" width="8" height="9" />
+              </frame>
+              <frame id="1502:589" name="Frame" x="226" y="0" width="81" height="28">
+                <text id="1502:590" name="+ Add tag" x="10" y="6" width="61" height="16" />
+              </frame>
+            </frame>
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+    <frame id="0:1134" name="Show note mobile: open menu" x="64" y="1070" width="420" height="761">
+      <frame id="0:1135" name="panel 3" x="1" y="72" width="487" height="671">
+        <text id="0:1136" name="— Это новое поколени" x="35" y="85" width="354" height="440" />
+        <text id="0:1137" name="Новое поколение двор" x="35" y="38" width="354" height="38" />
+        <text id="0:1138" name="Л. Н. Толстой. Анна" x="50" y="0" width="195" height="16" />
+        <frame id="0:1139" name="Group" x="35" y="3" width="10" height="10" />
+        <text id="0:1143" name="Новое поколение двор" x="36" y="23" width="451" height="38" hidden="true" />
+        <instance id="0:1144" name="btn edit" x="36" y="643" width="57" height="28" />
+        <rounded-rectangle id="0:1145" name="Rectangle 9" x="0" y="627" width="417" height="1" />
+        <frame id="0:1146" name="tags" x="36" y="563" width="228" height="44">
+          <rounded-rectangle id="0:1147" name="Rectangle 10" x="0" y="24" width="77" height="20" />
+          <text id="0:1148" name="классика" x="7" y="25" width="62" height="16" />
+          <rounded-rectangle id="0:1149" name="Rectangle 10" x="87" y="24" width="100" height="20" />
+          <text id="0:1150" name="прочитанное" x="94" y="25" width="86" height="16" />
+          <rounded-rectangle id="0:1151" name="Rectangle 10" x="197" y="24" width="31" height="20" />
+          <text id="0:1152" name="5+" x="204" y="25" width="16" height="16" />
+          <text id="0:1153" name="Tags" x="0" y="0" width="31" height="16" />
+        </frame>
+        <rounded-rectangle id="0:1154" name="Rectangle 9" x="0" y="547" width="417" height="1" />
+      </frame>
+      <frame id="0:1155" name="panel 2" x="0" y="0" width="421" height="761" hidden="true">
+        <rounded-rectangle id="0:1156" name="Rectangle 6" x="0" y="0" width="421" height="761" />
+        <rounded-rectangle id="0:1157" name="Rectangle" x="300" y="0" width="1" height="761" hidden="true" />
+        <rounded-rectangle id="0:1158" name="Rectangle 7" x="0" y="291" width="418" height="96" />
+        <rounded-rectangle id="0:1159" name="Rectangle 4" x="0" y="387" width="420" height="1" />
+        <text id="0:1160" name="— Это новое поколени" x="23" y="335" width="368" height="36" />
+        <text id="0:1161" name="Новое поколение двор" x="23" y="307" width="226" height="19" />
+        <rounded-rectangle id="0:1162" name="Rectangle 4" x="0" y="290" width="420" height="1" />
+        <text id="0:1163" name="Вопрос для него сост" x="23" y="238" width="369" height="35" />
+        <text id="0:1164" name="искренни ли эти люди" x="23" y="210" width="177" height="19" />
+        <rounded-rectangle id="0:1165" name="Rectangle 4" x="0" y="194" width="420" height="1" />
+        <text id="0:1166" name="Если добро имеет при" x="23" y="142" width="372" height="35" />
+        <text id="0:1167" name="Если добро имеет при" x="23" y="114" width="203" height="19" />
+        <rounded-rectangle id="0:1168" name="Rectangle 4" x="0" y="99" width="420" height="1" />
+        <rounded-rectangle id="0:1169" name="Rectangle 8" x="23" y="72" width="77" height="16" hidden="true" />
+        <text id="0:1170" name="67 notes" x="23" y="69" width="55" height="16" />
+      </frame>
+      <frame id="0:1171" name="header" x="0" y="0" width="421" height="50">
+        <rounded-rectangle id="0:1172" name="Rectangle 5" x="0" y="0" width="421" height="50" />
+        <text id="0:1173" name="ALL NOTES" x="74" y="18" width="77" height="16" />
+        <instance id="0:1174" name="humburger" x="26" y="17" width="23" height="19" />
+      </frame>
+      <frame id="0:1175" name="panel 1" x="0" y="0" width="223" height="761">
+        <rounded-rectangle id="0:1176" name="Rectangle" x="0" y="0" width="223" height="761" />
+        <text id="0:1179" name="+ Add new note All n" x="24" y="133" width="97" height="36" />
+        <rounded-rectangle id="0:1180" name="Rectangle 2" x="0" y="176" width="223" height="1" />
+        <rounded-rectangle id="0:1182" name="Rectangle 2" x="0" y="126" width="223" height="1" />
+        <boolean-operation id="0:1185" name="Shape" x="24" y="102.3043441772461" width="11.149999618530273" height="9.69565200805664" />
+        <text id="0:1187" name="a.sterh@gmail.com dr" x="24" y="82" width="123" height="32" />
+        <rounded-rectangle id="0:1188" name="Rectangle 2" x="0" y="71" width="223" height="1" />
+        <text id="0:1189" name="NoteBox" x="60" y="4" width="94" height="71" hidden="true" />
+        <text id="0:1190" name="NoteBox" x="61" y="2" width="99" height="71" />
+      </frame>
+      <rounded-rectangle id="0:1191" name="Rectangle 16" x="223" y="0" width="1" height="766" />
+      <rounded-rectangle id="0:1192" name="Rectangle 11" x="224" y="0" width="197" height="761" />
+    </frame>
+    <frame id="731:457" name="Start screen" x="524" y="1070" width="420" height="761">
+      <rectangle id="731:525" name="warm-coffee-drink-1684151" x="0" y="-354" width="896.8928833007812" height="1344.90087890625" />
+      <rounded-rectangle id="731:544" name="Rectangle 6" x="-5" y="6" width="1023" height="475" />
+      <rounded-rectangle id="731:546" name="Rectangle 7" x="44" y="284" width="332" height="173" />
+      <text id="731:547" name="Mayby, thi page was" x="72" y="318" width="276" height="44" />
+      <text id="731:548" name="Unfortunately, page" x="70" y="325" width="279" height="31" hidden="true" />
+      <rounded-rectangle id="731:526" name="Rectangle 5" x="138" y="390" width="143" height="28" />
+      <text id="731:527" name="LET’S GO" x="180" y="396" width="63" height="16" />
+      <text id="731:528" name="Keep all your notes" x="89" y="203" width="256" height="42" />
+      <text id="731:529" name="Your personal notebo" x="88" y="175" width="252" height="23" />
+      <instance id="731:530" name="logo" x="137" y="75" width="159" height="59" />
+      <rounded-rectangle id="731:545" name="Rectangle 28" x="0" y="0" width="420" height="6" />
+    </frame>
+    <frame id="742:470" name="Splash screen" x="984" y="1070" width="420" height="761">
+      <text id="742:475" name="Unfortunately, page" x="70" y="325" width="279" height="31" hidden="true" />
+      <instance id="742:480" name="logo" x="137" y="335" width="159" height="59" />
+    </frame>
+  </section>
+  <frame id="1507:685" name="notebox-books" x="4891" y="1366" width="402" height="874">
+    <frame id="1507:686" name="status-bar" x="0" y="0" width="402" height="44">
+      <text id="1507:687" name="9:41" x="24" y="20" width="28" height="16" />
+      <frame id="1507:688" name="icons" x="309" y="22" width="69" height="12">
+        <frame id="1507:689" name="ios-signal" x="0" y="0.5" width="17" height="11" />
+        <frame id="1507:691" name="ios-wifi-signal" x="23" y="0.5" width="15" height="11" />
+        <frame id="1507:693" name="ios-battery-full" x="44" y="0" width="25" height="12" />
+      </frame>
+    </frame>
+    <frame id="1507:695" name="Frame" x="0" y="44" width="402" height="830">
+      <frame id="1507:764" name="header" x="0" y="0" width="402" height="64">
+        <frame id="1507:765" name="Frame" x="16" y="22.5" width="76" height="19">
+          <instance id="1507:766" name="humburger" x="0" y="0" width="23" height="19" />
+          <text id="1507:767" name="Books" x="31" y="0" width="45" height="19" />
+        </frame>
+        <instance id="1507:768" name="btn add note" x="282" y="18" width="104" height="28" />
+      </frame>
+      <frame id="1507:701" name="search-and-stats" x="0" y="64" width="402" height="96">
+        <frame id="1507:702" name="search-input" x="16" y="16" width="370" height="36">
+          <frame id="1507:703" name="search" x="12" y="10" width="16" height="16" />
+          <text id="1507:705" name="Search books..." x="36" y="10" width="322" height="16" />
+        </frame>
+        <frame id="1507:706" name="Frame" x="16" y="64" width="370" height="16">
+          <text id="1507:707" name="30 books" x="0" y="0" width="58" height="16" />
+        </frame>
+      </frame>
+      <frame id="1507:708" name="notes-scroll" x="0" y="160" width="402" height="670">
+        <frame id="1507:709" name="Frame" x="0" y="0" width="402" height="68">
+          <frame id="1507:710" name="Frame" x="16" y="16" width="370" height="36">
+            <frame id="1507:712" name="Frame" x="0" y="0" width="308" height="36">
+              <text id="1507:713" name="Book name" x="0" y="0" width="71" height="16" />
+              <text id="1507:714" name="Book name" x="0" y="22" width="40" height="14" />
+            </frame>
+            <frame id="1507:776" name="Frame" x="320" y="10" width="50" height="16">
+              <text id="1507:777" name="Rename" x="0" y="0" width="50" height="16" />
+            </frame>
+          </frame>
+        </frame>
+        <rounded-rectangle id="1507:715" name="Rectangle 14" x="0" y="69" width="402" height="1" />
+        <frame id="1507:716" name="Frame" x="0" y="69" width="402" height="68">
+          <frame id="1507:717" name="Frame" x="16" y="16" width="370" height="36">
+            <instance id="1507:718" name="book" x="0" y="0" width="12" height="14" />
+            <frame id="1507:719" name="Frame" x="24" y="0" width="346" height="36">
+              <text id="1507:720" name="Book name" x="0" y="0" width="171" height="16" />
+              <text id="1507:721" name="Book name" x="0" y="22" width="47" height="14" />
+            </frame>
+          </frame>
+        </frame>
+        <rounded-rectangle id="1507:722" name="Rectangle 15" x="0" y="138" width="402" height="1" />
+        <frame id="1507:723" name="Frame" x="0" y="138" width="402" height="68">
+          <frame id="1507:724" name="Frame" x="16" y="16" width="370" height="36">
+            <instance id="1507:725" name="book" x="0" y="0" width="12" height="14" />
+            <frame id="1507:726" name="Frame" x="24" y="0" width="346" height="36">
+              <text id="1507:727" name="Book name" x="0" y="0" width="123" height="16" />
+              <text id="1507:728" name="Book name" x="0" y="22" width="40" height="14" />
+            </frame>
+          </frame>
+        </frame>
+        <rounded-rectangle id="1507:729" name="Rectangle 16" x="0" y="207" width="402" height="1" />
+        <frame id="1507:730" name="Frame" x="0" y="207" width="402" height="68">
+          <frame id="1507:731" name="Frame" x="16" y="16" width="370" height="36">
+            <instance id="1507:732" name="book" x="0" y="0" width="12" height="14" />
+            <frame id="1507:733" name="Frame" x="24" y="0" width="346" height="36">
+              <text id="1507:734" name="Book name" x="0" y="0" width="230" height="16" />
+              <text id="1507:735" name="Book name" x="0" y="22" width="40" height="14" />
+            </frame>
+          </frame>
+        </frame>
+        <rounded-rectangle id="1507:736" name="Rectangle 17" x="0" y="276" width="402" height="1" />
+      </frame>
+    </frame>
+  </frame>
+  <frame id="1502:592" name="notebox-notebooks" x="5349" y="1366" width="402" height="874">
+    <frame id="1502:593" name="status-bar" x="0" y="0" width="402" height="44">
+      <text id="1502:594" name="9:41" x="24" y="20" width="28" height="16" />
+      <frame id="1502:595" name="icons" x="309" y="22" width="69" height="12">
+        <frame id="1502:766" name="ios-signal" x="0" y="0.5" width="17" height="11" />
+        <frame id="1502:769" name="ios-wifi-signal" x="23" y="0.5" width="15" height="11" />
+        <frame id="1502:772" name="ios-battery-full" x="44" y="0" width="25" height="12" />
+      </frame>
+    </frame>
+    <frame id="1502:599" name="Frame" x="0" y="44" width="402" height="830">
+      <frame id="1502:600" name="header" x="0" y="0" width="402" height="64">
+        <frame id="1502:601" name="Frame" x="16" y="22.5" width="76" height="19">
+          <instance id="1506:500" name="humburger" x="0" y="0" width="23" height="19" />
+          <text id="1502:607" name="Books" x="31" y="0" width="45" height="19" />
+        </frame>
+        <instance id="1502:608" name="btn add note" x="282" y="18" width="104" height="28" />
+      </frame>
+      <frame id="1502:611" name="Frame" x="0" y="64" width="402" height="766">
+        <frame id="1502:612" name="Frame" x="16" y="16" width="370" height="16">
+          <text id="1502:613" name="7 Books" x="0" y="0" width="51" height="16" />
+        </frame>
+        <frame id="1502:614" name="Frame" x="16" y="48" width="370" height="338">
+          <frame id="1502:615" name="Frame" x="0" y="0" width="370" height="58">
+            <frame id="1502:616" name="Frame" x="12" y="12" width="296" height="34">
+              <frame id="1502:617" name="Frame" x="0" y="0" width="43" height="34">
+                <text id="1502:618" name="Books" x="0" y="0" width="43" height="18" />
+                <text id="1502:619" name="2 notes" x="0" y="20" width="40" height="14" />
+              </frame>
+            </frame>
+            <frame id="1502:620" name="Frame" x="308" y="21" width="50" height="16">
+              <text id="1502:621" name="Rename" x="0" y="0" width="50" height="16" />
+            </frame>
+          </frame>
+          <frame id="1502:622" name="Frame" x="0" y="70" width="370" height="58">
+            <frame id="1502:623" name="Frame" x="12" y="12" width="296" height="34">
+              <frame id="1502:624" name="Frame" x="0" y="0" width="51" height="34">
+                <text id="1502:625" name="Comics" x="0" y="0" width="51" height="18" />
+                <text id="1502:626" name="5 notes" x="0" y="20" width="40" height="14" />
+              </frame>
+            </frame>
+            <frame id="1502:627" name="Frame" x="308" y="21" width="50" height="16">
+              <text id="1502:628" name="Rename" x="0" y="0" width="50" height="16" />
+            </frame>
+          </frame>
+          <frame id="1502:629" name="Frame" x="0" y="140" width="370" height="58">
+            <frame id="1502:630" name="Frame" x="12" y="12" width="296" height="34">
+              <frame id="1502:631" name="Frame" x="0" y="0" width="92" height="34">
+                <text id="1502:632" name="My notebook" x="0" y="0" width="88" height="18" />
+                <text id="1502:633" name="3 notes • Default" x="0" y="20" width="92" height="14" />
+              </frame>
+            </frame>
+            <frame id="1502:634" name="Frame" x="308" y="21" width="50" height="16">
+              <text id="1502:635" name="Rename" x="0" y="0" width="50" height="16" />
+            </frame>
+          </frame>
+          <frame id="1502:636" name="Frame" x="0" y="210" width="370" height="58">
+            <frame id="1502:637" name="Frame" x="12" y="12" width="296" height="34">
+              <frame id="1502:638" name="Frame" x="0" y="0" width="200" height="34">
+                <text id="1502:639" name="Л. Н. Толстой. Анна Каренина" x="0" y="0" width="200" height="18" />
+                <text id="1502:640" name="57 notes" x="0" y="20" width="47" height="14" />
+              </frame>
+            </frame>
+            <frame id="1502:641" name="Frame" x="308" y="21" width="50" height="16">
+              <text id="1502:642" name="Rename" x="0" y="0" width="50" height="16" />
+            </frame>
+          </frame>
+          <frame id="1502:643" name="Frame" x="0" y="280" width="370" height="58">
+            <frame id="1502:644" name="Frame" x="12" y="12" width="296" height="34">
+              <frame id="1502:645" name="Frame" x="0" y="0" width="79" height="34">
+                <text id="1502:646" name="Мой роман" x="0" y="0" width="79" height="18" />
+                <text id="1502:647" name="3 notes" x="0" y="20" width="40" height="14" />
+              </frame>
+            </frame>
+            <frame id="1502:648" name="Frame" x="308" y="21" width="50" height="16">
+              <text id="1502:649" name="Rename" x="0" y="0" width="50" height="16" />
+            </frame>
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+  </frame>
+  <frame id="1502:658" name="notebox-tags" x="5807" y="1366" width="402" height="874">
+    <frame id="1502:659" name="status-bar" x="0" y="0" width="402" height="44">
+      <text id="1502:660" name="9:41" x="24" y="20" width="28" height="16" />
+      <frame id="1502:661" name="icons" x="309" y="22" width="69" height="12">
+        <frame id="1502:775" name="ios-signal" x="0" y="0.5" width="17" height="11" />
+        <frame id="1502:778" name="ios-wifi-signal" x="23" y="0.5" width="15" height="11" />
+        <frame id="1502:781" name="ios-battery-full" x="44" y="0" width="25" height="12" />
+      </frame>
+    </frame>
+    <frame id="1502:665" name="Frame" x="0" y="44" width="402" height="830">
+      <frame id="1502:666" name="header" x="0" y="0" width="402" height="64">
+        <frame id="1502:667" name="Frame" x="16" y="22.5" width="66" height="19">
+          <instance id="1506:506" name="humburger" x="0" y="0" width="23" height="19" />
+          <text id="1502:673" name="Tags" x="31" y="0" width="35" height="19" />
+        </frame>
+        <instance id="1502:674" name="btn add note" x="297" y="18" width="89" height="28" />
+      </frame>
+      <frame id="1502:677" name="Frame" x="0" y="64" width="402" height="766">
+        <frame id="1502:678" name="Frame" x="16" y="16" width="370" height="16">
+          <text id="1502:679" name="5 tags in total" x="0" y="0" width="85" height="16" />
+        </frame>
+        <frame id="1502:680" name="Frame" x="16" y="48" width="370" height="260">
+          <frame id="1502:681" name="Frame" x="0" y="0" width="370" height="44">
+            <frame id="1502:682" name="Frame" x="12" y="10" width="115" height="24">
+              <frame id="1502:683" name="Frame" x="0" y="0" width="64" height="24">
+                <text id="1502:684" name="favorite" x="8" y="4" width="48" height="16" />
+              </frame>
+              <text id="1502:685" name="1 notes" x="72" y="4.5" width="43" height="15" />
+            </frame>
+            <frame id="1502:686" name="Frame" x="308" y="14" width="50" height="16">
+              <text id="1502:687" name="Rename" x="0" y="0" width="50" height="16" />
+            </frame>
+          </frame>
+          <frame id="1502:688" name="Frame" x="0" y="54" width="370" height="44">
+            <frame id="1502:689" name="Frame" x="12" y="10" width="94" height="24">
+              <frame id="1502:690" name="Frame" x="0" y="0" width="43" height="24">
+                <text id="1502:691" name="new" x="8" y="4" width="27" height="16" />
+              </frame>
+              <text id="1502:692" name="2 notes" x="51" y="4.5" width="43" height="15" />
+            </frame>
+            <frame id="1502:693" name="Frame" x="308" y="14" width="50" height="16">
+              <text id="1502:694" name="Rename" x="0" y="0" width="50" height="16" />
+            </frame>
+          </frame>
+          <frame id="1502:695" name="Frame" x="0" y="108" width="370" height="44">
+            <frame id="1502:696" name="Frame" x="12" y="10" width="84" height="24">
+              <frame id="1502:697" name="Frame" x="0" y="0" width="33" height="24">
+                <text id="1502:698" name="5+" x="8" y="4" width="17" height="16" />
+              </frame>
+              <text id="1502:699" name="3 notes" x="41" y="4.5" width="43" height="15" />
+            </frame>
+            <frame id="1502:700" name="Frame" x="308" y="14" width="50" height="16">
+              <text id="1502:701" name="Rename" x="0" y="0" width="50" height="16" />
+            </frame>
+          </frame>
+          <frame id="1502:702" name="Frame" x="0" y="162" width="370" height="44">
+            <frame id="1502:703" name="Frame" x="12" y="10" width="135" height="24">
+              <frame id="1502:704" name="Frame" x="0" y="0" width="76" height="24">
+                <text id="1502:705" name="классика" x="8" y="4" width="60" height="16" />
+              </frame>
+              <text id="1502:706" name="12 notes" x="84" y="4.5" width="51" height="15" />
+            </frame>
+            <frame id="1502:707" name="Frame" x="308" y="14" width="50" height="16">
+              <text id="1502:708" name="Rename" x="0" y="0" width="50" height="16" />
+            </frame>
+          </frame>
+          <frame id="1502:709" name="Frame" x="0" y="216" width="370" height="44">
+            <frame id="1502:710" name="Frame" x="12" y="10" width="151" height="24">
+              <frame id="1502:711" name="Frame" x="0" y="0" width="100" height="24">
+                <text id="1502:712" name="прочитанное" x="8" y="4" width="84" height="16" />
+              </frame>
+              <text id="1502:713" name="9 notes" x="108" y="4.5" width="43" height="15" />
+            </frame>
+            <frame id="1502:714" name="Frame" x="308" y="14" width="50" height="16">
+              <text id="1502:715" name="Rename" x="0" y="0" width="50" height="16" />
+            </frame>
+          </frame>
+        </frame>
+        <frame id="1502:716" name="Frame" x="16" y="324" width="370" height="85">
+          <text id="1502:717" name="Create new tag" x="12" y="12" width="95" height="16" />
+          <frame id="1502:718" name="Frame" x="12" y="40" width="346" height="33">
+            <frame id="1502:719" name="Frame" x="0" y="0" width="259" height="33">
+              <text id="1502:720" name="Tag label..." x="12" y="8" width="72" height="17" />
+            </frame>
+            <frame id="1502:721" name="Frame" x="267" y="0.5" width="79" height="32">
+              <text id="1502:722" name="CREATE" x="14" y="8" width="51" height="16" />
+            </frame>
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+  </frame>
+</canvas>

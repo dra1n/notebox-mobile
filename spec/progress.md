@@ -17,7 +17,7 @@ This file tracks the phase gates defined in [`roadmap.md` §9](roadmap.md#9-phas
 | 1 Domain | done (2026-10-03, f988768) |
 | 2 Dropbox infra | done (2026-10-03, dd76ee1) |
 | 3 Storage through Luggage | done (2026-10-03, 644cba4) |
-| 4 re-frame features | not started |
+| 4 re-frame features | in progress: automated gate passed; user review pending |
 | 5 UI | not started |
 | 6 Hardening and release | not started |
 
@@ -104,15 +104,23 @@ Notes
 ## Phase 4: re-frame features (L2 + L3)
 
 Automated
-- [ ] Every web save flow (§3.3) and every §1.1 addition has an event test, including rollback and auth expiry
-- [ ] The event/sub coverage meta-test passes (every registered id was exercised)
-- [ ] Derived sub tests: books with counts, tag index, search results, default-book fallback
+- [x] Every web save flow (§3.3) and every §1.1 addition has an event test, including rollback and auth expiry: 2026-10-03, ed28966. `feature/flows-test` (24 tests) against the test system with the fixture library:
+  - every §3.3 flow: add note to an existing or a new book, edit in place, move to an existing or a new book, delete note, add/rename/delete book;
+  - every §1.1 addition: default book, tag counts, search everywhere / in a book / book titles;
+  - failures: rollback, a move failing halfway (duplicate, not lost), edit vs. remote delete, session expiry, sign-in and sign-out, a declined sign-in, load failures.
+- [x] The event/sub coverage meta-test passes (every registered id was exercised): 2026-10-03, ed28966. `event-coverage-test` runs last. Checked that it fails when an untested event is registered.
+- [x] Derived sub tests: books with counts, tag index, search results, default-book fallback: 2026-10-03, ed28966. `feature/subs-test`, on the JVM and in Node.
 
 Manual
 - [ ] The user has reviewed the re-frame implementation against the web app (`src/notebox/feature/`, `fx/`, `shell/events.cljc`)
 
 Notes
--
+- Tests found and fixed two design issues: a rollback in a separate event left a moment where
+  app-db looked settled with the failed change; and callbacks from a halted system leaked into
+  the next one (now dropped via each effect component's `alive` flag).
+- New native module: AsyncStorage v3 (`pod install` + `npm run ios` after pulling).
+- Totals: 56 JVM tests / 631 assertions, 92 Node tests / 843. `check:release` 390 KB; e2e smoke
+  passes.
 
 ## Phase 5: UI (L4 + L5)
 

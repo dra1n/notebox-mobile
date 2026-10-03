@@ -10,6 +10,13 @@
             [notebox.domain.ops-test]
             [notebox.domain.ordered-test]
             [notebox.domain.search-test]
+            [notebox.dropbox.auth-test]
+            [notebox.dropbox.client-test]
+            [notebox.dropbox.contract-test]
+            [notebox.dropbox.errors-test]
+            [notebox.dropbox.fake-store-test]
+            [notebox.dropbox.http-test]
+            [notebox.dropbox.pkce-test]
             [notebox.shell.events-test]
             [notebox.system-test]))
 
@@ -20,6 +27,13 @@
     notebox.domain.ops-test
     notebox.domain.ordered-test
     notebox.domain.search-test
+    notebox.dropbox.auth-test
+    notebox.dropbox.client-test
+    notebox.dropbox.contract-test
+    notebox.dropbox.errors-test
+    notebox.dropbox.fake-store-test
+    notebox.dropbox.http-test
+    notebox.dropbox.pkce-test
     notebox.shell.events-test
     notebox.system-test])
 
@@ -40,6 +54,13 @@
                'notebox.domain.ops-test
                'notebox.domain.ordered-test
                'notebox.domain.search-test
+               'notebox.dropbox.auth-test
+               'notebox.dropbox.client-test
+               'notebox.dropbox.contract-test
+               'notebox.dropbox.errors-test
+               'notebox.dropbox.fake-store-test
+               'notebox.dropbox.http-test
+               'notebox.dropbox.pkce-test
                'notebox.shell.events-test
                'notebox.system-test))
 

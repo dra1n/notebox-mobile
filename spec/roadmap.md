@@ -96,7 +96,7 @@ the two modules (for example `app.events → notes.events → app.effects`).
 
 The web app (app key `2t7xyn3a902rv0z`) and the desktop app (`yeo22moig39n8c0`) use different
 Dropbox app keys but **share the same data**: both resolve `/notes/...` to the same location.
-Mobile must resolve paths the same way, whichever key it uses ([§11](#11-open-questions)).
+Mobile uses the web's key ([§7](#7-auth-design)), so it sees the same `/notes` folder.
 
 ```
 /notes/.meta.json
@@ -437,9 +437,18 @@ rev.
 ## 7. Auth design
 
 - **Flow.** OAuth 2 **authorization code + PKCE**, `token_access_type=offline`, with **no client
-  secret in the app** (a public client), using `react-native-app-auth` (8.5.0, native AppAuth) and
-  a custom scheme redirect such as `notebox://oauth`. The desktop app already uses PKCE + offline
-  tokens (`../notebox-desktop/src/luggage/client.clj`).
+  secret in the app** (a public client) and the custom-scheme redirect `notebox://oauth`. The
+  desktop app already uses PKCE + offline tokens (`../notebox-desktop/src/luggage/client.clj`).
+- **Implemented in our code** (`notebox.dropbox.auth`, `.pkce`, `.http`): PKCE (Closure's
+  SHA-256), the authorize URL, redirect parsing with a `state` check, and code exchange, refresh
+  and revoke over `fetch`. All of it is tested in Node against a fake Dropbox server.
+  *(Changed in Phase 2: `react-native-app-auth` is a legacy, non-New-Architecture native module,
+  and it would own PKCE natively.)*
+- **Opening the browser** is the one platform piece (`notebox.infra.browser`). v1 uses
+  `Linking`: the system browser, then iOS's "Open in Notebox?" prompt for the redirect. A native
+  `ASWebAuthenticationSession` module can replace it in Phase 6 without touching the auth logic.
+  iOS registers the `notebox` URL scheme in `Info.plist`, and `AppDelegate` forwards it to
+  `RCTLinkingManager`.
 - **Storage.** The refresh token goes in Keychain/Keystore (`react-native-keychain` 10.0.0). The
   access token and its expiry stay in memory only.
 - **Refresh.** `:notebox.dropbox/auth` exposes `(token!)` → Promise. It refreshes when within
@@ -448,8 +457,13 @@ rev.
   outbox are kept, so nothing pending is lost.
 - **Logout.** `POST /2/auth/token/revoke`, wipe the keychain, and `:app/reset-session` (clear the
   cache). If the outbox isn't empty, warn first.
-- **Setup required in the Dropbox App Console:** enable PKCE / public clients and register the
-  redirect URI on whichever app key mobile uses ([§11](#11-open-questions)).
+- **App key: the web app's (`2t7xyn3a902rv0z`)**. Web and mobile are the same Dropbox app
+  (decided 2026-10-03).
+- **Redirect URI: `notebox://oauth`.** Dropbox accepts custom schemes only with PKCE; the
+  authorization-code flow without PKCE requires `https://` or `localhost`.
+- **Setup required in the Dropbox App Console** (for `2t7xyn3a902rv0z`): register the redirect
+  URI `notebox://oauth`, and make sure public clients (PKCE) are allowed. The web's implicit grant
+  already needs that setting.
 
 ---
 
@@ -661,8 +675,10 @@ is ticked from memory. Re-run the gate on the final commit of the phase.
   (in-memory, with rev semantics).
 - **Gate (automated):**
   - Client contract tests against a fake `fetch`: for every endpoint, the exact URL, headers
-    (`Dropbox-API-Arg`), and `mode`/`rev`; plus response parsing using the recorded responses in
-    `test/resources/fixtures/http/`.
+    (`Dropbox-API-Arg`), and `mode`/`rev`; plus response parsing of the responses in
+    `test/resources/fixtures/http/`. *(Revised: these use the shapes Dropbox documents rather
+    than recordings, because recording would copy private data from the account. The manual
+    gate exercises the real API.)*
   - An error normalization table test: each HTTP status or Dropbox error maps to its `:type`;
     `429`/`503` honour `Retry-After`.
   - Auth: the PKCE verifier/challenge matches the RFC 7636 appendix B test vector; a `401`
@@ -677,6 +693,9 @@ is ticked from memory. Re-run the gate on the final commit of the phase.
 ### Phase 3: Repository, cache, sync engine (L1)
 - A Luggage-compatible repository on top of the client, plus the per-path queue, conflict retry,
   persisted outbox, cache and `list_folder` revalidation.
+- **Check against the real API first:** the fake assumes that `upload` in mode `update` on a
+  file deleted elsewhere is a **conflict** (`notebox.dropbox.fake-store`). Confirm this with
+  Dropbox before the engine relies on it for "edit vs. remote delete".
 - **Gate (automated)**, all on the JVM against the pure core ([§6.3](#63-sync-engine-l1)):
   - **Simulation property test** (≥ 500 generated scenarios): random op sequences from two
     clients (the mobile engine, plus a "legacy" client that overwrites without a rev, as web and
@@ -824,19 +843,16 @@ Maestro.
 
 ## 11. Open questions
 
-1. **Which Dropbox app key does mobile use?** Web and desktop already share data with different
-   keys, so this isn't about data access. Choices:
-   - reuse the web or desktop key and add the mobile redirect URI to it;
-   - register a separate mobile app with the same access setup, which keeps mobile visible
-     separately in Dropbox's "connected apps" and revocable on its own.
-2. **Deep-link scheme:** `notebox://oauth`, or Dropbox's conventional `db-<app-key>://`?
-3. **Conflict policy for edit vs. remote delete:** the plan uses "edit wins" (re-add) plus a
+1. **Conflict policy for edit vs. remote delete:** the plan uses "edit wins" (re-add) plus a
    warning. Alternatively, keep both copies.
-4. **Offline-first scope for v1:** full outbox (as planned), or online-only writes with a
+2. **Offline-first scope for v1:** full outbox (as planned), or online-only writes with a
    read-only cache?
-5. **Back-porting rev-based writes** to the web and desktop clients: in scope or not?
+3. **Back-porting rev-based writes** to the web and desktop clients: in scope or not?
 
 **Decided (2026-10-03):**
+- **App key: reuse the web's** (`2t7xyn3a902rv0z`): it's the same Dropbox app. See [§7](#7-auth-design).
+- **Redirect URI: `notebox://oauth`** (custom schemes work with PKCE). `db-<app-key>://` would also
+  be accepted, and switching is a config change.
 - **"Create new tag": dropped for v1.** The format has nowhere to store a tag without notes (tags
   live on notes; `tagsInfo` is derived from them), and tags are still created from the note
   editor, as on the web. If it comes back later, the choices are unused tags kept locally as

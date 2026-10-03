@@ -14,8 +14,26 @@
 
 (def profiles #{:dev :test :e2e :prod})
 
+(def dropbox-app
+  "The web client's Dropbox app: web and mobile are the same app (roadmap §7)."
+  {:app-key      "2t7xyn3a902rv0z"
+   :redirect-uri "notebox://oauth"})
+
+(defn- real-or-fake [real fake]
+  (ig/profile :dev real :prod real :test fake :e2e fake))
+
 (def base
-  {:notebox/app {:profile (ig/profile :dev :dev :test :test :e2e :e2e :prod :prod)}
+  {:notebox.infra/http         {:timeout-ms 20000}
+   :notebox.infra/secure-store {:impl (real-or-fake :keychain :memory) :service "notebox"}
+   :notebox.infra/browser      {:impl (real-or-fake :linking :fake)}
+   :notebox.dropbox/auth       (merge dropbox-app
+                                      {:http         (ig/ref :notebox.infra/http)
+                                       :secure-store (ig/ref :notebox.infra/secure-store)
+                                       :browser      (ig/ref :notebox.infra/browser)})
+   :notebox.dropbox/client     {:impl (real-or-fake :http :fake)
+                                :http (ig/ref :notebox.infra/http)
+                                :auth (ig/ref :notebox.dropbox/auth)}
+   :notebox/app {:profile (ig/profile :dev :dev :test :test :e2e :e2e :prod :prod)}
    :notebox/ui  {:app (ig/ref :notebox/app)}})
 
 (defn config

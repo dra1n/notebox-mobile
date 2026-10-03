@@ -1,18 +1,26 @@
 (ns notebox.system-test
   "The Integrant system (test profile) starts in dependency order and halts
-  cleanly. Runs on the JVM and in node; the React Native root view
-  (:notebox/ui) is left out on both."
+  cleanly. In node: every component but the React Native root view
+  (:notebox/ui). On the JVM: only the cljc components."
   (:require [clojure.test :refer [deftest is testing]]
             [integrant.core :as ig]
             [re-frame.core :as rf]
             [weavejester.dependency :as dep]
             [notebox.config :as config]
+            #?@(:cljs [[notebox.dropbox.auth]
+                       [notebox.dropbox.client]
+                       [notebox.infra.browser]
+                       [notebox.infra.http]
+                       [notebox.infra.secure-store]])
             [notebox.shell.app]))
 
-(def rn-only-keys #{:notebox/ui})
+(def excluded-keys
+  #?(:cljs #{:notebox/ui}
+     :clj  #{:notebox/ui :notebox.infra/http :notebox.infra/secure-store :notebox.infra/browser
+             :notebox.dropbox/auth :notebox.dropbox/client}))
 
 (defn- test-config []
-  (apply dissoc (config/config :test) rn-only-keys))
+  (apply dissoc (config/config :test) excluded-keys))
 
 (deftest every-profile-resolves
   (doseq [p config/profiles]

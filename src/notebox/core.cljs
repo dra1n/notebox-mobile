@@ -4,6 +4,13 @@
             [integrant.core :as ig]
             [reagent.core :as r]
             [notebox.config :as config]
+            [notebox.dropbox.auth]
+            [notebox.dropbox.client]
+            [notebox.infra.browser]
+            [notebox.infra.http]
+            [notebox.infra.rn.keychain]
+            [notebox.infra.rn.linking]
+            [notebox.infra.secure-store]
             [notebox.shell.app]
             [notebox.ui.root]))
 

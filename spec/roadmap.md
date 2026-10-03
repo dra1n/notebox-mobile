@@ -220,7 +220,7 @@ L1  infra       (Integrant)     http, secure-store, kv-store, dropbox auth, drop
                                  repository (Luggage-compatible), cache, sync engine, platform
 L2  fx adapters (Integrant)     register re-frame reg-fx/reg-cofx that close over L1 components
 L3  features    (re-frame)      events/subs/queries per feature, pure; registered at ns load
-L4  ui          (Reagent)       screens + components; only subscribe and dispatch
+L4  ui          (Reagent)       screens (subscribe + dispatch) over pure presentational views
 L5  shell       (Integrant)     :notebox/app (boot), :notebox/ui (root view, navigation container)
 ```
 
@@ -325,12 +325,15 @@ src/notebox/
   domain/  note.cljc book.cljc meta.cljc ops.cljc search.cljc schema.cljc
   infra/   http.cljs secure_store.cljs kv_store.cljs platform.cljs
   dropbox/ auth.cljs client.cljs fake.cljs
-  storage/ repository.cljs cache.cljs sync_engine.cljs
+  storage/ repository.cljs cache.cljs sync_core.cljc sync_engine.cljs   ; core = pure state machine
   fx/      auth.cljs storage.cljs navigation.cljs platform.cljs
   feature/<f>/ events.cljs subs.cljs queries.cljs        ; f ∈ auth, library, editor, books, tags, search, messaging, sync
   ui/      theme.cljs components/… screens/… navigation.cljs root.cljs
-dev/notebox/dev.cljs             ; reset, fake data seeding
-test/notebox/…                   ; clj (domain) + cljs node (events, storage with fake dropbox)
+  ui/views/…                     ; presentational components: pure (props → hiccup), no subscribe
+dev/notebox/dev.cljs             ; reset, fake data seeding, (dev/check-dropbox)
+test/notebox/…                   ; see §10 for the layout per test level
+test/resources/fixtures/         ; anonymised /notes export (golden files), recorded HTTP responses
+e2e/                             ; Maestro flows (YAML) + seed data for the :e2e profile
 ```
 
 ---
@@ -377,6 +380,13 @@ keeps unknown keys. This removes hazards 2, 4, 5 and 8.
 
 ### 6.3 Sync engine (L1)
 
+- **Pure core, thin driver (for testability).** The engine's decision logic is a pure `cljc`
+  state machine, `(step state event) → [state' commands]`: events are things like op submitted,
+  download ok, upload conflict, network error, timer fired or app started; commands are things
+  like download path, upload path+rev, persist outbox, schedule retry or report. A thin `cljs`
+  driver executes the commands against the Dropbox client and kv-store and feeds the results back
+  as events. This lets the whole engine (queueing, conflicts, retries, crash recovery) run as a
+  deterministic simulation on the JVM with `test.check` ([§10](#10-testing-strategy)).
 - **Per-path serial queue.** Writes to the same file never overlap, which removes self-races.
 - **Optimistic concurrency.** Download with rev → apply op → upload with `mode: update rev`. On
   `conflict`: re-download, re-apply the op, retry (bounded, for example 5 attempts with jitter).
@@ -552,19 +562,53 @@ unsaved editor to the kv-store. The status bar is light-content on `bg-dark`.
 
 ## 9. Phased plan
 
-Each phase ends with a demo on a device or simulator and its tests passing.
+Each phase ends with a demo on a device or simulator and its **gate** passing.
+
+**How to tell that a phase is finished.** Each phase has a gate with two parts:
+- **Automated:** commands that must exit 0, plus the named test namespaces or flows that must
+  exist and pass. The gate commands are cumulative: phase N also runs every earlier phase's
+  checks (`npm run verify` grows as phases add tests).
+- **Manual:** a short checklist, each item with the exact steps to perform it.
+
+A phase is done only when every gate item is ticked in [`progress.md`](progress.md) with its
+evidence (the date, the commit hash, and the command output summary or a screenshot path). Nothing
+is ticked from memory. Re-run the gate on the final commit of the phase.
+
+**Definition of done for any change (all phases):**
+- New behaviour comes with tests at the lowest level that can see it ([§10](#10-testing-strategy)).
+- A bug fix starts with a failing test that reproduces it.
+- `npm run verify` is green before committing.
 
 ### Phase 0: Foundations
 - **Dependencies:** add `re-frame` 1.4.7, `integrant` 1.0.1, `nano-id` 1.1.0, and
   `react-native-get-random-values` (imported first in the index; needs a custom Krell
   `krell_index.js` or a `js/require` in `notebox.core`, to be verified).
-- **System:** `notebox.core`, `notebox.config`, `dev/reset`, with Integrant init on first `-main`.
-- **Tests:** a JVM `clojure.test` alias for `cljc` domain code, a CLJS node test build
-  (`cljs.main -t node`) with `day8.re-frame/test`, and the clj-kondo config with layer rules
-  ([§5.2](#52-dependency-rules-no-cycles)).
+- **Test dependencies:** a `:test` alias with `lambdaisland/kaocha`, `kaocha-cloverage`,
+  `org.clojure/test.check`; `day8.re-frame/re-frame-test` for the node build; clj-kondo; and
+  Maestro (`brew install maestro`; it needs a JDK, which is already present for Clojure).
+- **System:** `notebox.core`, `notebox.config`, `dev/reset`, with Integrant init on first `-main`;
+  the Integrant profiles `:dev`, `:test` (fakes) and `:e2e` (seeded `dropbox/fake` inside the
+  app).
+- **Tests:** a JVM Kaocha alias for `cljc` code, a CLJS node test build (`test.edn`) with
+  `day8.re-frame/test`, the clj-kondo config with layer rules
+  ([§5.2](#52-dependency-rules-no-cycles)), and the scripts in [§10.2](#102-commands-packagejson-scripts-added-in-phase-0).
 - **Release check:** confirm `npm run cljs:release` with `:infer-externs true`.
-- **Done when:** the app renders from a re-frame sub; `(dev/reset)` works from the Krell REPL;
-  tests and lint run from npm scripts.
+- **Test harness (all of [§10](#10-testing-strategy) wired up, each with one smoke test):**
+  `test:clj` (Kaocha + `test.check` + Cloverage), `test:cljs` (node build with
+  `day8.re-frame/test`), `lint:cljs` (clj-kondo with the layer rules), `check:deps` (namespace
+  cycle check), `check:release`, `test:e2e` (Maestro), and the aggregate `verify`.
+- **Gate (automated):**
+  - `npm run verify` exits 0 and runs ≥ 1 test in each runner.
+  - `notebox.lint-rules-test` proves that the layer rules bite: clj-kondo **fails** on
+    `test/resources/lint-violations/*.cljs` (a feature requiring another feature's `events`, and
+    infra requiring `re-frame`).
+  - `notebox.system-test`: the test profile `ig/init`s and `ig/halt!`s cleanly, in dependency
+    order.
+  - `npm run check:release`: the `:advanced` build compiles, and `hermesc` accepts the output.
+  - `npm run test:e2e`: the Maestro smoke flow launches the app on the iOS simulator and sees
+    text rendered from a re-frame sub.
+- **Gate (manual):** in the Krell REPL, change a view, run `(dev/reset)`, and the simulator shows
+  the change without restarting the app.
 
 ### Phase 1: Domain (L0)
 - Note, book and meta schemas; ops ([§6.2](#62-domain-operations-l0-pure-and-idempotent)); meta
@@ -572,24 +616,61 @@ Each phase ends with a demo on a device or simulator and its tests passing.
   slug generation; tag index (all tags → note count across books).
 - **Golden tests** against a real exported `/notes` folder (anonymised), so that
   parse → apply op → serialize round-trips byte-compatible JSON (key names, order of `notesInfo`).
-- **Done when:** 100% of ops are covered by property and example tests on the JVM.
+- **Cross-client oracle:** a JVM test alias pulls `../notebox-desktop` (`:local/root`) and checks
+  that the desktop's own `luggage/collections.clj` reads every file the mobile domain writes. If
+  the desktop code can't be loaded cleanly, record that in `progress.md` and rely on the golden
+  files.
+- **Gate (automated):**
+  - `npm run test:clj` passes, and Cloverage on `notebox.domain.*` reports **≥ 95 % forms**,
+    enforced with `--fail-threshold`.
+  - Property tests (`test.check`, ≥ 200 runs each) for every op: idempotence (applying twice =
+    applying once), no-op on missing targets, meta derived from content equals meta after the
+    op, and slug uniqueness.
+  - The golden round-trip test is byte-identical on every fixture file.
+  - The search parity table (cases taken from the web's `matches-text`) passes, including
+    Cyrillic and case folding.
+- **Gate (manual):** none. This phase is fully automated.
 
 ### Phase 2: Dropbox infra (L1)
 - `http`, `secure-store`, `dropbox/auth` (PKCE, refresh, revoke), `dropbox/client`
   ([§6.1](#61-dropbox-client-l1-using-fetch-directly-instead-of-an-sdk)), and `dropbox/fake`
   (in-memory, with rev semantics).
-- **Done when:** you can log in on a simulator, read `.meta.json` from the real account, and a
-  token refresh is exercised by forcing expiry.
+- **Gate (automated):**
+  - Client contract tests against a fake `fetch`: for every endpoint, the exact URL, headers
+    (`Dropbox-API-Arg`), and `mode`/`rev`; plus response parsing using the recorded responses in
+    `test/resources/fixtures/http/`.
+  - An error normalization table test: each HTTP status or Dropbox error maps to its `:type`;
+    `429`/`503` honour `Retry-After`.
+  - Auth: the PKCE verifier/challenge matches the RFC 7636 appendix B test vector; a `401`
+    triggers exactly one refresh and one retry; `invalid_grant` → `:unauthorized`.
+  - `dropbox/fake` passes the **same contract test suite** as the client (shared test fns), so
+    the fake can be trusted in later phases.
+- **Gate (manual):**
+  - Log in on the simulator; `(dev/check-dropbox)` prints the account email and the parsed
+    `.meta.json` of the real account.
+  - `(dev/expire-token!)`, then `(dev/check-dropbox)` again: it succeeds after a logged refresh.
 
 ### Phase 3: Repository, cache, sync engine (L1)
 - A Luggage-compatible repository on top of the client, plus the per-path queue, conflict retry,
   persisted outbox, cache and `list_folder` revalidation.
-- **Done when:**
-  - killing the app mid-save resumes the save after relaunch;
-  - with two clients (simulator + web app) editing one book, no note is lost when mobile writes
-    last;
-  - a note created in airplane mode syncs after reconnect;
-  - the fake-Dropbox test suite covers conflict and retry.
+- **Gate (automated)**, all on the JVM against the pure core ([§6.3](#63-sync-engine-l1)):
+  - **Simulation property test** (≥ 500 generated scenarios): random op sequences from two
+    clients (the mobile engine, plus a "legacy" client that overwrites without a rev, as web and
+    desktop do), with random faults (conflict, `429`, network error, a crash between any two
+    steps followed by a restart from the persisted outbox). Invariants:
+    - the outbox always drains once faults stop;
+    - with no legacy writer, every acknowledged op is reflected remotely;
+    - meta always equals the meta derived from content after the engine's last write;
+    - no duplicate notes except the documented move-failure case.
+  - Named scenario tests: crash mid-upload → replay; airplane mode → reconnect; two-client
+    conflict with mobile writing last; and "edit vs. remote delete" (edit wins plus a warning).
+  - Cloverage on `notebox.storage.sync-core` ≥ 95 %.
+  - Driver tests (cljs node): the driver executes every command type against `dropbox/fake` and
+    an in-memory kv-store.
+- **Gate (manual):** on the simulator against the real account:
+  - kill the app (swipe away) right after saving → relaunch → the note is in Dropbox;
+  - edit the same book in the web app and on mobile, saving mobile last → both notes survive;
+  - with the network off, create a note, then turn the network on → it syncs.
 
 ### Phase 4: re-frame features (L2 + L3)
 - fx adapters and features: `auth`, `library`, `editor` (add/update/move/delete), `books`
@@ -599,8 +680,16 @@ Each phase ends with a demo on a device or simulator and its tests passing.
 - Tag counts across *all* books need every book downloaded. The Tags screen shows counts from
   `tagsInfo` immediately (as tag names only) and fills in counts as books load, the same way
   search does.
-- **Done when:** every web save flow ([§3.3](#33-web-app-save-flows)) is implemented as events
-  plus ops and tested with `day8.re-frame/test` against the fake Dropbox.
+- **Gate (automated):**
+  - Every web save flow ([§3.3](#33-web-app-save-flows)) and every §1.1 addition has a
+    `day8.re-frame/test` test against the test system (`dropbox/fake`), including the rollback
+    and auth-expiry paths.
+  - **Event coverage meta-test:** in the test profile, a global interceptor records every handled
+    event id; `notebox.event-coverage-test` (run last) fails if any id registered with
+    `reg-event-fx`/`reg-event-db` was never handled. The same check applies to `reg-sub`.
+  - Sub tests: the derived subs (books with counts, tag index, search results, default-book
+    fallback) are checked against example `app-db`s.
+- **Gate (manual):** none. Features are verified through the UI in Phase 5.
 
 ### Phase 5: UI (L4 + L5)
 - Navigation, the screens and components from [§8](#8-ui-and-navigation), the theme, and empty
@@ -610,10 +699,24 @@ Each phase ends with a demo on a device or simulator and its tests passing.
 - Fill the design gaps listed in [§8.1](#81-design-source) (delete note/book, empty and 404
   states, side menu entries, toasts), ideally adding them to Figma so it stays the source of
   truth.
-- **Done when:** functional parity with [§1](#1-what-the-web-app-does-functional-inventory) plus
-  the [§1.1](#11-additions-from-the-mobile-design) additions on iOS, each screen visually checked
-  against its Figma frame, and verified manually against the same Dropbox account the web app
-  uses.
+- **Gate (automated):**
+  - **View tests** (cljs node): every presentational view in `notebox.ui.views.*` renders the
+    expected hiccup for its states (normal, empty, loading, error, long text and truncation),
+    and its press handlers dispatch the expected events. RN components are stubbed, so no
+    simulator is needed.
+  - **Maestro flows** (`e2e/`, iOS simulator, `:e2e` profile with `dropbox/fake` seeded from
+    `e2e/seed/`), one per journey: login → books home; open book → note; create note (default
+    book preselected); edit and move a note; delete a note; search (global, in-book, and book
+    titles); books add/rename/delete and set default; tags list; empty library; note not found;
+    logout. `npm run test:e2e` passes.
+  - Each flow saves screenshots (`takeScreenshot`) to `e2e/screenshots/` (gitignored).
+- **Gate (manual):**
+  - **Design review:** put each `e2e/screenshots/*.png` next to its `spec/design/screens/*.png`
+    and tick it in `progress.md`. Differences must be intentional (for example a design gap we
+    filled) and noted there.
+  - **Parity run** on the real account (simulator), following the [§1](#1-what-the-web-app-does-functional-inventory)
+    and [§1.1](#11-additions-from-the-mobile-design) tables row by row, then confirming the
+    changes in the web app.
 
 ### Phase 6: Hardening and release
 - **Android:** SDK and emulator setup (not installed on this machine yet), deep-link intent
@@ -621,7 +724,15 @@ Each phase ends with a demo on a device or simulator and its tests passing.
 - **Release:** an `:advanced` build, Hermes bytecode in release, the app icon (Figma `0:215`)
   and the launch screen matching the Splash frame (`742:470`), the
   privacy-policy link, and error logging (optional Sentry).
-- **Done when:** release builds run on both platforms against the real account.
+- **Gate (automated):**
+  - The whole Maestro suite passes on the **Android emulator** as well as on iOS.
+  - `npm run check:release`, plus the Maestro smoke flow on a **release** build on both
+    platforms (the `:advanced` + Hermes bytecode path, catching externs problems).
+- **Gate (manual):**
+  - Install the release builds on a real iPhone (and an Android device or emulator); log in to
+    the real account and do one create/edit/delete round trip.
+  - The icon and launch screen are checked on the device's home screen and at cold start.
+  - The privacy-policy link opens; the stock-photo licence is confirmed and recorded.
 
 ### Phase 7 (post-parity, optional)
 - Tag management (rename across books, create, delete; see the decisions in
@@ -635,13 +746,54 @@ Each phase ends with a demo on a device or simulator and its tests passing.
 
 ## 10. Testing strategy
 
-| Level | Tooling | What |
-|---|---|---|
-| Domain (cljc) | `clojure.test` on the JVM | ops, meta derivation, search, golden JSON compatibility |
-| Storage | CLJS node tests + Integrant test profile with `dropbox/fake` | conflict retry, outbox replay, idempotency, queue ordering |
-| Events | `day8.re-frame/test` (`run-test-sync`/`run-test-async`) | every save flow, rollback, auth expiry |
-| System | `ig/init` of the test profile | the graph is acyclic and starts and halts cleanly |
-| Device | manual checklist per phase | parity and cross-client scenarios |
+The web app has almost no tests; mobile is built test-first where it's cheap (domain, sync) and
+test-alongside elsewhere. Correctness lives in pure code (L0 and the sync core), so most tests run
+on the JVM in milliseconds, without React Native.
+
+### 10.1 Levels
+
+| Level | Runs on | Tooling | What | Location |
+|---|---|---|---|---|
+| Domain (cljc) | JVM | Kaocha, `clojure.test`, `test.check`, Cloverage | ops (property tests), meta derivation, search parity, schemas, golden JSON round-trip, desktop-reader oracle | `test/notebox/domain/` |
+| Sync core (cljc) | JVM | `test.check` simulation | queue, conflicts, retries, crash/replay, invariants under faults ([§6.3](#63-sync-engine-l1)) | `test/notebox/storage/` |
+| Infra (cljs) | node | `cljs.test` + fakes (fetch, kv, clock) | Dropbox client contract (shared with `dropbox/fake`), auth/PKCE, error mapping, sync driver | `test/notebox/dropbox/`, `test/notebox/infra/` |
+| System | node | `ig/init` of the test profile | the graph is acyclic and starts and halts in order | `test/notebox/system_test.cljs` |
+| Events and subs | node | `day8.re-frame/test` + test system | every flow, rollback, auth expiry; the event/sub coverage meta-test | `test/notebox/feature/` |
+| Views | node | hiccup assertions, stubbed RN | every presentational view state and handler | `test/notebox/ui/` |
+| End-to-end | iOS sim / Android emu | Maestro + `:e2e` profile (seeded fake Dropbox) | user journeys, screenshots for design review | `e2e/` |
+| Static | JVM | clj-kondo layer rules, namespace cycle check, a lint-rules self-test | the no-cycles hard rule ([§5.2](#52-dependency-rules-no-cycles)) | `.clj-kondo/`, `test/resources/lint-violations/` |
+| Release | macOS | Krell `:advanced` + `hermesc` | the production bundle compiles and loads | `scripts/check-release.sh` |
+| Manual | device | the checklists in each phase gate | real account, cross-client, kill/offline | [`progress.md`](progress.md) |
+
+**Why these tools.** Kaocha gives one JVM runner with Cloverage and `test.check` support.
+Maestro drives the RN app as a black box (YAML flows, no instrumentation of CLJS code), works on
+both platforms, and takes screenshots. Presentational views are pure functions to hiccup, so they're
+testable in node without a renderer. Screens (which subscribe) stay thin and are covered by
+Maestro.
+
+### 10.2 Commands (`package.json` scripts, added in Phase 0)
+
+| Script | Does |
+|---|---|
+| `test:clj` | `clojure -M:test` (Kaocha: domain + sync core; Cloverage with thresholds) |
+| `test:cljs` | build `test.edn` (`:target :nodejs`) and run it with node |
+| `lint:cljs` | `clj-kondo --lint src test` with the layer rules |
+| `check:deps` | fail on any namespace cycle in `src/` |
+| `verify` | `test:clj` + `test:cljs` + `lint:cljs` + `check:deps` + `jest` (fast; run before every commit) |
+| `check:release` | `:advanced` build + `hermesc` on the output |
+| `test:e2e` | `maestro test e2e/` against a running `:e2e` build (iOS by default; `E2E_PLATFORM=android`) |
+
+### 10.3 Test data
+
+- `test/resources/fixtures/notes-export/`: an anonymised copy of a real `/notes` folder (the
+  same text structure, Cyrillic preserved, private content replaced). Used by the golden tests
+  and seeded into `e2e/seed/`.
+- `test/resources/fixtures/http/`: recorded Dropbox responses (success, `409` path/conflict,
+  `401` expired, `429` with `Retry-After`), recorded once in Phase 2 from the real API.
+- Generators (`notebox.test.gen`): notes, books, op sequences and fault schedules, shared by the
+  property and simulation tests.
+
+---
 
 ---
 

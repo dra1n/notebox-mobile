@@ -15,7 +15,7 @@ This file tracks the phase gates defined in [`roadmap.md` §9](roadmap.md#9-phas
 |---|---|
 | 0 Foundations | done (2026-10-03, 094bc4d) |
 | 1 Domain | done (2026-10-03, f988768) |
-| 2 Dropbox infra | in progress: automated gate passed; manual items pending |
+| 2 Dropbox infra | done (2026-10-03, dd76ee1) |
 | 3 Repository, cache, sync | not started |
 | 4 re-frame features | not started |
 | 5 UI | not started |
@@ -70,8 +70,8 @@ Automated
 - [x] `dropbox/fake` passes the same contract suite as the client: 2026-10-03, 054cfff. `contract-test` runs one suite against the fake and against the HTTP client over a fake server (with paging). The suite caught a fidelity bug in the fake server (lower-cased file names), now fixed.
 
 Manual
-- [ ] After login on the simulator, `(dev/check-dropbox)` prints the email and parsed meta of the real account
-- [ ] `(dev/expire-token!)`, then `(dev/check-dropbox)`, succeeds after a logged refresh
+- [x] After login on the simulator, `(dev/check-dropbox)` prints the email and parsed meta of the real account: 2026-10-03, dd76ee1. Done by the user: `(dev/login!)` via Safari with the `notebox://oauth` redirect on the web app key `2t7xyn3a902rv0z`, then `(dev/check-dropbox)` against the real `/notes`.
+- [x] `(dev/expire-token!)`, then `(dev/check-dropbox)`, succeeds after a logged refresh: 2026-10-03, dd76ee1. Done by the user.
 
 Notes
 - Login uses our own PKCE flow plus `Linking` (system browser, then iOS's "Open in Notebox?"

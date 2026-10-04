@@ -17,6 +17,7 @@ fi
 cp index.js target/.index.js.e2e.bak
 trap 'mv target/.index.js.e2e.bak index.js' EXIT
 
+rm -rf target/e2e   # Krell's requires cache is additive; start clean
 echo "→ :e2e build (target/e2e)"
 log=$(mktemp)
 clojure -M -m krell.main -co "build.edn:e2e/build.edn" -O advanced -c 2>&1 | tee "$log" | grep -v SLF4J || true

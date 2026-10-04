@@ -48,7 +48,8 @@
 
    :notebox/app {:profile (ig/profile :dev :dev :test :test :e2e :e2e :prod :prod)
                  :effects (ig/ref :notebox.shell/effects)}
-   :notebox/ui  {:app (ig/ref :notebox/app)}})
+   :notebox/ui  {:app       (ig/ref :notebox/app)
+                 :navigator (ig/ref :notebox.infra/navigator)}})
 
 (defn config
   "The config for `profile` (one of `profiles`), with all profile values resolved."

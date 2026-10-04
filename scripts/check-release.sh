@@ -13,6 +13,9 @@ log=$(mktemp)
 cp index.js "$out.index.js.bak" 2>/dev/null || { mkdir -p target; cp index.js "$out.index.js.bak"; }
 trap 'mv "$out.index.js.bak" index.js; rm -f "$log"' EXIT
 
+# Krell's krell_requires.edn cache is additive: start clean so renamed
+# namespaces can't linger.
+rm -rf "$out"
 echo "→ :advanced build ($out)"
 clojure -M -m krell.main -co build.edn -O advanced -d "$out" -o "$out/main.js" -c 2>&1 | tee "$log"
 if grep -E "^WARNING|Exception|ERROR" "$log" \

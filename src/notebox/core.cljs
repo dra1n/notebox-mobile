@@ -34,7 +34,7 @@
     (reset! system nil)))
 
 (defn app []
-  (if-let [root (:notebox/ui @system)]
+  (if-let [root (:root (:notebox/ui @system))]
     [root]
     [:<>]))
 

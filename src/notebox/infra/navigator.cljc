@@ -1,7 +1,9 @@
 (ns notebox.infra.navigator
-  "The navigator slot: the UI puts a function (fn [action route params]) here
-  once its navigation container exists (Phase 5); navigation effects call it.
-  Until then navigating is a no-op."
+  "The navigator slot: an atom holding a function (fn [action route params]).
+  The UI component (:notebox/ui) resets it when its navigation container
+  exists, and back to nil on halt; navigation effects call it. Until then
+  navigating is a no-op. The contract is the atom itself, so the UI doesn't
+  need to require this namespace."
   (:require [integrant.core :as ig]))
 
 (defn navigator [] (atom nil))

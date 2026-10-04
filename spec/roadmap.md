@@ -271,8 +271,10 @@ nothing about Dropbox, HTTP or React Native; it only emits effect maps.
 7. **JavaScript stays at the edges.** Only these namespaces may require a JS module (a string
    require such as `["react-native" …]` or `["@luggage/core/…" …]`):
    - `notebox.infra.js.*`: JS libraries (Luggage);
-   - `notebox.infra.rn.*`: React Native native modules (Keychain, Linking);
-   - `notebox.ui.*`: React Native components;
+   - `notebox.infra.rn.*`: React Native native modules (Keychain, Linking, AsyncStorage);
+   - `notebox.ui.rn.*`: React Native, React Navigation and react-native-svg for the UI
+     (tightened from `notebox.ui.*` in Phase 5; first named `ui.native`, but `native` is a
+     reserved word in JavaScript, which the Closure Compiler mangles);
    - `notebox.core`: the startup polyfill.
    Each interop namespace converts to and from ClojureScript data at its boundary, so everything
    else is plain CLJS. JS globals (`js/fetch`, `js/Promise`) are allowed. Enforced by
@@ -543,6 +545,28 @@ as we go:
 - Side menu entries: the mock shows only "Log out", but the Books and Tags screens open from the
   hamburger. The menu needs Library, Books, Tags, Settings/About and Log out.
 - Search results and "nothing found" states.
+
+### 8.1a UI structure (agreed 2026-10-04, Phase 5)
+
+| Namespace | What | JS? |
+|---|---|---|
+| `notebox.ui.rn.*` (`core`, `navigation`, `svg`, `images`) | the only UI code that requires JS modules; converts params and events to CLJS at the edge | yes |
+| `notebox.ui.theme` | the tokens of §8.4 (`cljc`) | no |
+| `notebox.ui.icons` | the icons and logo from `spec/design/assets/` as SVG path data | no |
+| `notebox.ui.components.*` | presentational: props → hiccup, callbacks as props, no subscribe/dispatch | no |
+| `notebox.ui.screens.*` | one per screen: subscribe, dispatch, map state to component props | no |
+| `notebox.ui.routes` | the routes as data | no |
+
+- **The UI is a component** (`:notebox/ui`, refs `:notebox/app` and `:notebox.infra/navigator`).
+  On init it creates the navigation container ref and installs the navigator function, so
+  `:nav/navigate` works. On halt it uninstalls it. The root view picks the screens from
+  `:auth/status`: splash (unknown), Start (signed out), or the library stack (signed in).
+- **Confirmations** (delete a note or book) are asked in the screen before dispatching
+  (`notebox.ui.rn.core/confirm!`, React Native's `Alert`), not by an effect.
+- **Tests:** component tests in Node call presentational components with props and assert on
+  the hiccup; React Native and friends are stubbed by a preload script. Maestro covers the
+  journeys. The e2e app starts signed in, because the real OAuth can't run there; sign-in is
+  covered by the Node flow tests.
 
 ### 8.2 Navigation
 

@@ -247,7 +247,8 @@
                        (.then (fn [_]
                                 (is (= 4 (count (remote-book dbx comics))))
                                 (is (= 4 (:count (remote-info dbx comics))) "the drifted count heals")
-                                (is (= [[:back nil nil]] @nav))
+                                (is (= [[:navigate :book {:book comics}]] @nav)
+                                    "to the book, not back to the deleted note")
                                 (expect-message "Note deleted."))))))))))
 
 (deftest add-rename-delete-a-book
@@ -395,3 +396,21 @@
            (is (= :notice type))
            (rf/dispatch-sync [:messaging/dismiss id])))
        #(is (not-any? #{"Hello"} (messages)))))))
+
+(deftest navigation-requests
+  (let [{:keys [nav]} (ts/start!)]
+    (rf/dispatch-sync [:nav/open-book anna])
+    (rf/dispatch-sync [:nav/open-note anna "Vh2xQ1aaaa"])
+    (rf/dispatch-sync [:nav/edit-note anna "Vh2xQ1aaaa"])
+    (rf/dispatch-sync [:nav/new-note nil])
+    (rf/dispatch-sync [:nav/new-note anna])
+    (rf/dispatch-sync [:nav/go :tags {}])
+    (rf/dispatch-sync [:nav/go-back])
+    (is (= [[:navigate :book {:book anna}]
+            [:navigate :note {:book anna :note "Vh2xQ1aaaa"}]
+            [:navigate :note-edit {:book anna :note "Vh2xQ1aaaa"}]
+            [:navigate :note-new {}]
+            [:navigate :note-new {:book anna}]
+            [:navigate :tags {}]
+            [:back nil nil]]
+           @nav))))

@@ -28,4 +28,4 @@
  (fn [_ [_ book slug]]
    {:dispatch [:library/save [{:op :note/remove :book book :slug slug}]
                {:success-message "Note deleted."}]
-    :nav/back nil}))
+    :nav/navigate [:book {:book book}]}))

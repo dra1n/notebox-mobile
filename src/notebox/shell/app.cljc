@@ -14,6 +14,7 @@
             [notebox.feature.library.subs]
             [notebox.feature.messaging.events]
             [notebox.feature.messaging.subs]
+            [notebox.feature.nav.events]
             [notebox.feature.search.events]
             [notebox.feature.search.subs]
             [notebox.feature.settings.events]

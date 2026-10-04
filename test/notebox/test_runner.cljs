@@ -23,6 +23,7 @@
             [notebox.shell.events-test]
             [notebox.storage.repository-test]
             [notebox.system-test]
+            [notebox.ui.components-test]
             [notebox.event-coverage-test]))
 
 (def test-namespaces
@@ -44,6 +45,7 @@
     notebox.shell.events-test
     notebox.storage.repository-test
     notebox.system-test
+    notebox.ui.components-test
     notebox.event-coverage-test])
 
 ;; Expected in tests, so not printed: subscribing outside a reactive context, and
@@ -79,6 +81,7 @@
                'notebox.shell.events-test
                'notebox.storage.repository-test
                'notebox.system-test
+               'notebox.ui.components-test
                'notebox.event-coverage-test))
 
 (set! *main-cli-fn* -main)

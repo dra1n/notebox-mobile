@@ -18,6 +18,12 @@ snapshot and the phase gates live in [`spec/`](spec/): start with
 
 Restart the REPL after changing `deps.edn`; its classpath is fixed at start.
 
+The simulator runs the **dev** build in `target/`. It updates when the REPL recompiles (on save)
+or after `npm run cljs:build` + reload (Cmd-R). `npm run test:e2e` and `check:release` compile
+their own builds (`target/e2e`, `target/release`), so they don't update the app you're looking at;
+after an e2e run, reload to get the dev build back. Restart Metro after `npm install`
+(`npm start -- --reset-cache`).
+
 ---
 
 

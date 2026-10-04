@@ -31,7 +31,8 @@
   "An icon by name (see notebox.ui.icons). `size` [w h] scales it; `colors`
   maps colors in the design to the ones to draw (e.g. {\"#C6C6C6\" \"#888888\"})."
   [{:keys [icon size colors test-id]}]
-  (let [{:keys [width height view-box children]} (get icons/icons icon)
+  (let [{:keys [width height view-box children fill]} (get icons/icons icon)
         [w h] (or size [width height])]
-    (into [:> rsvg/Svg {:width w :height h :viewBox view-box :testID test-id}]
+    (into [:> rsvg/Svg (cond-> {:width w :height h :viewBox view-box :testID test-id}
+                         fill (assoc :fill fill))]
           (map #(render % (or colors {})) children))))

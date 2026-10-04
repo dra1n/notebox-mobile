@@ -20,7 +20,7 @@ trap 'mv target/.index.js.e2e.bak index.js' EXIT
 rm -rf target/e2e   # Krell's requires cache is additive; start clean
 echo "→ :e2e build (target/e2e)"
 log=$(mktemp)
-clojure -M -m krell.main -co "build.edn:e2e/build.edn" -O advanced -c 2>&1 | tee "$log" | grep -v SLF4J || true
+clojure -M:e2e -m krell.main -co "build.edn:e2e/build.edn" -O advanced -c 2>&1 | tee "$log" | grep -v SLF4J || true
 if grep -E "^WARNING|Exception|ERROR" "$log" \
      | grep -vE "SLF4J|sun\.misc\.Unsafe|terminally deprecated|consider reporting" >/dev/null; then
   echo "✗ compiler reported warnings/errors"; exit 1
@@ -28,4 +28,13 @@ fi
 grep -q "target/e2e/main.js" index.js || { echo "✗ index.js doesn't point at the e2e build"; exit 1; }
 
 echo "→ maestro"
-maestro test ${E2E_PLATFORM:+--platform "$E2E_PLATFORM"} e2e/flows
+rm -rf target/e2e-output
+status=0
+maestro test ${E2E_PLATFORM:+--platform "$E2E_PLATFORM"} --test-output-dir target/e2e-output \
+  ${E2E_FLOWS:-e2e/flows} || status=$?
+
+# Screenshots for the design review (roadmap Phase 5): e2e/screenshots/<name>.png
+mkdir -p e2e/screenshots
+find target/e2e-output -path "*takeScreenshot*" -name "*.png" -exec cp {} e2e/screenshots/ \;
+echo "screenshots: $(ls e2e/screenshots | wc -l | tr -d ' ') in e2e/screenshots/"
+exit $status

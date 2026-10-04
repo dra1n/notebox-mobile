@@ -15,8 +15,10 @@
 (defn start [_]
   (let [status @(rf/subscribe [:auth/status])
         signing-in? (= :signing-in status)]
-    [:> rn/image-background {:source images/start-background :resize-mode "cover"
-                             :testID "start" :style {:flex 1}}
+    [:> rn/view {:testID "start" :style {:flex 1}}
+     [:> rn/image {:source images/start-background :resize-mode "cover"
+                   :style {:position "absolute" :top 0 :left 0 :right 0 :bottom 0
+                           :width "100%" :height "100%"}}]
      [:> rn/status-bar {:bar-style "dark-content"}]
      [svg/vertical-fade {:color (t/color :bg-lighter)}]
      [:> rn/view {:style {:align-items "center" :padding-top 96 :gap 12 :padding-horizontal 32}}

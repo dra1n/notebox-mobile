@@ -1,4 +1,7 @@
-;; Merged over build.edn by scripts/e2e.sh: the app with the :e2e profile.
-{:output-to       "target/e2e/main.js"
+;; Merged over build.edn by scripts/e2e.sh: the app with the :e2e profile, a
+;; seeded fake Dropbox and a stored session (notebox.e2e.setup, loaded by the
+;; e2e entry point before the app starts).
+{:main            notebox.e2e.main
+ :output-to       "target/e2e/main.js"
  :output-dir      "target/e2e"
  :closure-defines {notebox.config/PROFILE "e2e"}}

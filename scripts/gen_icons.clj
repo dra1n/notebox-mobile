@@ -34,10 +34,12 @@
 
 (defn icon [file]
   (let [{:keys [attrs content]} (xml/parse file)]
-    {:width    (number-or-string (:width attrs))
-     :height   (number-or-string (:height attrs))
-     :view-box (:viewBox attrs)
-     :children (vec (keep element content))}))
+    (cond-> {:width    (number-or-string (:width attrs))
+             :height   (number-or-string (:height attrs))
+             :view-box (:viewBox attrs)
+             :children (vec (keep element content))}
+      ;; the root's fill (often "none") is inherited by every shape
+      (:fill attrs) (assoc :fill (:fill attrs)))))
 
 (defn -main [& _]
   (let [files (sort-by #(.getName %) (filter #(str/ends-with? (.getName %) ".svg")

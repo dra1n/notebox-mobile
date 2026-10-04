@@ -1,0 +1,13 @@
+# Delete a note (with confirmation); the app shows its book.
+appId: org.reactjs.native.example.Notebox
+---
+- launchApp: {stopApp: true}
+- extendedWaitUntil: {visible: {id: "home-list"}, timeout: 60000}
+- tapOn: {id: "book-Cm1c5_bk-0"}
+- tapOn: {id: "note-c0m1c00002"}
+- tapOn: {id: "header-action"}
+- tapOn: {id: "delete-note"}
+- tapOn: "Delete"
+- extendedWaitUntil: {visible: "4 notes in total", timeout: 10000}
+- assertNotVisible: {id: "note-c0m1c00002"}
+- assertVisible: "Note deleted."

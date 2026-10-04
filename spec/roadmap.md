@@ -926,7 +926,10 @@ None at the moment.
 - **Default book: on the device** (kv-store, per device, no format change). It falls back to the
   last active book, then the first book.
 - **Light-only** for v1.
-- **Font:** bundle Roboto on iOS if that's simple; otherwise use the system font.
+- **Font:** bundle Roboto on iOS if that's simple; otherwise use the system font. *(Phase 5:
+  system font on iOS. Google Fonts only serves WOFF subsets, static Roboto 2 TTFs have no
+  SemiBold, and bundling needs Xcode project changes. Android uses its built-in Roboto. One
+  setting switches it: `notebox.ui.theme/font-family`.)*
 
 ---
 

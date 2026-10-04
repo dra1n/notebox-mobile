@@ -51,11 +51,18 @@
    :notebox/ui  {:app       (ig/ref :notebox/app)
                  :navigator (ig/ref :notebox.infra/navigator)}})
 
+(defonce ^{:doc "Per-build additions merged into components' config: {key {opt value}}.
+  Only the e2e build sets it (e2e/src/notebox/e2e/setup.cljs, a preload): the
+  seeded fake Dropbox and a stored session."}
+  overrides
+  (atom {}))
+
 (defn config
-  "The config for `profile` (one of `profiles`), with all profile values resolved."
+  "The config for `profile` (one of `profiles`), with all profile values
+  resolved and `overrides` merged in."
   [profile]
   {:pre [(contains? profiles profile)]}
-  (ig/deprofile base [profile]))
+  (merge-with merge (ig/deprofile base [profile]) @overrides))
 
 (defn build-profile
   "The profile this build was compiled for."

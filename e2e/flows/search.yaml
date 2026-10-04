@@ -1,0 +1,17 @@
+# Search everywhere (note text, book titles) and inside one book.
+appId: org.reactjs.native.example.Notebox
+---
+- launchApp: {stopApp: true}
+- extendedWaitUntil: {visible: {id: "home-list"}, timeout: 60000}
+- tapOn: {id: "search-input"}
+- inputText: "watches"
+- extendedWaitUntil: {visible: {id: "note-c0m1c00001"}, timeout: 15000}
+- eraseText: 10
+- inputText: "recipes"
+- assertVisible: {id: "book-R3c1p3s-xx"}
+- eraseText: 10
+- tapOn: {id: "book-Cm1c5_bk-0"}
+- tapOn: {id: "search-input"}
+- inputText: "maus"
+- assertVisible: {id: "note-c0m1c00002"}
+- assertNotVisible: {id: "note-c0m1c00001"}

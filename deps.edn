@@ -29,6 +29,9 @@
               :extra-deps  {day8.re-frame/test     {:mvn/version "0.1.7"}
                             org.clojure/test.check {:mvn/version "1.1.3"}}}
 
+  ;; The e2e build: its preload and the fixture seed (scripts/e2e.sh)
+  :e2e       {:extra-paths ["e2e/src"]}
+
   ;; Layer rules + namespace cycle check (scripts/check_deps.clj)
   :check-deps {:extra-paths ["scripts"]
                :extra-deps  {org.clojure/tools.namespace {:mvn/version "1.5.1"}}

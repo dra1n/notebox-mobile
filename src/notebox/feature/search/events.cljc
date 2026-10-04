@@ -6,8 +6,8 @@
 
 (rf/reg-event-fx
  :search/set-query
- (fn [{:keys [db]} [_ query scope]]
-   (let [db' (q/set-query db query scope)
+ (fn [{:keys [db]} [_ query scope {:keys [external?]}]]
+   (let [db' (cond-> (q/set-query db query scope) external? q/bump-input-key)
          {:keys [type book]} (q/scope db')]
      (cond-> {:db db'}
        (and (= :all type) (search/normalize-query query))

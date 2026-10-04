@@ -63,7 +63,8 @@
           [:> rn/view {:testID "prompt"
                        :style {:background-color (t/color :white) :border-radius 8 :padding 20 :gap 16}}
            [:> rn/text {:style (t/font :medium 16)} title]
-           [:> rn/text-input {:value v :placeholder placeholder :auto-focus true :testID "prompt-input"
+           [:> rn/text-input {:default-value (or initial "") :placeholder placeholder :auto-focus true
+                              :testID "prompt-input"
                               :placeholder-text-color (t/color :text-grey)
                               :on-change-text #(reset! value %)
                               :on-submit-editing submit!
@@ -92,11 +93,15 @@
           [:> rn/text {:style (merge (t/font :medium 13) {:flex 1}) :number-of-lines 1}
            (or selected-title placeholder "Select Notebook...")]
           [svg/svg {:icon :chevron-down :size [12 8]}]]
-         [:> rn/modal {:visible @open? :transparent true :animation-type "fade"
+         (when @open?   ; mounted only while open: a fresh native modal each time
+         [:> rn/modal {:visible true :transparent true :animation-type "fade"
                        :on-request-close #(reset! open? false)}
-          [:> rn/pressable {:on-press #(reset! open? false)
-                            :style {:flex 1 :justify-content "center" :padding 32
-                                    :background-color "rgba(0,0,0,0.35)"}}
+          [:> rn/view {:style {:flex 1 :justify-content "center" :padding 32}}
+           ;; the backdrop is a sibling behind the list: a pressable parent would hide
+           ;; the list's items from accessibility (and from Maestro)
+           [:> rn/pressable {:on-press #(reset! open? false) :testID "book-picker-backdrop"
+                             :style {:position "absolute" :top 0 :left 0 :right 0 :bottom 0
+                                     :background-color "rgba(0,0,0,0.35)"}}]
            [:> rn/view {:testID "book-picker-list"
                         :style {:background-color (t/color :white) :border-radius 8 :max-height 420}}
             (into [:> rn/scroll-view]
@@ -115,4 +120,4 @@
                     [:> rn/pressable {:on-press (fn [] (reset! open? false) (on-new-book))
                                       :testID "pick-new-book" :style {:padding 14}}
                      [:> rn/text {:style (merge (t/font :medium 14) {:color (t/color :cyan)})}
-                      "+ New book…"]]]))]]]]))))
+                      "+ New book…"]]]))]]])]))))

@@ -26,7 +26,8 @@
 (defn sp [k] (get space k))
 
 (def font-family
-  "Roboto where it's available (Android, or bundled on iOS); nil = the system font."
+  "nil = the platform font: SF Pro on iOS, Roboto on Android (roadmap §11:
+  bundling Roboto on iOS wasn't simple, so the agreed fallback applies)."
   nil)
 
 (defn font

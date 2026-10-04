@@ -2,7 +2,6 @@
   "Presentational components: given props, the right texts, testIDs, styles
   and callbacks, in every state (roadmap Phase 5 gate)."
   (:require [cljs.test :refer [deftest is testing]]
-            [clojure.string :as str]
             [notebox.ui.components.feedback :as feedback]
             [notebox.ui.components.frame :as frame]
             [notebox.ui.components.lists :as lists]
@@ -34,6 +33,10 @@
       (is (some #{"Cancel" "Edit Note" "SAVE"} (h/texts tree)))
       (is (= (t/color :white) (get-in (h/by-test-id tree "header-title") [:style :color])))
       (is (= (t/color :logo) (get-in (h/by-test-id tree "header-action") [:style :background-color])))))
+  (testing "a section title sits next to the menu"
+    (let [tree (render frame/header {:left :menu :on-left identity :title "Books" :title-style :section})]
+      (is (= ["Books"] (h/texts tree)))
+      (is (= (t/color :white) (get-in (h/by-test-id tree "header-title") [:style :color])))))
   (testing "a disabled button does nothing"
     (let [tree (render frame/button {:label "x" :on-press identity :disabled? true :test-id "b"})]
       (is (nil? (:on-press (h/by-test-id tree "b")))))))
@@ -44,7 +47,7 @@
                                           :on-change #(swap! changes conj %)
                                           :stats "30 books (67 notes) in total"})
         input   (h/by-test-id tree "search-input")]
-    (is (= "anna" (:value input)))
+    (is (= "anna" (:default-value input)) "uncontrolled: the value is the initial text")
     (is (= "Search notes, tags, books..." (:placeholder input)))
     ((:on-change-text input) "karenina")
     (is (= ["karenina"] @changes))
@@ -126,4 +129,10 @@
       (is (some #{"Comics"} (h/texts (render modals/book-picker {:books books :selected "b"}))))
       (is (some #{"Poems"} (h/texts (render modals/book-picker {:books books :new-book-title "Poems"}))))
       (is (some #{"Select Notebook..."} (h/texts (render modals/book-picker {:books books}))))
-      (is (str/includes? (str (h/test-ids (render modals/book-picker {:books books}))) "pick-a")))))
+      (testing "the list is mounted only once the field is pressed"
+        (let [props {:books books :on-select identity :on-new-book identity}
+              inner (modals/book-picker props)          ; form-2: keeps its open state
+              closed (h/expand (inner props))]
+          (is (= #{"book-picker"} (h/test-ids closed)))
+          ((:on-press (h/by-test-id closed "book-picker")))
+          (is (every? (h/test-ids (h/expand (inner props))) ["pick-a" "pick-b" "pick-new-book"])))))))

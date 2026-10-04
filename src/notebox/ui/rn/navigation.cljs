@@ -37,13 +37,25 @@
 
 (defonce ^:private Stack (createNativeStackNavigator))
 
+(defn- component-name
+  ":note-edit → \"NoteEditScreen\" (React wants capitalized component names)."
+  [route]
+  (str (apply str (map #(str (.toUpperCase (subs % 0 1)) (subs % 1))
+                       (.split (name route) "-")))
+       "Screen"))
+
 (def ^:private screen-component
-  "A React component per screen fn, made once so React keeps its identity."
+  "A React component per screen, made once so React keeps its identity."
   (memoize
-   (fn [screen-fn]
-     (r/reactify-component
-      (fn [{:keys [route]}]
-        [screen-fn (js->clj (.-params ^js route) :keywordize-keys true)])))))
+   (fn [route screen-fn]
+     (let [c (r/reactify-component
+              (fn [{:keys [route]}]
+                [screen-fn (js->clj (.-params ^js route) :keywordize-keys true)]))
+           n (component-name route)]
+       (set! (.-displayName c) n)
+       ;; React Navigation checks the function's own (read-only, configurable) name
+       (js/Object.defineProperty c "name" #js {:value n})
+       c))))
 
 (defn container
   "The navigation container around `child`."
@@ -58,5 +70,5 @@
         (for [{:keys [name screen options]} screens]
           [:> (.-Screen Stack) {:key (clojure.core/name name)
                                 :name (clojure.core/name name)
-                                :component (screen-component screen)
+                                :component (screen-component name screen)
                                 :options (clj->js (or options {}))}])))

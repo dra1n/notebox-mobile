@@ -22,8 +22,9 @@
   "The toasts, stacked at the top. Tap to dismiss."
   [{:keys [messages on-dismiss top]}]
   (when (seq messages)
+    ;; below the status bar and the header, so they never cover header buttons
     (into [:> rn/view {:pointer-events "box-none"
-                       :style {:position "absolute" :left 16 :right 16 :top (or top 60) :gap 8}}]
+                       :style {:position "absolute" :left 16 :right 16 :top (or top 132) :gap 8}}]
           (for [m messages] ^{:key (:id m)} [toast {:message m :on-dismiss on-dismiss}]))))
 
 (defn sync-pill

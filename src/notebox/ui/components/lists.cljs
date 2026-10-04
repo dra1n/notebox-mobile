@@ -7,15 +7,19 @@
             [notebox.ui.theme :as t]))
 
 (defn search-bar
-  "The white search-and-stats block: an input and a stats line."
-  [{:keys [value placeholder on-change stats test-id]}]
+  "The white search-and-stats block: an input and a stats line. The input is
+  uncontrolled (`value` is its initial text) so fast typing never drops
+  characters while app-db catches up; change `input-key` to show a new value
+  set from elsewhere."
+  [{:keys [value input-key placeholder on-change stats test-id]}]
   [:> rn/view {:style {:background-color (t/color :white) :padding (t/sp :m) :gap (t/sp :s)
                        :border-bottom-width 1 :border-bottom-color (t/color :bg-light)}}
    [:> rn/view {:style {:flex-direction "row" :align-items "center" :gap 8
                         :background-color (t/color :bg-lighter) :border-radius (:input t/radius)
                         :padding-horizontal 12 :padding-vertical 10}}
     [svg/svg {:icon :search :size [16 16]}]
-    [:> rn/text-input {:value (or value "")
+    [:> rn/text-input {:key (str "search-" input-key)
+                       :default-value (or value "")
                        :placeholder placeholder
                        :placeholder-text-color (t/color :text-grey)
                        :on-change-text on-change

@@ -56,7 +56,7 @@
                   ^{:key tag} [chip {:label tag :on-remove #(on-change (vec (remove #{tag} tags)))}])
                 [(if @adding?
                    ^{:key "input"}
-                   [:> rn/text-input {:value @input :auto-focus true :auto-capitalize "none"
+                   [:> rn/text-input {:default-value "" :auto-focus true :auto-capitalize "none"
                                       :placeholder "Tag" :testID "tag-input"
                                       :on-change-text #(reset! input %)
                                       :on-submit-editing #(add! @input)

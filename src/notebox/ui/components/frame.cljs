@@ -61,15 +61,19 @@
 
 (defn header
   "The dark header: left control (:menu :back :cancel), optional logo, a title
-  (:plain: grey, truncated; :modal: bold white, centered) and an action button."
+  (:plain: grey, truncated, centered; :modal: bold white, centered; :section:
+  bold white next to the menu, as on Books and Tags) and an action button."
   [{:keys [logo? title title-style action] :as props}]
   [:> rn/view {:style {:height t/header-height :background-color (t/color :bg-dark)
                        :padding-horizontal (t/sp :m) :flex-direction "row"
                        :align-items "center" :justify-content "space-between"}}
    [:> rn/view {:style {:flex-direction "row" :align-items "center" :gap 8 :min-width 72}}
     [left-control props]
-    (when logo? [logo {:height 26 :on-dark? true}])]
-   (when title
+    (when logo? [logo {:height 26 :on-dark? true}])
+    (when (= :section title-style)
+      [:> rn/text {:testID "header-title" :style (merge (t/font :bold 17) {:color (t/color :white)})}
+       title])]
+   (when (and title (not= :section title-style))
      [:> rn/text {:number-of-lines 1
                   :testID "header-title"
                   :style (merge (if (= :modal title-style)

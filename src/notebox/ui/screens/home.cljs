@@ -39,7 +39,8 @@
        [:<>
         [frame/header {:left :menu :on-left state/open-menu! :logo? true
                        :action {:label "Add note" :on-press #(rf/dispatch [:nav/new-note nil])}}]
-        [lists/search-bar {:value query :placeholder "Search notes, tags, books..."
+        [lists/search-bar {:value query :input-key @(rf/subscribe [:search/input-key])
+                           :placeholder "Search notes, tags, books..."
                            :on-change #(rf/dispatch [:search/set-query % {:type :all}])
                            :stats (str (lists/plural (:books totals) "book") " ("
                                        (lists/plural (:notes totals) "note") ") in total")}]

@@ -13,8 +13,9 @@
   [{:name :books-home :screen home/home}
    {:name :book       :screen book/book}
    {:name :note       :screen note/note}
-   {:name :note-edit  :screen editor/edit-note :options {:presentation "modal"}}
-   {:name :note-new   :screen editor/new-note  :options {:presentation "modal"}}
+   ;; regular screens sliding up (a fullScreenModal ignores the safe area)
+   {:name :note-edit  :screen editor/edit-note :options {:animation "slide_from_bottom"}}
+   {:name :note-new   :screen editor/new-note  :options {:animation "slide_from_bottom"}}
    {:name :books      :screen books/books}
    {:name :tags       :screen tags/tags-screen}])
 

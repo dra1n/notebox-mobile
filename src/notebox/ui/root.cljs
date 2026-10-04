@@ -34,7 +34,8 @@
      [feedback/toasts {:messages @(rf/subscribe [:messaging/messages])
                        :on-dismiss #(rf/dispatch [:messaging/dismiss %])}]
      [feedback/sync-pill {:visible? @(rf/subscribe [:sync/saving?])}]
-     (when (= :signed-in status) [side-menu])]))
+     ;; mounted only while open: a fresh native modal each time
+     (when (and (= :signed-in status) @state/menu-open?) [side-menu])]))
 
 (defmethod ig/init-key :notebox/ui [_ {:keys [navigator]}]
   ;; `navigator` is the :notebox.infra/navigator component: an atom we fill with

@@ -1,12 +1,9 @@
-# Phase 0 smoke: the app starts its Integrant system with the :e2e profile and
-# renders text that comes from a re-frame subscription.
+# The app starts signed in (e2e profile) and shows the fixture library.
 appId: org.reactjs.native.example.Notebox
 ---
 - launchApp:
     stopApp: true
 - extendedWaitUntil:
-    visible: "Notebox"
+    visible: "10 books \\(20 notes\\) in total"
     timeout: 60000
-- assertVisible:
-    id: "app-status"
-    text: "Status: ready \\(e2e\\)"
+- takeScreenshot: 03-books-home

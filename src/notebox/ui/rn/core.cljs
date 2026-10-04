@@ -15,7 +15,6 @@
 (def scroll-view rn/ScrollView)
 (def flat-list rn/FlatList)
 (def image rn/Image)
-(def image-background rn/ImageBackground)
 (def modal rn/Modal)
 (def activity-indicator rn/ActivityIndicator)
 (def status-bar rn/StatusBar)

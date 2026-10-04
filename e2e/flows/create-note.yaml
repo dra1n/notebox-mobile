@@ -1,0 +1,24 @@
+# A new note goes to the default book (here the first book); it's shown, then
+# listed in its book.
+appId: org.reactjs.native.example.Notebox
+---
+- launchApp: {stopApp: true}
+- extendedWaitUntil: {visible: {id: "home-list"}, timeout: 60000}
+- tapOn: {id: "header-action"}
+- assertVisible: {id: "book-picker", text: ".*Анна Каренина.*"}
+- takeScreenshot: 07-new-note
+- tapOn: {id: "note-title-input"}
+- inputText: "Maestro note"
+- tapOn: {id: "note-text-input"}
+- inputText: "Written by the e2e run"
+- hideKeyboard                     # "+ Add tag" sits under the keyboard
+- tapOn: {id: "tag-add"}
+- inputText: "e2e"
+- pressKey: Enter
+- assertVisible: {id: "tag-e2e"}
+- tapOn: {id: "header-action"}
+- extendedWaitUntil: {visible: {id: "note-title", text: "Maestro note"}, timeout: 10000}
+- assertVisible: "Note added."
+- tapOn: {id: "header-back"}            # the form was replaced by the note: back is home
+- tapOn: {id: "book-k3J9aZ0qLx"}
+- assertVisible: "4 notes in total"

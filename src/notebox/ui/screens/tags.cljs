@@ -13,11 +13,11 @@
 (defn tags-screen [_]
   (r/with-let [_ (rf/dispatch [:tags/load-counts])]
     (let [index @(rf/subscribe [:tags/index])
-          search! (fn [tag] (rf/dispatch [:search/set-query tag {:type :all}])
+          search! (fn [tag] (rf/dispatch [:search/set-query tag {:type :all} {:external? true}])
                     (rf/dispatch [:nav/go :books-home {}]))]
       [frame/screen-frame
        [:<>
-        [frame/header {:left :menu :on-left state/open-menu! :title "Tags" :title-style :modal}]
+        [frame/header {:left :menu :on-left state/open-menu! :title "Tags" :title-style :section}]
         (if (empty? index)
           [feedback/empty-state {:title "No tags yet" :text "Add tags to your notes in the editor."}]
           (into [:> rn/scroll-view {:content-container-style {:padding 16 :gap 12}}
@@ -25,6 +25,8 @@
                 (for [{:keys [tag count complete?]} index]
                   ^{:key tag}
                   [lists/card {:badge [tags/chip {:label tag :on-press #(search! tag)}]
-                               :subtitle (str (lists/plural count "note") (when-not complete? "…"))
+                               :subtitle (if (and (not complete?) (zero? count))
+                                           "counting…"
+                                           (str (lists/plural count "note") (when-not complete? "…")))
                                :test-id (str "tag-card-" tag)
                                :on-press #(search! tag)}])))]])))

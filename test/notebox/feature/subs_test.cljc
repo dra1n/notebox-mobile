@@ -76,6 +76,9 @@
     (is (= ["a2"] (map (comp :slug :note)
                        (:notes (sub (search/set-query db "добро" {:type :book :book "a"}) [:search/results])))))
     (is (= 1 (:pending (sub (search/set-query db "x" {:type :book :book "b"}) [:search/results])))))
+  (testing "the search field's input key changes when the query is set from outside or cleared"
+    (is (= 0 (sub db [:search/input-key])))
+    (is (= 1 (sub (search/clear (search/set-query db "x" nil)) [:search/input-key]))))
   (testing "book titles only"
     (is (= ["Мой роман"] (map :title (:books (sub (search/set-query db "роман" {:type :books})
                                                   [:search/results])))))))

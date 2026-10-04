@@ -1,0 +1,13 @@
+# Log out (with confirmation): the Start screen.
+appId: org.reactjs.native.example.Notebox
+---
+- launchApp: {stopApp: true}
+- extendedWaitUntil: {visible: {id: "home-list"}, timeout: 60000}
+- tapOn: {id: "header-menu"}
+- assertVisible: {id: "account-email", text: "fake@example.com"}
+- tapOn: {id: "menu-logout"}
+- tapOn:                                 # the dialog's button, not the menu item
+    text: "Log out"
+    rightOf: "Cancel"
+- extendedWaitUntil: {visible: {id: "login"}, timeout: 10000}
+- takeScreenshot: 02-start-login

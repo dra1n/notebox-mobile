@@ -1,0 +1,30 @@
+# Books: add, rename, make default, delete.
+appId: org.reactjs.native.example.Notebox
+---
+- launchApp: {stopApp: true}
+- extendedWaitUntil: {visible: {id: "home-list"}, timeout: 60000}
+- tapOn: {id: "header-menu"}
+- takeScreenshot: 08-side-menu
+- tapOn: {id: "menu-books"}
+- waitForAnimationToEnd
+- assertVisible: "10 Books"
+- takeScreenshot: 09-books-manage
+- tapOn: {id: "header-action"}
+- waitForAnimationToEnd
+- inputText: "Poems"                  # the prompt's field has focus
+- tapOn: {id: "prompt-submit"}
+- extendedWaitUntil: {visible: "11 Books", timeout: 10000}
+- scrollUntilVisible: {element: "Poems.*", direction: DOWN}
+- tapOn: {text: "Rename", index: 10}
+- waitForAnimationToEnd
+- eraseText: 10                       # the prompt's field has focus
+- inputText: "Стихи"
+- tapOn: {id: "prompt-submit"}
+- extendedWaitUntil: {visible: "Стихи.*", timeout: 10000}
+- tapOn: "Стихи.*"
+- tapOn: "Make default"
+- extendedWaitUntil: {visible: ".*Default.*", timeout: 10000}
+- tapOn: "Стихи.*"
+- tapOn: "Delete"
+- tapOn: "Delete"
+- extendedWaitUntil: {visible: "10 Books", timeout: 10000}

@@ -9,9 +9,18 @@
 (defn scope [db] (get-in db [:search :scope] {:type :all}))
 
 (defn set-query [db q scope]
-  (assoc db :search {:query (or q "") :scope (or scope {:type :all})}))
+  (update db :search assoc :query (or q "") :scope (or scope {:type :all})))
 
-(defn clear [db] (dissoc db :search))
+(defn input-key
+  "Changes whenever the query is set from outside the search field (a tapped
+  tag), so the field (uncontrolled, see notebox.ui.components.lists) shows it."
+  [db]
+  (get-in db [:search :input-key] 0))
+
+(defn bump-input-key [db] (update-in db [:search :input-key] (fnil inc 0)))
+
+(defn clear [db]
+  (-> db (update :search dissoc :query :scope) bump-input-key))
 
 (defn results
   "{:books [book-info] :notes [{:book slug :note n}] :pending n}: matches so far,

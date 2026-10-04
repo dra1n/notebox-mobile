@@ -1,0 +1,16 @@
+# Open a book, then a note; back to the home screen.
+appId: org.reactjs.native.example.Notebox
+---
+- launchApp: {stopApp: true}
+- extendedWaitUntil: {visible: {id: "home-list"}, timeout: 60000}
+- tapOn: {id: "book-k3J9aZ0qLx"}
+- extendedWaitUntil: {visible: {id: "note-Vh2xQ1aaaa"}, timeout: 10000}
+- assertVisible: "3 notes in total"
+- takeScreenshot: 04-book-notes
+- tapOn: {id: "note-Vh2xQ1aaaa"}
+- assertVisible: {id: "note-title", text: "Новое поколение дворянства"}
+- assertVisible: {id: "tag-классика"}
+- takeScreenshot: 05-note-detail
+- tapOn: {id: "header-back"}
+- tapOn: {id: "header-back"}
+- assertVisible: {id: "home-list"}

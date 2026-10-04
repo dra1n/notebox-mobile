@@ -1,0 +1,26 @@
+# Edit a note's title and move it to another book.
+appId: org.reactjs.native.example.Notebox
+---
+- launchApp: {stopApp: true}
+- extendedWaitUntil: {visible: {id: "home-list"}, timeout: 60000}
+- tapOn: {id: "book-k3J9aZ0qLx"}
+- tapOn: {id: "note-Vh2xQ1cccc"}
+- tapOn: {id: "header-action"}
+- assertVisible: {id: "book-picker", text: ".*Анна Каренина.*"}
+- takeScreenshot: 06-edit-note
+- tapOn: {id: "note-title-input"}
+- eraseText: 30
+- inputText: "Moved question"
+- tapOn: {id: "book-picker"}
+- tapOn: {id: "pick-Cm1c5_bk-0"}
+- assertVisible: {id: "book-picker", text: "Comics.*"}
+- tapOn: {id: "header-action"}
+- extendedWaitUntil: {visible: {id: "note-title", text: "Moved question"}, timeout: 10000}
+- assertVisible: "Note saved."
+- tapOn: {id: "header-back"}
+- assertVisible: "2 notes in total"      # back in the book it came from, now without it
+- assertNotVisible: {id: "note-Vh2xQ1cccc"}
+- tapOn: {id: "header-back"}
+- tapOn: {id: "book-Cm1c5_bk-0"}
+- assertVisible: "6 notes in total"
+- assertVisible: {id: "note-Vh2xQ1cccc"}

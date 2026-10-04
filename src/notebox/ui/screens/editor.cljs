@@ -20,13 +20,15 @@
       [modals/book-picker {:books books :selected (:book @form) :new-book-title (:new-book-title @form)
                            :on-select #(swap! form assoc :book % :new-book-title nil)
                            :on-new-book #(reset! new-book-prompt? true)}]
-      [:> rn/text-input {:value (:title @form) :placeholder title-placeholder :testID "note-title-input"
+      ;; Uncontrolled inputs (initial text only): fast typing never loses characters.
+      [:> rn/text-input {:default-value (:title @form) :placeholder title-placeholder
+                         :testID "note-title-input"
                          :placeholder-text-color (t/color :text-grey)
                          :on-change-text #(swap! form assoc :title %)
                          :style (merge (t/font :medium 18)
                                        {:padding-vertical 8 :border-bottom-width 1
                                         :border-bottom-color (t/color :cyan)})}]
-      [:> rn/text-input {:value (:text @form) :placeholder text-placeholder :multiline true
+      [:> rn/text-input {:default-value (:text @form) :placeholder text-placeholder :multiline true
                          :testID "note-text-input" :placeholder-text-color (t/color :text-grey)
                          :text-align-vertical "top"
                          :on-change-text #(swap! form assoc :text %)
@@ -38,11 +40,12 @@
         [:> rn/view {:style {:align-items "flex-start" :padding-top 8}}
          [frame/text-button {:label "Delete note" :color (t/color :bg-orange-bright)
                              :on-press on-delete :test-id "delete-note"}]])]
-     [modals/prompt {:visible? @new-book-prompt? :title "New book" :placeholder "Book title"
-                     :submit-label "Use"
-                     :on-submit (fn [title] (swap! form assoc :new-book-title title :book nil)
-                                  (reset! new-book-prompt? false))
-                     :on-cancel #(reset! new-book-prompt? false)}]]))
+     (when @new-book-prompt?
+       [modals/prompt {:visible? true :title "New book" :placeholder "Book title"
+                       :submit-label "Use"
+                       :on-submit (fn [title] (swap! form assoc :new-book-title title :book nil)
+                                    (reset! new-book-prompt? false))
+                       :on-cancel #(reset! new-book-prompt? false)}])]))
 
 (defn- tag-names [] (map :tag @(rf/subscribe [:tags/index])))
 

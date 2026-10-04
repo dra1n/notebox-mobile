@@ -29,9 +29,9 @@
           shown (filter #(search/matches-book? @query %) all)]
       [frame/screen-frame
        [:<>
-        [frame/header {:left :menu :on-left state/open-menu! :title "Books" :title-style :modal
+        [frame/header {:left :menu :on-left state/open-menu! :title "Books" :title-style :section
                        :action {:label "Add book" :on-press #(reset! prompt {:mode :new})}}]
-        [lists/search-bar {:value @query :placeholder "Search books..." :on-change #(reset! query %)
+        [lists/search-bar {:placeholder "Search books..." :on-change #(reset! query %)
                            :test-id "books-search"}]
         (if (empty? all)
           [feedback/empty-state {:title "No books yet"
@@ -44,7 +44,9 @@
                                :subtitle (str (lists/plural (or count 0) "note") (when default? " • Default"))
                                :action-label "Rename" :on-action #(reset! prompt {:mode :rename :book b})
                                :on-press #(book-actions! b)}])))
-        [modals/prompt {:visible? (some? @prompt)
+        ;; mounted only while open: a fresh native modal each time
+        (when @prompt
+          [modals/prompt {:visible? true
                         :title (if (= :rename (:mode @prompt)) "Rename book" "New book")
                         :initial (get-in @prompt [:book :title]) :placeholder "Book title"
                         :submit-label (if (= :rename (:mode @prompt)) "Rename" "Add")
@@ -53,4 +55,4 @@
                                        (rf/dispatch [:books/rename (get-in @prompt [:book :slug]) title])
                                        (rf/dispatch [:books/create title]))
                                      (reset! prompt nil))
-                        :on-cancel #(reset! prompt nil)}]]])))
+                          :on-cancel #(reset! prompt nil)}])]])))

@@ -1,0 +1,12 @@
+# Tags with counts; tapping one searches for it.
+appId: org.reactjs.native.example.Notebox
+---
+- launchApp: {stopApp: true}
+- extendedWaitUntil: {visible: {id: "home-list"}, timeout: 60000}
+- tapOn: {id: "header-menu"}
+- tapOn: {id: "menu-tags"}
+- waitForAnimationToEnd
+- extendedWaitUntil: {visible: ".*favorite.*3 notes.*", timeout: 15000}
+- takeScreenshot: 11-tags
+- tapOn: {id: "tag-card-favorite"}
+- extendedWaitUntil: {visible: {id: "note-c0m1c00001"}, timeout: 10000}

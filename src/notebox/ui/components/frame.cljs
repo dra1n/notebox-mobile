@@ -67,7 +67,8 @@
   [:> rn/view {:style {:height t/header-height :background-color (t/color :bg-dark)
                        :padding-horizontal (t/sp :m) :flex-direction "row"
                        :align-items "center" :justify-content "space-between"}}
-   [:> rn/view {:style {:flex-direction "row" :align-items "center" :gap 8 :min-width 72}}
+   ;; the gap after the left control equals the header's side padding (16)
+   [:> rn/view {:style {:flex-direction "row" :align-items "center" :gap (t/sp :m) :min-width 72}}
     [left-control props]
     (when logo? [logo {:height 26 :on-dark? true}])
     (when (= :section title-style)

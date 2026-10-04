@@ -17,6 +17,8 @@
         tree  (render frame/header {:left :menu :on-left #(swap! calls conj :menu) :logo? true
                                     :action {:label "Add note" :on-press #(swap! calls conj :add)}})]
     (is (contains? (h/test-ids tree) "header-menu"))
+    (is (some #(= 16 (get-in % [2 :style :gap])) (h/native-nodes tree))
+        "the gap after the menu equals the side padding")
     (is (contains? (h/test-ids tree) "logo"))
     (is (some #{"ADD NOTE"} (h/texts tree)) "buttons are upper-case, as designed")
     ((:on-press (h/by-test-id tree "header-menu")))

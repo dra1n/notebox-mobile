@@ -18,7 +18,7 @@ This file tracks the phase gates defined in [`roadmap.md` §9](roadmap.md#9-phas
 | 2 Dropbox infra | done (2026-10-03, dd76ee1) |
 | 3 Storage through Luggage | done (2026-10-03, 644cba4) |
 | 4 re-frame features | done (2026-10-04, 60554f5) |
-| 5 UI | in progress: automated gate passed; design review and parity run pending |
+| 5 UI | done (2026-10-04, 512e4e4) |
 | 6 Hardening and release | not started |
 
 ---
@@ -131,20 +131,20 @@ Automated
 - [x] Maestro flows pass on iOS: start, browse, create, edit/move, delete, search ×3, books CRUD + default, tags, logout: 2026-10-04, 26fe4bc. 9/9 flows in about 1m52s on the iPhone 16 Pro simulator. Revised: sign-in, the empty library and "not found" are covered by Node tests (roadmap Phase 5).
 
 Manual: design review (screenshot vs. `spec/design/screens/`)
-- [ ] 01 splash
-- [ ] 02 start/login
-- [ ] 03 books home
-- [ ] 04 book notes
-- [ ] 05 note detail
-- [ ] 06 edit note
-- [ ] 07 new note
-- [ ] 08 side menu
-- [ ] 09 books manage (with the search from 10)
-- [ ] 11 tags
-- [ ] Design gaps (delete note/book, empty, 404, toasts, sync indicator): consistent with the desktop references
+- [x] 01 splash: 2026-10-04, 512e4e4. Reviewed by the user (too brief for an e2e screenshot; same logo as Start)
+- [x] 02 start/login: 2026-10-04, 512e4e4. Reviewed by the user (`e2e/screenshots/` vs `spec/design/screens/`)
+- [x] 03 books home: 2026-10-04, 512e4e4. Reviewed by the user (`e2e/screenshots/` vs `spec/design/screens/`)
+- [x] 04 book notes: 2026-10-04, 512e4e4. Reviewed by the user (`e2e/screenshots/` vs `spec/design/screens/`)
+- [x] 05 note detail: 2026-10-04, 512e4e4. Reviewed by the user (`e2e/screenshots/` vs `spec/design/screens/`)
+- [x] 06 edit note: 2026-10-04, 512e4e4. Reviewed by the user (`e2e/screenshots/` vs `spec/design/screens/`)
+- [x] 07 new note: 2026-10-04, 512e4e4. Reviewed by the user (`e2e/screenshots/` vs `spec/design/screens/`)
+- [x] 08 side menu: 2026-10-04, 512e4e4. Reviewed by the user (`e2e/screenshots/` vs `spec/design/screens/`)
+- [x] 09 books manage (with the search from 10): 2026-10-04, 512e4e4. Reviewed by the user (`e2e/screenshots/` vs `spec/design/screens/`)
+- [x] 11 tags: 2026-10-04, 512e4e4. Reviewed by the user (`e2e/screenshots/` vs `spec/design/screens/`)
+- [x] Design gaps (delete note/book, empty, 404, toasts, sync indicator): consistent with the desktop references: 2026-10-04, 512e4e4. Accepted by the user, with the intentional differences listed in the notes. One change requested: equal spacing around the menu button (`3cf63d7`).
 
 Manual: parity run on the real account
-- [ ] Every row in roadmap §1 and §1.1 is checked on the simulator and confirmed in the web app
+- [x] Every row in roadmap §1 and §1.1 is checked on the simulator and confirmed in the web app: 2026-10-04, 512e4e4. Done by the user on the real account ("Everything is fine").
 
 Notes
 - Screenshots: `npm run test:e2e` writes `e2e/screenshots/*.png` (02, 03, 04, 05, 06, 07, 08, 09,

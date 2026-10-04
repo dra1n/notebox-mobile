@@ -17,7 +17,7 @@ This file tracks the phase gates defined in [`roadmap.md` §9](roadmap.md#9-phas
 | 1 Domain | done (2026-10-03, f988768) |
 | 2 Dropbox infra | done (2026-10-03, dd76ee1) |
 | 3 Storage through Luggage | done (2026-10-03, 644cba4) |
-| 4 re-frame features | in progress: automated gate passed; user review pending |
+| 4 re-frame features | done (2026-10-04, 60554f5) |
 | 5 UI | not started |
 | 6 Hardening and release | not started |
 
@@ -112,7 +112,7 @@ Automated
 - [x] Derived sub tests: books with counts, tag index, search results, default-book fallback: 2026-10-03, ed28966. `feature/subs-test`, on the JVM and in Node.
 
 Manual
-- [ ] The user has reviewed the re-frame implementation against the web app (`src/notebox/feature/`, `fx/`, `shell/events.cljc`)
+- [x] The user has reviewed the re-frame implementation against the web app (`src/notebox/feature/`, `fx/`, `shell/events.cljc`): 2026-10-04, 60554f5. One change requested and made: components first (`16363eb`). Approved after that.
 
 Notes
 - Tests found and fixed two design issues: a rollback in a separate event left a moment where

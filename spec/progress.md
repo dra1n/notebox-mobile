@@ -18,7 +18,7 @@ This file tracks the phase gates defined in [`roadmap.md` §9](roadmap.md#9-phas
 | 2 Dropbox infra | done (2026-10-03, dd76ee1) |
 | 3 Storage through Luggage | done (2026-10-03, 644cba4) |
 | 4 re-frame features | done (2026-10-04, 60554f5) |
-| 5 UI | not started |
+| 5 UI | in progress: automated gate passed; design review and parity run pending |
 | 6 Hardening and release | not started |
 
 ---
@@ -127,8 +127,8 @@ Notes
 ## Phase 5: UI (L4 + L5)
 
 Automated
-- [ ] View tests for every presentational view state and handler
-- [ ] Maestro flows pass on iOS: login, browse, create, edit/move, delete, search ×3, books CRUD + default, tags, empty library, not found, logout
+- [x] View tests for every presentational view state and handler: 2026-10-04, 26fe4bc. `ui/components-test` in Node with React Native stubbed (`test/node/stub-native.js`). Covers the header variants, buttons (disabled), search bar, book/note rows (placeholders, plurals), cards (default highlight), tag chips and editor (suggestions), toasts, sync pill, empty/loading/not-found, side menu, prompt (blank disabled, trims), and the book picker (mounted on open).
+- [x] Maestro flows pass on iOS: start, browse, create, edit/move, delete, search ×3, books CRUD + default, tags, logout: 2026-10-04, 26fe4bc. 9/9 flows in about 1m52s on the iPhone 16 Pro simulator. Revised: sign-in, the empty library and "not found" are covered by Node tests (roadmap Phase 5).
 
 Manual: design review (screenshot vs. `spec/design/screens/`)
 - [ ] 01 splash
@@ -147,7 +147,29 @@ Manual: parity run on the real account
 - [ ] Every row in roadmap §1 and §1.1 is checked on the simulator and confirmed in the web app
 
 Notes
--
+- Screenshots: `npm run test:e2e` writes `e2e/screenshots/*.png` (02, 03, 04, 05, 06, 07, 08, 09,
+  11). Compare each with `spec/design/screens/` (01 splash is too brief to capture).
+- **Intentional differences from the design**, for the review:
+  - iOS uses the system font (SF Pro), not Roboto (agreed fallback, roadmap §11).
+  - The illustrations have no drop shadows (react-native-svg doesn't support SVG filters).
+  - Design gaps filled: "Delete note" at the bottom of the editor (with confirmation); on the
+    Books screen, tapping a card opens Open / Make default / Delete, and Rename opens a prompt;
+    the side menu has Books & notes / Books / Tags above Log out; toasts and a "Saving…" pill
+    follow the desktop frames.
+  - Tags: no Rename, ADD TAG or "Create new tag" (v1 decision); a count reads "counting…"
+    until every book has loaded.
+  - The editor screens slide up from the bottom as full screens.
+  - After saving, the editor is replaced by the note, so Back returns to where you came from.
+- Fixes found on the simulator, each with a cause:
+  - controlled text inputs dropped characters, so inputs are uncontrolled now;
+  - toasts covered the header buttons;
+  - a modal shown a second time wasn't accessible, so modals mount only while open;
+  - `fullScreenModal` ignored the safe area;
+  - React Navigation wants capitalized component names;
+  - the SVG root fill was lost;
+  - `native` is a reserved word in JS, so `ui.native` became `ui.rn`.
+- New native modules: react-native-screens, react-native-svg (`pod install` + `npm run ios`).
+  Restart Metro after `npm install` (`npm start -- --reset-cache`).
 
 ## Phase 6: Hardening and release
 

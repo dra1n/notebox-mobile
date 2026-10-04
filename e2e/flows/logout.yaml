@@ -10,4 +10,5 @@ appId: org.reactjs.native.example.Notebox
     text: "Log out"
     rightOf: "Cancel"
 - extendedWaitUntil: {visible: {id: "login"}, timeout: 10000}
+- waitForAnimationToEnd
 - takeScreenshot: 02-start-login

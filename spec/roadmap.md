@@ -807,11 +807,13 @@ is ticked from memory. Re-run the gate on the final commit of the phase.
     expected hiccup for its states (normal, empty, loading, error, long text and truncation),
     and its press handlers dispatch the expected events. RN components are stubbed, so no
     simulator is needed.
-  - **Maestro flows** (`e2e/`, iOS simulator, `:e2e` profile with `dropbox/fake` seeded from
-    `e2e/seed/`), one per journey: login → books home; open book → note; create note (default
-    book preselected); edit and move a note; delete a note; search (global, in-book, and book
-    titles); books add/rename/delete and set default; tags list; empty library; note not found;
-    logout. `npm run test:e2e` passes.
+  - **Maestro flows** (`e2e/flows/`, iOS simulator, `:e2e` profile with `dropbox/fake` seeded
+    with the fixture library), one per journey: start → books home; open book → note; create
+    note (default book preselected); edit and move a note; delete a note; search (global,
+    in-book, and book titles); books add/rename/delete and set default; tags list; logout.
+    `npm run test:e2e` passes. *(Revised: the e2e app starts signed in, because the real OAuth
+    can't run there, and sign-in is covered by the Node flow tests. The empty library and
+    "note not found" states are covered by component tests, because one e2e build has one seed.)*
   - Each flow saves screenshots (`takeScreenshot`) to `e2e/screenshots/` (gitignored).
 - **Gate (manual):**
   - **Design review:** put each `e2e/screenshots/*.png` next to its `spec/design/screens/*.png`

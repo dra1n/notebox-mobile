@@ -1,0 +1,17 @@
+{
+  "calva.replConnectSequences": [
+    {
+      "name": "notebox: Krell",
+      "projectType": "deps.edn",
+      "autoSelectForJackIn": true,
+      "menuSelections": {
+        "cljAliases": ["dev", "nrepl"]
+      },
+      "cljsType": {
+        "dependsOn": "User provided",
+        "connectCode": "(require '[clojure.edn :as edn] '[clojure.java.io :as io] '[cider.piggieback] '[krell.api :as krell] '[krell.repl])\n(def config (edn/read-string (slurp (io/file \"build.edn\"))))\n(krell/build config)\n(apply cider.piggieback/cljs-repl (krell.repl/repl-env) (mapcat identity config))",
+        "isConnectedRegExp": "To quit, type: :cljs/quit"
+      }
+    }
+  ]
+}

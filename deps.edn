@@ -12,6 +12,12 @@
  {;; REPL-only helpers (notebox.dev): reset, fake data seeding
   :dev       {:extra-paths ["dev"]}
 
+  ;; Krell REPL over nREPL, for editors (Calva jack-in: .vscode/settings.json).
+  ;; No :main-opts: the editor supplies its own nREPL launch.
+  :nrepl     {:extra-deps {nrepl/nrepl        {:mvn/version "1.3.1"}
+                           cider/cider-nrepl  {:mvn/version "0.63.1"}
+                           cider/piggieback   {:mvn/version "0.7.0"}}}
+
   ;; JVM tests: cljc code (domain, sync core, config) + project checks
   :test      {:extra-paths ["test" "test/resources" "scripts"]
               :extra-deps  {;; the desktop client's JSON library and version (desktop-oracle-test)

@@ -11,6 +11,7 @@ snapshot and the phase gates live in [`spec/`](spec/): start with
 | `npm start` | Metro |
 | `npm run ios` | build and install the iOS app (after native dependency changes: `cd ios && bundle exec pod install` first) |
 | `npm run cljs:repl` | Krell REPL + hot reload; `(require '[notebox.dev :as dev])`, `(dev/reset)` restarts the Integrant system |
+| `npm run cljs:nrepl` | nREPL server (cider + piggieback) for an editor; in Calva, **Connect to a running REPL** → "notebox: Krell" starts the Krell REPL in it (or **Jack-in** with the same sequence, without this script). Stop `cljs:repl` first: both use port 5001 |
 | `npm run cljs:build` | one-off dev compile (no REPL) |
 | `npm run verify` | **before every commit**: JVM tests (+ coverage), node tests, clj-kondo, dependency rules, Jest |
 | `npm run check:release` | `:advanced` build + Hermes check, into `target/release` |

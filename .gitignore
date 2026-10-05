@@ -54,6 +54,7 @@ yarn-error.log
 .cpcache/
 .nrepl-port
 .lsp/
+.calva/
 .clj-kondo/.cache/
 .portal/
 target/

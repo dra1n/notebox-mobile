@@ -2151,7 +2151,7 @@ SPEC CHECKSUMS:
   React-bridging: 56fe36fe6bd5724d14401b8e22336a14d23f8d73
   React-callinvoker: 2703817f9ad45a19f839421aa77a3504b2a76f0d
   React-Core: 7b2c3d5cc62d50659ba1c0c86b9112a3b44c1219
-  React-Core-prebuilt: 508793fe2a734c137e80b894998702a6fe7caa94
+  React-Core-prebuilt: d7a5fd7d35b1b39a271286ef44a294bc4228093f
   React-CoreModules: f940b6c1451d74b19d340aa52612eb7e9a306d95
   React-cxxreact: cf37497363d74b6a766fb06e8feb96dc8156f471
   React-cxxstableapi: 06f491a41595d7e71e9a1783781913e0b2291d57

@@ -3,10 +3,12 @@ import React
 import React_RCTAppDelegate
 import ReactAppDependencyProvider
 
+// The iOS 27 SDK requires the UIScene lifecycle: an app that still sets up its
+// window in the app delegate is terminated at launch. The app delegate owns the
+// React Native factory; SceneDelegate (declared in Info.plist's
+// UIApplicationSceneManifest) creates the window and starts React Native in it.
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-  var window: UIWindow?
-
   var reactNativeDelegate: ReactNativeDelegate?
   var reactNativeFactory: RCTReactNativeFactory?
 
@@ -21,24 +23,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     reactNativeDelegate = delegate
     reactNativeFactory = factory
 
-    window = UIWindow(frame: UIScreen.main.bounds)
+    return true
+  }
+}
+
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+  var window: UIWindow?
+
+  func scene(
+    _ scene: UIScene,
+    willConnectTo session: UISceneSession,
+    options connectionOptions: UIScene.ConnectionOptions
+  ) {
+    guard let windowScene = scene as? UIWindowScene,
+          let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+          let factory = appDelegate.reactNativeFactory
+    else { return }
+
+    let window = UIWindow(windowScene: windowScene)
+    self.window = window
+
+    // Scenes don't get launch options; pass a cold-start deep link the way
+    // RCTLinkingManager's getInitialURL expects to find it.
+    var launchOptions: [AnyHashable: Any] = [:]
+    if let url = connectionOptions.urlContexts.first?.url {
+      launchOptions[UIApplication.LaunchOptionsKey.url] = url
+    }
 
     factory.startReactNative(
       withModuleName: "Notebox",
       in: window,
       launchOptions: launchOptions
     )
-
-    return true
   }
 
   // Deep links (the notebox://oauth redirect after Dropbox sign-in) → React Native's Linking.
-  func application(
-    _ app: UIApplication,
-    open url: URL,
-    options: [UIApplication.OpenURLOptionsKey: Any] = [:]
-  ) -> Bool {
-    return RCTLinkingManager.application(app, open: url, options: options)
+  func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+    for context in URLContexts {
+      RCTLinkingManager.application(UIApplication.shared, open: context.url, options: [:])
+    }
   }
 }
 
